@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission 01 | System Information</title><link href="../../css/style.css" rel="stylesheet"/>
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.report-block ol{padding-right:22px}.evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.placeholder{min-height:130px;display:grid;place-items:center;text-align:center;border:1px dashed #526781;border-radius:8px;color:#8194ad;font-size:11px;padding:15px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+@media(max-width:650px){.meta-grid,.evidence-grid{grid-template-columns:1fr}}@media print{.back-link,.print-btn{display:none}.detail-hero,.report-block{break-inside:avoid}}
+</style><link href="../../css/en.css" rel="stylesheet"/></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← Back to dashboard</a><a class="lang-switch" href="../../projects/project-01.html" hreflang="fa" lang="fa">فارسی</a>
+<section class="detail-hero"><span class="eyebrow">MISSION 01 / 10 · FIELD REPORT</span><h1>Full Computer Specifications Report</h1><p>System Information — reviewing hardware and software specifications with built-in Windows tools</p></section>
+<div class="meta-grid"><div class="meta">Status<b>Completed</b></div><div class="meta">Tools<b>dxdiag · systeminfo · msinfo32</b></div><div class="meta">Date performed<b>2026-10-02</b></div></div>
+<section class="report-block"><h2>01 / Mission goal</h2><p>The goal of this project is to identify and record the main hardware and software specifications of the computer using three built-in Windows tools.</p></section>
+<section class="report-block"><h2>02 / Tool one: DXDIAG</h2><p>This tool displays information about the processor, memory, display, graphics card, sound and DirectX version.</p><ol><li>Press <b>Win + R</b>, type <b>dxdiag</b> and press Enter.</li><li>In the <b>System</b> tab review the general specifications, and in the <b>Display</b> tab review the graphics card information.</li><li>If needed, also check the <b>Sound</b> and <b>Input</b> tabs.</li><li>To save the report, click <b>Save All Information</b>.</li></ol>
+<div class="evidence-grid"><figure class="evidence"><img alt="DXDIAG System" src="../../assets/screenshots/project01-dxdiag-system.PNG"/><figcaption>Figure 1 – General system information in DXDIAG</figcaption></figure><figure class="evidence"><img alt="DXDIAG display" src="../../assets/screenshots/project01-dxdiag-display.PNG"/><figcaption>Figure 2 – Display and graphics card specifications</figcaption></figure>
+</div>
+</section>
+<section class="report-block"><h2>03 / Tool two: SYSTEMINFO</h2><p>This command displays information such as the Windows version, system model, processor, BIOS, RAM and network adapters as text.</p><ol><li>Open the Run window with <b>Win + R</b>, type <b>cmd</b> and press Enter.</li><li>Run the <b>systeminfo</b> command and wait for the information to appear.</li><li>To save the output on drive C, run the following command:</li></ol><pre dir="ltr"><code>systeminfo &gt; C:\systeminfo.txt</code></pre><figure class="evidence"><img alt="DXDIAG System" src="../../assets/screenshots/project01-systeminfo.PNG"/><figcaption>Figure 3 – Output of the SYSTEMINFO command</figcaption></figure></section>
+<section class="report-block"><h2>04 / Tool three: MSINFO32</h2><p>This tool displays system specifications graphically, organized by category.</p><ol><li>Press <b>Win + R</b>, type <b>msinfo32</b> and press Enter.</li><li>In <b>System Summary</b>, view general information such as Windows, processor, BIOS and RAM.</li><li>If needed, also review <b>Hardware Resources</b>, <b>Components</b> and <b>Software Environment</b>.</li><li>To save the report, choose <b>Export</b> from the <b>File</b> menu.</li></ol><figure class="evidence"><img alt="DXDIAG System" src="../../assets/screenshots/project01-msinfo.PNG"/><figcaption>Figure 4 – The System Information window</figcaption></figure></section>
+<section class="report-block"><h2>05 / Summary and findings</h2><ul><li>Processor (CPU): Intel(R) Core(TM) i7-6600U CPU</li><li>Memory (RAM): 8192 MB</li><li>Graphics card (GPU): Intel(R) HD Graphics 520</li><li>Operating system: Windows 10 Pro 64-bit</li></ul></section>
+<button class="print-btn" onclick="window.print()">Print / Save this report as PDF</button>
+</div></main></body></html>

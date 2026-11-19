@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission 09 | Batch Automation</title><link href="../../css/style.css" rel="stylesheet"/>
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.code-block{direction:ltr;text-align:left;background:#0b1422;border:1px solid #263750;border-radius:10px;padding:14px;margin:12px 0;overflow-x:auto;font-family:Consolas,"Courier New",monospace;font-size:11.5px;line-height:1.7;color:#c9d8ec;white-space:pre}
+.cmd{direction:ltr;unicode-bidi:embed;font-family:Consolas,"Courier New",monospace;color:#e5efff}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.shot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+</style><link href="../../css/en.css" rel="stylesheet"/></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← Back to dashboard</a><a class="lang-switch" href="../../projects/project-09.html" hreflang="fa" lang="fa">فارسی</a>
+<section class="detail-hero"><span class="eyebrow">MISSION 09 / 10 · FIELD REPORT</span><h1>Building a Simple Batch Script</h1><p>Batch Automation — creating a .bat file that automatically runs several CMD commands and displays system information.</p></section>
+<div class="meta-grid"><div class="meta">Status<b>Completed</b></div>
+<div class="meta">Date performed<b>2026-11-18</b></div><div class="meta">Tools<b>Notepad · Command Prompt (CMD) · .bat file</b></div></div>
+<section class="report-block"><h2>01 / Mission goal</h2>
+<p>The goal of this project is to create a batch file (a Batch File with the <span class="cmd">.bat</span> extension) that, when run once, automatically executes a series of CMD commands one after another and displays important system information. This information includes the computer and user name, operating system version, processor and RAM, disk drive status, network settings and the most resource-heavy processes. The output is also saved to a text file so it can be used as a report. This script replaces running each command manually and separately, and saves time in IT support work.</p>
+</section>
+<section class="report-block">
+<h2>02 / Tools and runtime environment</h2>
+<p><b>Notepad:</b> a text editor for writing the script code and saving it with the <span class="cmd">.bat</span> extension (with Save as type = All files).</p>
+<p><b>Command Prompt (CMD):</b> the Windows command interpreter that runs the .bat file.</p>
+<p><b>Runtime environment:</b> Windows 10 or 11. The commands used include <span class="cmd">hostname</span>, <span class="cmd">whoami</span>, <span class="cmd">ver</span>, <span class="cmd">systeminfo</span>, <span class="cmd">ipconfig</span>, <span class="cmd">ping</span>, <span class="cmd">findstr</span> and, for disk and process information, a short PowerShell call.</p>
+</section>
+<section class="report-block">
+<h2>03 / Execution steps</h2>
+<ol>
+<li><b>Creating the file:</b> we open Notepad and save the file as <span class="cmd">system_info.bat</span>. In the Save window, we set Save as type to All files so that the .txt extension is not added.</li>
+<li><b>Initial settings:</b> with <span class="cmd">@echo off</span> we turn off the display of the commands themselves, with <span class="cmd">chcp 65001</span> we enable the UTF-8 code page, and with <span class="cmd">title</span> and <span class="cmd">color</span> we set the window's appearance.</li>
+<li><b>Defining the output path:</b> we create the <span class="cmd">OUT</span> variable using the computer name so that the report is saved in the same folder as the script.</li>
+<li><b>Writing the report sections:</b> under the <span class="cmd">:collect</span> label we write the commands section by section: user and computer, operating system, processor and memory, disks, network and the most resource-heavy processes. We use <span class="cmd">findstr</span> to filter the long <span class="cmd">systeminfo</span> output.</li>
+<li><b>Saving and displaying the output:</b> the label's output is saved to a txt file with the <span class="cmd">&gt;</span> operator and then shown on screen with <span class="cmd">type</span>. At the end, <span class="cmd">pause</span> keeps the window open.</li>
+<li><b>Running and testing:</b> we double-click the file (or run it in CMD), check the output and open the report file that was created.</li>
+</ol>
+<h2 style="margin-top:18px">Complete script code</h2>
+<div class="code-block">@echo off
+chcp 65001 &gt;nul
+title System Information Report
+color 0A
+setlocal EnableExtensions
+
+set "OUT=%~dp0system_report_%COMPUTERNAME%.txt"
+
+echo Collecting system information, please wait...
+echo.
+
+call :collect &gt; "%OUT%" 2&gt;&amp;1
+type "%OUT%"
+
+echo.
+echo Report saved to: %OUT%
+echo.
+pause
+endlocal
+exit /b
+
+:collect
+echo ==================================================
+echo          SYSTEM INFORMATION REPORT
+echo ==================================================
+echo Date : %date%
+echo Time : %time%
+echo.
+
+echo [1] COMPUTER AND USER
+echo Computer name : %COMPUTERNAME%
+echo Current user  : %USERNAME%
+whoami
+echo.
+
+echo [2] OPERATING SYSTEM
+ver
+systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type" /C:"System Boot Time"
+echo.
+
+echo [3] PROCESSOR AND MEMORY
+echo CPU           : %PROCESSOR_IDENTIFIER%
+echo Logical cores : %NUMBER_OF_PROCESSORS%
+systeminfo | findstr /C:"Total Physical Memory" /C:"Available Physical Memory"
+echo.
+
+echo [4] DISK DRIVES
+powershell -NoProfile -Command "Get-CimInstance Win32_LogicalDisk -Filter 'DriveType=3' | Select-Object DeviceID,@{n='Size_GB';e={[math]::Round($_.Size/1GB,1)}},@{n='Free_GB';e={[math]::Round($_.FreeSpace/1GB,1)}} | Format-Table -AutoSize"
+echo.
+
+echo [5] NETWORK
+ipconfig | findstr /C:"IPv4" /C:"Subnet Mask" /C:"Default Gateway"
+ping -n 2 8.8.8.8 | findstr /C:"Average" /C:"Lost"
+echo.
+
+echo [6] TOP 5 PROCESSES BY MEMORY
+powershell -NoProfile -Command "Get-Process | Sort-Object WS -Descending | Select-Object -First 5 Name,@{n='RAM_MB';e={[math]::Round($_.WS/1MB)}} | Format-Table -AutoSize"
+echo.
+
+echo ================== END OF REPORT ==================
+goto :eof</div>
+<p>The complete <span class="cmd">system_info.bat</span> file is also included with this project in the GitHub repository.</p>
+</section>
+<section class="report-block">
+<h2>04 / Findings and technical analysis</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:left">Report section</th><th style="padding:11px;text-align:left">Main command</th><th style="padding:11px;text-align:left">Information displayed</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">User and computer</td><td class="cmd" style="padding:11px;border-bottom:1px solid #263750">hostname · whoami</td><td style="padding:11px;border-bottom:1px solid #263750">Device name and active user account</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Operating system</td><td class="cmd" style="padding:11px;border-bottom:1px solid #263750">ver · systeminfo</td><td style="padding:11px;border-bottom:1px solid #263750">Windows name and version, system type, last boot time</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Processor and RAM</td><td class="cmd" style="padding:11px;border-bottom:1px solid #263750">%PROCESSOR_IDENTIFIER% · systeminfo</td><td style="padding:11px;border-bottom:1px solid #263750">CPU model, number of logical cores, total and free RAM</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Disks</td><td class="cmd" style="padding:11px;border-bottom:1px solid #263750">Get-CimInstance Win32_LogicalDisk</td><td style="padding:11px;border-bottom:1px solid #263750">Total capacity and free space of each drive</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Network</td><td class="cmd" style="padding:11px;border-bottom:1px solid #263750">ipconfig · ping</td><td style="padding:11px;border-bottom:1px solid #263750">IPv4 address, Subnet Mask, Gateway and connection status</td></tr>
+<tr><td style="padding:11px">Processes</td><td class="cmd" style="padding:11px">Get-Process</td><td style="padding:11px">The five processes using the most RAM</td></tr>
+</tbody></table>
+<ul>
+<li>Redirecting the output with <span class="cmd">&gt;</span> means the result is both shown on screen and available as a text file that can be archived and sent.</li>
+<li>Using <span class="cmd">findstr</span> turns the long <span class="cmd">systeminfo</span> output into a few useful lines and makes the report more readable.</li>
+<li>The <span class="cmd">wmic</span> tool has been removed or is being removed in newer versions of Windows 11; for this reason PowerShell was used for disks and processes so that the script also works on newer versions.</li>
+<li>Running the <span class="cmd">systeminfo</span> command takes a few seconds; the “Collecting...” message at the start of the script explains this delay to the user.</li>
+<li>Running the file with Run as administrator may be needed to access some information, but the sections of this report also work with normal access.</li>
+</ul>
+</section>
+<section class="report-block">
+<h2>05 / Problems and solutions</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:left">Problem</th><th style="padding:11px;text-align:left">Solution</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">File saved as system_info.bat.txt</td><td style="padding:11px;border-bottom:1px solid #263750">Select All files in Save as type and enable showing file extensions in File Explorer</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">The CMD window closes quickly after running</td><td style="padding:11px;border-bottom:1px solid #263750">Add the <span class="cmd">pause</span> command at the end of the script</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">“wmic is not recognized” error on Windows 11</td><td style="padding:11px;border-bottom:1px solid #263750">Replace wmic with PowerShell commands (Get-CimInstance)</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">The systeminfo output was very long</td><td style="padding:11px;border-bottom:1px solid #263750">Filter with <span class="cmd">findstr</span> and show only the needed lines</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">On a localized Windows or one with a different language, the systeminfo filter returns no output</td><td style="padding:11px;border-bottom:1px solid #263750">The filters depend on the English text of the output; run it on an English-language Windows or adjust the findstr phrases to the system language</td></tr>
+<tr><td style="padding:11px">Characters displayed incorrectly</td><td style="padding:11px">Use <span class="cmd">chcp 65001</span> and keep the script's text in English</td></tr>
+</tbody></table>
+</section>
+<section class="report-block">
+<h2>06 / Visual documentation</h2>
+<div class="shot-grid">
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project09-notepad-code.PNG"/><figcaption>Writing the script code in Notepad</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project09-save-bat.PNG"/><figcaption>Saving the file with the .bat extension and the All files option</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project09-cmd-output.PNG"/><figcaption>Running the script and displaying system information in CMD</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project09-report-file.PNG"/><figcaption>The text report file created by the script</figcaption></figure>
+</div>
+</section>
+<section class="report-block">
+<h2>07 / Summary and lessons learned</h2>
+<p>In this project I learned that a simple Batch file can automatically run several CMD commands and turn repetitive troubleshooting tasks into a single click. I became familiar with concepts such as variables, labels and <span class="cmd">call</span>, output redirection, filtering with <span class="cmd">findstr</span> and combining CMD with PowerShell, and saw that when writing a script, compatibility with different Windows versions must also be considered.</p>
+<p>This script can be a foundation for IT support tools; for example, sections such as checking disk space, cleaning temporary files or producing a periodic report with Task Scheduler can be added to it later.</p>
+</section>
+<button class="print-btn" onclick="window.print()">Print / Save this report as PDF</button>
+</div></main></body></html>

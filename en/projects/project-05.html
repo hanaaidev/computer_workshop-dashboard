@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission 05 | Portable IT Toolkit</title><link href="../../css/style.css" rel="stylesheet"/>
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+.table-wrap{overflow-x:auto;margin:10px 0}
+.report-table{width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1}
+.report-table th{background:#17263b;color:#e5efff;font-weight:600;text-align:left;padding:9px 10px;border:1px solid #263750;white-space:nowrap}
+.report-table td{padding:9px 10px;border:1px solid #263750;line-height:1.9;vertical-align:top}
+.report-table td b{color:#e5efff}
+.report-table td.empty{color:#6c7f98;text-align:center}
+.note{font-size:11px;color:#8194ad;border-right:3px solid #526781;padding:4px 10px;margin:10px 0;line-height:1.9}
+.shot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+code{direction:ltr;unicode-bidi:embed;background:#0d1726;padding:1px 6px;border-radius:5px;color:#9cc4ff;font-size:11px}
+</style><link href="../../css/en.css" rel="stylesheet"/></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← Back to dashboard</a><a class="lang-switch" href="../../projects/project-05.html" hreflang="fa" lang="fa">فارسی</a>
+<section class="detail-hero"><span class="eyebrow">MISSION 05 / 10 · FIELD REPORT</span><h1>Building a Software Toolkit</h1><p>Portable IT Toolkit — introducing and preparing at least five portable tools for IT work.</p></section>
+<div class="meta-grid"><div class="meta">Status<b>Completed</b></div>
+<div class="meta">Date performed<b>2026-10-22</b></div>
+<div class="meta">Tools<b>Everything · TreeSize · Notepad++ · 7-Zip · VLC</b></div></div>
+<section class="report-block"><h2>01 / Mission goal</h2>
+<p>The goal of this project is to build a portable toolkit on a flash drive that runs commonly used IT support tools without installation and without making changes to the host system. These tools are used for file search, disk space analysis, text and image editing, compression, screen recording and media playback.</p>
+<p>The problem examined is how to carry a complete set of tools on one flash drive and run it quickly, with a minimal footprint, on different systems. The expected output is a well-organized flash drive with 5 ready-to-run tools, along with documentation and a test on a second system.</p>
+</section>
+<section class="report-block"><h2>02 / Tools and runtime environment</h2>
+<div class="table-wrap"><table class="report-table">
+<thead><tr><th>Tool</th><th>Purpose</th><th>Category</th></tr></thead>
+<tbody>
+<tr><td><b>Everything</b></td><td>Instant search of files and folders on NTFS disks</td><td>File management</td></tr>
+<tr><td><b>TreeSize</b></td><td>Showing folder sizes and finding large files and folders</td><td>Disk space analysis</td></tr>
+<tr><td><b>Notepad++</b></td><td>Text and code editor supporting many languages</td><td>Text editing</td></tr>
+<tr><td><b>7-Zip</b></td><td>Compression and extraction of many archive formats</td><td>File utility</td></tr>
+<tr><td><b>VLC</b></td><td>Multi-format audio and video player</td><td>Multimedia</td></tr>
+</tbody></table></div>
+<p><b>Runtime environment:</b> flash drive model and capacity: <span>16GB-v813</span> <span></span> · file system: <span></span> · test operating system: <span>Windows 10</span></p>
+<p class="note">File system note: FAT32 does not accept files larger than 4 GB. For OBS recordings and larger flash drives, exFAT or NTFS is more suitable.</p>
+</section>
+<section class="report-block"><h2>03 / Execution steps</h2>
+<ol>
+<li>Format the flash drive with a suitable file system and give it a name, for example <code>ToolKit</code>.</li>
+<li>Create the folder structure, a separate folder for each tool.</li>
+<li>Download the portable or ZIP version of each program from the developer's official website.</li>
+<li>Extract each tool into its own folder.</li>
+<li>Enable portable mode in programs that need it. For example, in OBS, creating an empty file named <code>portable_mode.txt</code> next to the executable makes the settings be stored on the flash drive itself.</li>
+<li>(Optional) Create a simple launcher with a batch file that opens the programs using relative paths.</li>
+<li>Test the run on another system and check that the settings remain on the flash drive.</li>
+</ol></section>
+<section class="report-block"><h2>04 / Evidence and execution screenshots</h2>
+<div class="shot-grid">
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project05-treesize.PNG"/><figcaption>TreeSize running from the flash drive – used and free space on the drive</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project05-everything.PNG"/><figcaption>Advanced instant search with Everything</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project05-NotePad++.PNG"/><figcaption>Editing and viewing code with Notepad++ from the flash drive</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project05-7zip.PNG"/><figcaption>7-Zip running from the flash drive</figcaption></figure>
+</div>
+</section>
+<section class="report-block"><h2>05 / Findings and technical analysis</h2>
+<div class="table-wrap"><table class="report-table">
+<thead><tr><th>Tool</th><th>Size on flash drive</th><th>Needs Admin</th><th>Settings persistence on the flash drive</th></tr></thead>
+<tbody>
+<tr><td><b>Everything</b></td><td> 3MB </td><td>For NTFS indexing, either the Everything service must be installed or the program must be run as Admin</td><td>The ZIP version keeps settings locally</td></tr>
+<tr><td><b>TreeSize</b></td><td>300MB</td><td>Runs without Admin; to calculate the size of all folders it must be run as Admin</td><td>The ZIP version keeps settings locally</td></tr>
+<tr><td><b>Notepad++</b></td><td>40MB</td><td>Does not require administrator access</td><td>Local, in the program folder</td></tr>
+<tr><td><b>7-Zip</b></td><td>3.5MB</td><td>Does not require administrator access</td><td>Local, in the program folder</td></tr>
+<tr><td><b>VLC</b></td><td>380MB</td><td>Does not require administrator access</td><td>By creating a portable subfolder next to the program</td></tr>
+</tbody></table></div>
+<p><b>Analytical notes:</b></p>
+<ul>
+<li><b>Run speed</b> depends on the USB type and the flash drive's read and write speed. Heavier programs such as OBS and Paint.NET start more slowly from a slow flash drive.</li>
+<li><b>Administrator access:</b> tools such as Everything and TreeSize need higher privileges for a full disk scan; without them the result may be incomplete or slower.</li>
+<li><b>Footprint on the host system:</b> truly portable programs keep their settings next to themselves, but some may leave temporary files or Recent entries on the host system.</li>
+<li><b>Dependencies:</b> some programs need runtimes such as Visual C++ or .NET on the host system, which conflicts with being completely “install-free.”</li>
+<li><b>Space usage:</b> OBS and VLC take up most of the size. Compare the total size of the toolkit with the flash drive's capacity.</li>
+</ul></section>
+<section class="report-block"><h2>06 / Problems and solutions</h2>
+<div class="table-wrap"><table class="report-table">
+<thead><tr><th>Problem</th><th>Solution</th></tr></thead>
+<tbody>
+<tr><td>SmartScreen or antivirus warning for downloaded files</td><td>Download only from the official website and verify the file's digital signature</td></tr>
+<tr><td>Drive letter changes on different systems</td><td>Use relative paths in the launcher instead of a fixed path</td></tr>
+<tr><td>OBS settings not saved on the flash drive</td><td>Enable portable mode before the first run</td></tr>
+<tr><td>Slow run from the flash drive</td><td>Use USB 3.x or temporarily copy to an SSD</td></tr>
+<tr><td>Everything and TreeSize results are incomplete</td><td>Run with Run as Administrator</td></tr>
+<tr><td>Flash drive suddenly disconnects during recording</td><td>Record to the system disk, move to the flash drive afterwards, and use Eject for safe removal</td></tr>
+</tbody></table></div>
+</section>
+<section class="report-block"><h2>07 / Summary and lessons learned</h2>
+<ul>
+<li>The concept of portable software and how it differs from installed software, i.e. keeping settings next to the program and not in the system registry.</li>
+<li>The importance of relative paths and an organized folder structure.</li>
+<li>The effect of the file system and USB speed on the user experience.</li>
+<li>Security considerations: download from a trusted source, scan the flash drive and be careful when connecting to unknown systems.</li>
+<li>The importance of testing in a real environment, because working on one system does not guarantee working on another.</li>
+</ul>
+</section>
+<button class="print-btn" onclick="window.print()">Print / Save this report as PDF</button>
+</div></main></body></html>

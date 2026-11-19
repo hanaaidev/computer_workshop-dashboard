@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission 06 | Performance Analysis</title><link href="../../css/style.css" rel="stylesheet"/>
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.shot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+.status{color:#8de0ae;font-weight:bold}
+.note{background:#17263b;border-right:3px solid #e6a84b;border-radius:7px;padding:12px;margin:12px 0;color:#d2c5a9;font-size:11px;line-height:2}
+.table-wrap{overflow-x:auto;margin-top:12px}
+.report-table{width:100%;border-collapse:collapse;font-size:11px;min-width:600px}
+.report-table th{background:#1c304a;color:#91bdff;padding:12px;text-align:left}
+.report-table td{background:#142238;color:#b1bfd1;padding:11px;border-bottom:1px solid #293b54;line-height:2;text-align:left}
+.report-table tr:nth-child(even) td{background:#17263b}
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+</style><link href="../../css/en.css" rel="stylesheet"/></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← Back to dashboard</a><a class="lang-switch" href="../../projects/project-06.html" hreflang="fa" lang="fa">فارسی</a>
+<section class="detail-hero"><span class="eyebrow">MISSION 06 / 10 · FIELD REPORT</span><h1>System Resource Usage Analysis</h1><p>Performance Analysis — logging and analyzing CPU usage with Performance Monitor and presenting charts.</p></section>
+<div class="meta-grid"><div class="meta">Status<b>Finished</b></div>
+<div class="meta">Date performed<b>2026-10-29</b></div>
+<div class="meta">Tools<b>Performance Monitor · Data Collector Set</b></div></div>
+<section class="report-block">
+<h2>01 / Mission goal</h2>
+<p>The goal of this project is to record processor (CPU) usage over a one-hour period and analyze its chart. This reveals the CPU usage pattern, the timing and intensity of peaks, the share of user code and kernel code in the usage, and the presence or absence of a processor bottleneck. What distinguishes this project from an instant check in Task Manager is that the data is saved in a log file and can be reviewed and analyzed later.</p>
+</section>
+<section class="report-block">
+<h2>02 / Tools and runtime environment</h2>
+<p><b>Performance Monitor (perfmon):</b> a built-in Windows tool for displaying performance counter charts, both live and from a log file.</p>
+<p><b>Data Collector Set:</b> a feature for automatically recording counters into a log file (Binary format with the blg extension) with a specified sampling interval and end time.</p>
+<p><b>Counters recorded:</b></p>
+<ul>
+<li><b>Processor → % Processor Time (_Total):</b> total processor usage percentage.</li>
+<li><b>Processor → % User Time (_Total):</b> the share of usage from user applications.</li>
+<li><b>Processor → % Privileged Time (_Total):</b> the share of usage from the kernel and drivers.</li>
+<li><b>System → Processor Queue Length:</b> the number of threads waiting for their turn on the processor; a sign of a CPU bottleneck.</li>
+</ul>
+<p><b>Logging settings:</b> a sampling interval of 5 seconds (about 720 samples per hour) and a recording duration of 1 hour.</p>
+<p><b>System specifications:</b> <span class="fill"> Intel(R) Core(TM) i7-6600U CPU - 8.00 GB (7.41 GB usable) - Windows 10 pro </span></p>
+</section>
+<section class="report-block">
+<h2>03 / Execution steps</h2>
+<ol>
+<li><b>Launching the tool:</b> press <b>Win + R</b> and enter <b>perfmon</b> to open Performance Monitor.</li>
+<li><b>Getting familiar with the live view:</b> under <b>Monitoring Tools → Performance Monitor</b>, press <b>Ctrl + N</b> to add the <b>Processor → % Processor Time</b> counter and see the live chart. This live view only shows the last few minutes and does not save anything.</li>
+<li><b>Creating a Data Collector Set:</b> right-click <b>Data Collector Sets → User Defined</b> and create a new Data Collector Set (manual creation, Performance Counter type).</li>
+<li><b>Adding counters:</b> add the four counters from the previous section with the Add option, and set the <b>Sample interval</b> to <b>5</b> and the unit to <b>Seconds</b>.</li>
+<li><b>Setting the end time:</b> in the set's Properties, on the <b>Stop Condition</b> tab, set <b>Overall duration</b> to <b>1 Hours</b> so that recording stops automatically after one hour.</li>
+<li><b>Starting the recording:</b> run the set with <b>Start</b> and use the system normally for one hour (from about 6:00 to 7:00 PM).</li>
+<li><b>Reviewing the result:</b> after the recording ends, open the log file in Performance Monitor, review the chart and the Average, Minimum and Maximum values, and take screenshots.</li>
+</ol>
+</section>
+<section class="report-block">
+<h2>04 / Findings and technical analysis</h2>
+<p>The values in the table below were read approximately from the one-hour chart; for exact numbers, the Average, Minimum and Maximum of each counter must be viewed in Performance Monitor.</p>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:left">Time interval</th><th style="padding:11px;text-align:left">% Processor Time (approx.)</th><th style="padding:11px;text-align:left">User / Privileged (approx.)</th><th style="padding:11px;text-align:left">Status</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">6:00 to about 6:15</td><td style="padding:11px;border-bottom:1px solid #263750">Below 10% with fluctuations up to about 20%</td><td style="padding:11px;border-bottom:1px solid #263750">Both low</td><td style="padding:11px;border-bottom:1px solid #263750">Low and unstable usage</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">About 6:15 to 6:53</td><td style="padding:11px;border-bottom:1px solid #263750">About 10 to 13% with short peaks up to about 35 to 46%</td><td style="padding:11px;border-bottom:1px solid #263750">About 8 to 9% / about 3 to 4%</td><td style="padding:11px;border-bottom:1px solid #263750">Stable level with periodic peaks</td></tr>
+<tr><td style="padding:11px">About 6:53 to 7:00</td><td style="padding:11px">About 45 to 50%</td><td style="padding:11px">About 25 to 30% / about 20 to 25%</td><td style="padding:11px">Jump and sustained higher level</td></tr>
+</tbody></table>
+<p><b>Overall recording statistics:</b> Average = <span class="fill">14.88%</span> · Minimum = <span class="fill">0%</span> · Maximum = <span class="fill">51%</span> (for % Processor Time)</p>
+<ul>
+<li>The sum of % User Time and % Privileged Time is approximately equal to % Processor Time (for example about 8 + 4 ≈ 12 in the second interval), which is consistent with the definition of these counters.</li>
+<li>In the last interval, in addition to User Time, the Privileged Time share also rose noticeably, and about half of the usage comes from kernel code and drivers. This pattern is usually associated with activities such as heavy file and network operations, an antivirus scan or an update.</li>
+<li>Cause of the jumps at about 6:15 and 6:53: <span class="fill">not determined</span></li>
+<li>The Processor Queue Length line rises only for a few brief moments and is near zero most of the time. Since there is no sustained queue, no CPU bottleneck was observed. The scale of this counter on the chart is 100 and the height of the line differs from the real value; actual Maximum: <span class="fill">1.000</span></li>
+<li>The sharp peaks in the second interval repeat a few minutes apart and are short, which is consistent with periodic background tasks. Their exact source cannot be determined from this chart and requires checking in Task Manager or Resource Monitor.</li>
+</ul>
+</section>
+<section class="report-block">
+<h2>05 / Problems and solutions</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:left">Problem</th><th style="padding:11px;text-align:left">Solution</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">The chart was empty and the Last/Average/Maximum values were shown as dashes</td><td style="padding:11px;border-bottom:1px solid #263750">No counters had been added; counters were added with Ctrl + N</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Running the Data Collector Set showed no chart</td><td style="padding:11px;border-bottom:1px solid #263750">This tool only saves data to a log; the chart is viewed after the recording ends through Reports or by opening the log file. The set's counters are also separate from the live view's counters</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">The live view showed only about a minute and a half</td><td style="padding:11px;border-bottom:1px solid #263750">A Data Collector Set with a Stop Condition was used for the one-hour recording</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">The % Processor Time counter had been added twice (from Processor and from Processor Information) and the lines overlapped</td><td style="padding:11px;border-bottom:1px solid #263750">The duplicate was removed and only the Processor object's counter was kept</td></tr>
+<tr><td style="padding:11px">The Processor Queue Length value was plotted on a different scale and the line height differed from the real value</td><td style="padding:11px">The counter's scale was taken into account when interpreting the chart, and the Average and Maximum fields were used for exact numbers</td></tr>
+</tbody></table>
+</section>
+<section class="report-block">
+<h2>06 / Step-by-step screenshots</h2>
+<div class="shot-grid">
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project06-DataCollectorSet3.PNG"/><figcaption>Adding counters to the Data Collector Set and setting the sampling interval to 5 seconds</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project06-add.PNG"/><figcaption>Counters added from the Processor object with the _Total instance</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project6-stopcondition.PNG"/><figcaption>Setting the Stop Condition to a duration of 1 hour for automatic stop of recording</figcaption></figure>
+<figure class="evidence wide"><img alt="" src="../../assets/screenshots/project06-perfmon.PNG"/><figcaption>CPU usage chart over one hour (6:00 to 7:00) with the Processor Time, User Time, Privileged Time and Processor Queue Length counters</figcaption></figure>
+</div>
+</section>
+<section class="report-block">
+<h2>07 / Summary and lessons learned</h2>
+<p>In this project, CPU usage was recorded for one hour with a Data Collector Set and examined in Performance Monitor. Usage was low or moderate for much of the time, with short peaks and a sustained jump in the final minutes, during which the kernel code's share rose. The processor queue was not sustained and no CPU bottleneck was seen.</p>
+<p>Key lessons: the difference between the live view and long-term logging, creating and scheduling a Data Collector Set, choosing a suitable sampling interval, interpreting the User Time, Privileged Time and Processor Queue Length counters, and paying attention to counter scales when reading the chart. These skills apply directly to troubleshooting slow systems and documented reporting.</p>
+</section>
+<button class="print-btn" onclick="window.print()">Print / Save this report as PDF</button>
+</div></main></body></html>

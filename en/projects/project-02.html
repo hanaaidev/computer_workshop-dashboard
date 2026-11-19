@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission 02 | System Troubleshooting</title><link href="../../css/style.css" rel="stylesheet"/>
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.report-block ol,.report-block ul{padding-right:22px}.evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.placeholder{min-height:130px;display:grid;place-items:center;text-align:center;border:1px dashed #526781;border-radius:8px;color:#8194ad;font-size:11px;padding:15px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+@media(max-width:650px){.meta-grid,.evidence-grid{grid-template-columns:1fr}}@media print{.back-link,.print-btn{display:none}.detail-hero,.report-block{break-inside:avoid}}
+</style><link href="../../css/en.css" rel="stylesheet"/></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← Back to dashboard</a><a class="lang-switch" href="../../projects/project-02.html" hreflang="fa" lang="fa">فارسی</a>
+<section class="detail-hero">
+<span class="eyebrow">MISSION 02 / 10 · FIELD REPORT</span>
+<h1>Reviewing and Troubleshooting a Slow System</h1>
+<p>System Performance Analysis — identifying what slows the system down using Task Manager and Resource Monitor</p>
+</section>
+<div class="meta-grid">
+<div class="meta">Status<b>Completed</b></div>
+<div class="meta">Tools<b>Task Manager · Resource Monitor</b></div>
+<div class="meta">Date performed<b>2026-10-09</b></div>
+</div>
+<section class="report-block">
+<h2>01 / Mission goal</h2>
+<p>The goal of this project is to identify the cause of a computer's slow performance and find the application or process that puts the most pressure on system resources. The usage of the processor (CPU), main memory (RAM), disk and network is evaluated to determine the main source(s) of the slowdown.</p>
+</section>
+<section class="report-block">
+<h2>02 / Tools used</h2>
+<p><b>Task Manager:</b> gives an overall view of resource usage and manages running applications and processes.</p>
+<p><b>Resource Monitor:</b> shows more detailed CPU, Memory, Disk and Network usage per process.</p>
+</section>
+<section class="report-block">
+<h2>03 / Execution steps</h2>
+<ol>
+<li><b>Initial check with Task Manager:</b> press <b>Ctrl + Shift + Esc</b>. In the <b>Processes</b> tab, review the CPU, Memory, Disk and Network columns and click each column header to sort processes by highest usage.</li>
+<li><b>Identifying the problem source:</b> in the <b>Performance</b> tab, view the chart for each resource. Usage close to 100 percent, especially if sustained, can indicate heavy pressure on that resource.</li>
+<li><b>Checking startup programs:</b> in the <b>Startup</b> tab, review the programs that run when Windows starts and identify those with High impact.</li>
+<li><b>Detailed analysis with Resource Monitor:</b> press <b>Win + R</b> and enter <b>resmon</b> to launch the tool. Then review the CPU, Memory, Disk and Network tabs to identify heavy processes.</li>
+<li><b>Fixing the problem:</b> after identifying the cause of the slowdown, close unnecessary applications or processes, disable unnecessary Startup programs and, if needed, consider a virus scan, freeing disk space or adding RAM.</li>
+</ol>
+</section>
+<section class="report-block">
+<h2>04 / Findings and technical analysis</h2>
+<p>The values in the table below are samples. When the project is actually run, the numbers observed in Task Manager and Resource Monitor must replace them.</p>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:left">Resource</th><th style="padding:11px;text-align:left">Observed value (sample)</th><th style="padding:11px;text-align:left">Status</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">CPU</td><td style="padding:11px;border-bottom:1px solid #263750">80%</td><td style="padding:11px;border-bottom:1px solid #263750">Critical</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">RAM</td><td style="padding:11px;border-bottom:1px solid #263750">63%</td><td style="padding:11px;border-bottom:1px solid #263750">High</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Disk</td><td style="padding:11px;border-bottom:1px solid #263750">10%</td><td style="padding:11px;border-bottom:1px solid #263750">Normal</td></tr>
+<tr><td style="padding:11px">Network</td><td style="padding:11px">5%</td><td style="padding:11px">Normal</td></tr>
+</tbody></table>
+<ul>
+<li>High CPU usage can be caused by several heavy applications and background processes running at the same time.</li>
+<li>Several programs with High impact in the Startup tab can increase Windows startup time.</li>
+<li>Heavy disk activity and a long Disk Queue in Resource Monitor can indicate pressure on the storage device.</li>
+<li>When RAM fills up, the system may use the Page File on disk; this can reduce performance, especially on systems with slow storage.</li>
+</ul>
+</section>
+<section class="report-block">
+<h2>05 / Problems and solutions</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:left">Problem</th><th style="padding:11px;text-align:left">Suggested solution</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Resource-heavy applications running</td><td style="padding:11px;border-bottom:1px solid #263750">Close the unnecessary application or process with End Task</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Too many programs in Startup</td><td style="padding:11px;border-bottom:1px solid #263750">Disable unnecessary programs in the Startup section</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">High RAM usage</td><td style="padding:11px;border-bottom:1px solid #263750">Close extra applications and add RAM if needed</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Disk pressure</td><td style="padding:11px;border-bottom:1px solid #263750">Free up space, clear temporary files and, if possible, use an SSD</td></tr>
+<tr><td style="padding:11px">Possible malware</td><td style="padding:11px">Run a full antivirus scan</td></tr>
+</tbody></table>
+</section>
+<section class="report-block">
+<h2>06 / Visual documentation</h2>
+<div class="evidence-grid">
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project02-taskmanager-processes.PNG"/><figcaption>Reviewing resource usage by running processes</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project02-taskmanager-performance.PNG"/><figcaption>Reviewing the system resource performance chart</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project02-taskmanager-startup.PNG"/><figcaption>Reviewing programs that run at Windows startup</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project02-resourcemonitor.PNG"/><figcaption>More detailed analysis of CPU, Memory, Disk and Network usage</figcaption></figure>
+</div>
+</section>
+<section class="report-block">
+<h2>07 / Summary and findings</h2>
+<p>A slow system is usually the result of a combination of factors, including heavy applications, a crowded Startup list, high RAM usage and disk pressure. By checking step by step in Task Manager and Resource Monitor, the main source of the problem can be identified.</p>
+<p>After closing unnecessary applications and disabling unnecessary Startup items, resource usage is expected to drop and system speed and responsiveness to improve.</p>
+</section>
+<button class="print-btn" onclick="window.print()">Print / Save this report as PDF</button>
+</div></main></body></html>

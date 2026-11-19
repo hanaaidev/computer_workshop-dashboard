@@ -1,0 +1,44 @@
+/* English (LTR) overrides — loaded after style.css and each page's inline styles */
+html[dir=ltr]{--font:'Inter','Segoe UI',system-ui,-apple-system,Roboto,sans-serif}
+html[dir=ltr] body{font-family:var(--font);line-height:1.7}
+html[dir=ltr] .lang-switch{float:right}
+html[dir=ltr] .topbar-right .lang-switch{float:none}
+
+/* layout: sidebar moves to the left */
+html[dir=ltr] .sidebar{right:auto;left:0;border-left:0;border-right:1px solid var(--line);box-shadow:18px 0 45px rgba(0,0,0,.12)}
+html[dir=ltr] .main-content{margin-right:0;margin-left:248px}
+html[dir=ltr] .nav-link em{margin-right:0;margin-left:auto}
+html[dir=ltr] .dashboard-page .nav-link:hover{transform:translateX(2px)}
+html[dir=ltr] .pulse,html[dir=ltr] .status-dot,html[dir=ltr] .live-chip i{margin-left:0;margin-right:7px}
+html[dir=ltr] .open-label{margin-right:0;margin-left:auto}
+html[dir=ltr] .orbital-art{left:auto;right:8%}
+html[dir=ltr] .dot-a{left:auto;right:55px}
+html[dir=ltr] .dot-b{right:auto;left:35px}
+html[dir=ltr] .dot-c{right:auto;left:4px}
+html[dir=ltr] .panel-index{left:auto;right:25px}
+html[dir=ltr] .panel-index b{margin-right:0;margin-left:10px}
+html[dir=ltr] .stat-card strong,html[dir=ltr] .english-title{text-align:left}
+html[dir=ltr] .dashboard-page .stat-card::after{right:auto;left:18px}
+
+/* report pages */
+html[dir=ltr] .report-block ol,html[dir=ltr] .report-block ul{padding-right:0;padding-left:22px}
+html[dir=ltr] .report-block ol.steps{padding:0}
+html[dir=ltr] .steps>li{padding:0 0 16px 46px}
+html[dir=ltr] .steps>li:last-child{padding-bottom:4px}
+html[dir=ltr] .steps>li::before{right:auto;left:0}
+html[dir=ltr] .steps>li::after{right:auto;left:14px}
+html[dir=ltr] .shot{margin-right:0;margin-left:6px}
+html[dir=ltr] .note,html[dir=ltr] .warn{border-right:0;border-left:3px solid #e6a84b}
+html[dir=ltr] .warn ul{padding-right:0;padding-left:20px}
+html[dir=ltr] .report-table th,html[dir=ltr] .report-table td{text-align:left}
+html[dir=ltr] .report-table th{white-space:normal}
+
+@media(max-width:1050px){
+  html[dir=ltr] .main-content{margin-right:0;margin-left:205px}
+}
+@media(max-width:720px){
+  html[dir=ltr] .main-content{margin-left:0;margin-right:0}
+  html[dir=ltr] .sidebar{border-right:0;box-shadow:none}
+  html[dir=ltr] .topbar-right{align-items:flex-start}
+  html[dir=ltr] .orbital-art{left:auto;right:-55px}
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission 10 | IT Support Capstone</title><link href="../../css/style.css" rel="stylesheet"/>
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.shot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.placeholder{min-height:130px;display:grid;place-items:center;text-align:center;border:1px dashed #526781;border-radius:8px;color:#8194ad;font-size:11px;padding:15px}
+.ticket{border:1px solid #2c3f5c;background:#14233a;border-radius:12px;padding:16px;margin:12px 0;break-inside:avoid}
+.ticket .tag{display:inline-block;font-size:10px;color:#91bdff;background:#1c3150;border-radius:20px;padding:2px 10px;margin-bottom:8px}
+.warn{border-right:3px solid #e8b04a;background:#1d2636;padding:8px 12px;margin:10px 0;border-radius:6px;font-size:12px;color:#d9c18f;line-height:2}
+.code-block{direction:ltr;text-align:left;background:#0b1422;border:1px solid #263750;border-radius:10px;padding:14px;margin:12px 0;overflow-x:auto;font-family:Consolas,"Courier New",monospace;font-size:11.5px;line-height:1.7;color:#c9d8ec;white-space:pre}
+.cmd{direction:ltr;unicode-bidi:embed;font-family:Consolas,"Courier New",monospace;color:#e5efff}
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.shot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 18px}
+.flow span{background:#17263b;border:1px solid #344761;border-radius:20px;padding:6px 14px;font-size:11px;color:#e5efff}
+.flow i{color:#526781;font-style:normal;font-size:13px}
+.report-block ol.steps{list-style:none;padding:0;margin:14px 0;counter-reset:s}
+.steps>li{counter-increment:s;position:relative;padding:0 46px 16px 0;min-height:34px}
+.steps>li::before{content:counter(s);position:absolute;right:0;top:0;width:30px;height:30px;border-radius:50%;background:#1c3150;border:1px solid #4a6a9a;color:#91bdff;display:grid;place-items:center;font-size:12px;font-weight:bold}
+.steps>li::after{content:"";position:absolute;right:14px;top:34px;bottom:2px;width:2px;background:#2c3f5c}
+.steps>li:last-child::after{display:none}
+.steps>li:last-child{padding-bottom:4px}
+.steps .st{display:block;color:#e5efff;font-size:12.5px;line-height:1.9}
+.steps .ds{display:block;color:#b1bfd1;font-size:12px;line-height:1.9}
+.shot{display:inline-block;margin-right:6px;font-style:normal;font-size:10.5px;color:#91bdff;background:#1c3150;border-radius:12px;padding:0 9px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:6px}
+.mini{background:#101b2d;border:1px solid #263750;border-radius:10px;padding:12px 14px}
+.mini h3{font-size:12.5px;margin:0 0 6px}
+.warn ul{margin:6px 0 0;padding-right:20px}.warn li{color:#d9c18f}
+
+.command {
+    display: block;
+    direction: ltr;
+    text-align: left;
+    background: #1e1e1e;
+    color: #4ade80;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 15px;
+    padding: 10px 16px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border-right: 4px solid #2b4c9b;
+    overflow-x: auto;
+  }
+.command::before {
+    content: "C:\\> ";
+    color: #9ca3af;
+  }
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+</style><link href="../../css/en.css" rel="stylesheet"/></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← Back to dashboard</a><a class="lang-switch" href="../../projects/project-10.html" hreflang="fa" lang="fa">فارسی</a>
+<section class="detail-hero">
+<span class="eyebrow">MISSION 10 / 10 · FINAL PROJECT</span>
+<h1>Simulating a Day in the Life of an IT Technician</h1>
+<p>Final IT Support Project — troubleshooting six simultaneous problems on a delivered system and preparing a final report for the manager</p>
+</section>
+<div class="meta-grid">
+<div class="meta">Status<b>Completed</b></div>
+<div class="meta">Tools<b>Task Manager · CMD · Device Manager · Disk Cleanup</b></div>
+<div class="meta">Date performed<b>2026-11-21</b></div>
+</div>
+<section class="report-block">
+<h2>01 / Mission goal</h2>
+<p>This final project brings the course skills together in a single realistic scenario: on my first day as an IT technician at a company, I am handed a system that the user is complaining about. The goal is, for each problem, to choose the right diagnostic tool, analyze the likely cause based on the course concepts, provide a safe step-by-step solution, and finally write a clear report that a non-technical manager can understand.</p>
+</section>
+<section class="report-block">
+<h2>02 / Scenario and tools used</h2>
+<p><b>Scenario:</b> a system has been handed over that the user complains about, and it has six simultaneous problems:</p>
+<ul>
+<li>The system is slow overall.</li>
+<li>Many programs run at Startup.</li>
+<li>DNS is not working properly and some websites do not open.</li>
+<li>Drive C is almost full.</li>
+<li>A driver has a problem (a warning sign in Device Manager).</li>
+<li>A specific program does not run at all.</li>
+</ul>
+<p><b>Tools used:</b></p>
+<ul>
+<li><b>Task Manager:</b> checking resource usage, running processes and the Startup tab.</li>
+<li><b>Command Prompt (CMD):</b> network commands such as ping, nslookup and ipconfig for DNS troubleshooting.</li>
+<li><b>Device Manager:</b> checking driver status and updating or rolling back drivers.</li>
+<li><b>Disk Cleanup:</b> freeing up space on drive C.</li>
+</ul>
+<p><b>Runtime environment:</b> Windows 10 or 11, with Administrator access where needed.</p>
+</section>
+<section class="report-block">
+<h2>03 / Execution steps</h2>
+<p>The overall workflow, repeated for each of the six problems:</p>
+<div class="flow"><span>1 · Diagnose the problem</span><i>→</i><span>2 · Choose the tool</span><i>→</i><span>3 · Find the cause</span><i>→</i><span>4 · Provide the solution</span><i>→</i><span>5 · Final report</span></div>
+<ol>
+<li><b>Diagnosing the problem:</b> for each complaint, we determine exactly which tool can diagnose the problem.</li>
+<li><b>Choosing the right tool:</b> from the tools covered in the relevant chapters (Task Manager, CMD and network commands, Device Manager, Disk Cleanup), we choose the right one.</li>
+<li><b>Finding the cause:</b> for each problem, we write a likely cause based on observations and the workshop's concepts.</li>
+<li><b>Providing the solution:</b> we write each problem's solution step by step and observe safety warnings before sensitive steps (Disk or Registry).</li>
+<li><b>Writing the report:</b> a final report like a real technician's report for the manager is prepared, including a summary of the problems, the actions taken and future recommendations.</li>
+</ol>
+<div class="warn"><b>Safety principles before starting:</b> create a Restore Point before sensitive changes; export the Registry before any change to it; do not manually delete system files or the Windows folder; get drivers only from the manufacturer's official source.</div>
+<div class="ticket">
+<span class="tag">Safety step · Creating a Restore Point</span>
+<h3>Creating a restore point before starting troubleshooting</h3>
+<p>A Restore Point is a snapshot of the system settings, drivers and Registry at one moment. If a change (such as installing a driver or editing the Registry) causes a problem, the system can be returned to that point. The user's personal files are not deleted by this, and a restore does not bring them back either; therefore this method is not a substitute for a Backup.</p>
+<ol>
+<li>From the Start menu, search for and open <b>Create a restore point</b> (or run <span class="cmd">SystemPropertiesProtection</span> in Win + R). The System Properties window opens on the <b>System Protection</b> tab.</li>
+<li>In Protection Settings, we select drive <b>C:</b> and check the Protection status.</li>
+<li>If Protection is <b>Off</b>, we click <b>Configure</b>, select <b>Turn on system protection</b>, set the maximum disk space usage to a small value (for example 5 to 10 percent) and click <b>OK</b>.</li>
+<li>We click the <b>Create</b> button.</li>
+<li>We enter a descriptive name, for example <span class="cmd">Before-IT-Troubleshooting</span> (the date and time are added automatically) and click <b>Create</b> again.</li>
+<li>We wait a moment for the message <b>The restore point was created successfully</b> to appear and then click <b>Close</b>.</li>
+</ol>
+<p><b>Restore method (if a problem occurs):</b> on the same System Protection tab, click <b>System Restore</b>, select the restore point that was created and continue through the steps to <b>Finish</b>; the system restarts and returns to that state. This tool can also be run directly with the <span class="cmd">rstrui.exe</span> command.</p>
+<p><b>Command-line method (optional):</b> open PowerShell with Run as administrator and run:</p>
+<div class="code-block">Checkpoint-Computer -Description "Before-IT-Troubleshooting" -RestorePointType MODIFY_SETTINGS</div>
+<p>By default, Windows does not allow more than one automatic Restore Point to be created this way in any 24 hours; if an error or warning message appears, we use the graphical method above.</p>
+</div>
+<div class="shot-grid">
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project10-restorpoint.PNG"/><figcaption>Opening System Protection</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project10-restorpoint2.PNG"/><figcaption>Setting the disk space usage (10–15%)</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project10-restorpoint4.PNG"/><figcaption>The message confirming the restore point was created</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project10-restorpoint3.PNG"/><figcaption>Creating the restore point</figcaption></figure>
+</div>
+</section>
+<section class="report-block">
+<h2>04 / Findings and technical analysis</h2>
+<p>The table below summarizes the diagnostic tool and likely cause for each problem.</p>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:left">Problem</th><th style="padding:11px;text-align:left">Diagnostic tool</th><th style="padding:11px;text-align:left">Likely cause</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Overall system slowness</td><td style="padding:11px;border-bottom:1px solid #263750">Task Manager (Processes and Performance tabs)</td><td style="padding:11px;border-bottom:1px solid #263750">High CPU, RAM or Disk usage by applications and background processes</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Too many programs in Startup</td><td style="padding:11px;border-bottom:1px solid #263750">Task Manager (Startup tab)</td><td style="padding:11px;border-bottom:1px solid #263750">Programs that added themselves to Windows startup during installation</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">DNS and websites not opening</td><td style="padding:11px;border-bottom:1px solid #263750">CMD (ping, nslookup, ipconfig)</td><td style="padding:11px;border-bottom:1px solid #263750">Corrupted DNS cache or an incorrect DNS address</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Drive C full</td><td style="padding:11px;border-bottom:1px solid #263750">Disk Cleanup · Storage settings</td><td style="padding:11px;border-bottom:1px solid #263750">Temporary files, leftover updates, the Recycle Bin and large downloads</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Driver warning</td><td style="padding:11px;border-bottom:1px solid #263750">Device Manager</td><td style="padding:11px;border-bottom:1px solid #263750">A driver that is not installed, incompatible or corrupted (for example after an update)</td></tr>
+<tr><td style="padding:11px">A program does not run</td><td style="padding:11px">Task Manager · checking the error message</td><td style="padding:11px">A process hung in the background, missing permission, incompatibility or a corrupted installation</td></tr>
+</tbody></table>
+<ul>
+<li>Several problems are related: a full drive C and a large number of Startup programs can themselves lead to overall slowness; therefore the order of fixing the problems matters.</li>
+<li>In DNS troubleshooting, testing a ping to an IP address (such as 8.8.8.8) versus a ping to a domain name shows the difference: if the IP responds but the domain name does not, the problem is with DNS and not with the internet connection.</li>
+<li>The key part of the analysis is separating the “symptom” from the “cause”; for example, slowness is the symptom, and heavy or Startup programs are the cause.</li>
+</ul>
+</section>
+<section class="report-block">
+<h2>05 / Problems and solutions</h2>
+<div class="ticket">
+<span class="tag">Problem 1 · Overall system slowness</span>
+<h3>Tool: Task Manager</h3>
+<ol>
+<li>We press <b>Ctrl + Shift + Esc</b>.</li>
+<li>In the <b>Processes</b> tab, we click the CPU, Memory and Disk columns to sort processes by highest usage.</li>
+<li>In the <b>Performance</b> tab, we review the charts; usage close to 100% that is sustained is a sign of pressure on that resource.</li>
+<li>We close unnecessary and resource-heavy programs with <b>End task</b> (system processes are not closed).</li>
+<li>If a process looks suspicious, we run a full Windows Security scan and then restart the system.</li>
+</ol>
+<div class="shot-gridS">
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project10-taskmanger-slow.PNG"/><figcaption>Checking resource usage and heavy processes in Task Manager</figcaption></figure></div>
+</div>
+<div class="ticket">
+<span class="tag">Problem 2 · Too many programs in Startup</span>
+<h3>Tool: Task Manager (Startup tab)</h3>
+<ol>
+<li>In Task Manager we go to the <b>Startup</b> tab.</li>
+<li>We identify programs whose Startup impact column is <b>High</b>.</li>
+<li>We disable unnecessary programs (such as updaters, messengers and launchers) with <b>Disable</b>.</li>
+<li>We do not disable antivirus and system programs. This change is reversible and can be undone with Enable.</li>
+<li>We restart the system and check how fast Windows starts.</li>
+</ol>
+<div class="evidence-grid">
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project10-startup.PNG"/><figcaption>Managing Startup programs and disabling unnecessary ones</figcaption></figure>
+</div>
+</div>
+<div class="ticket">
+<span class="tag">Problem 3 · DNS and websites not opening</span>
+<h3>Tool: Command Prompt</h3>
+<ol>
+<li>We open CMD. First we test the basic connection with a ping to an IP and then compare it with a ping to a domain name.</li>
+<div class="command">ping 8.8.8.8</div>
+<div class="command">ping google.com</div>
+<li>If the IP ping succeeds but the domain name is not recognized, the problem is DNS. We check with <span class="cmd">nslookup</span>.</li>
+<div class="command">nslookup google.com</div>
+<li>We clear the DNS cache and check the IP settings.</li>
+<div class="command">ipconfig/flushdns</div>
+<li>If the problem continues, we set the DNS server address in the network adapter settings (Properties → IPv4) to a valid DNS such as 8.8.8.8 or 1.1.1.1.</li>
+<div class="command">netsh interface ipv4 set dnsservers name="Wi-Fi" static 8.8.8.8 primary</div>
+<li>Finally we test several websites again.</li>
+</ol>
+<div class="warn">If only certain websites do not open and the rest work fine, a restriction from the service provider or the site itself is also possible, and changing DNS alone will not fix it.</div>
+</div>
+<div class="ticket">
+<span class="tag">Problem 4 · Drive C full</span>
+<h3>Tool: Disk Cleanup</h3>
+<div class="warn">Safety warning: before deleting, read the list of selected items. Do not empty the Recycle Bin without checking it, and do not manually delete files in the Windows folder.</div>
+<ol>
+<li>With <b>Win + R</b> we run <span class="cmd">cleanmgr</span> and select drive C.</li>
+<li>We click <b>Clean up system files</b> so that more items, such as Windows update files, are also shown.</li>
+<li>We check safe items such as Temporary files, Temporary Internet Files, Thumbnails and the Recycle Bin.</li>
+<li>After confirming, the cleanup is performed and we record the space freed.</li>
+<li>To find other large files, we use <b>Settings → System → Storage</b> and uninstall unused programs.</li>
+</ol>
+<div class="shot-grid">
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project10-diskcleanup.PNG"/><figcaption>Cleaning drive C with Disk Cleanup</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project10-diskcleanup2.PNG"/><figcaption>Finding other large files in Settings → System → Storage</figcaption></figure>
+</div>
+</div>
+<div class="ticket">
+<span class="tag">Problem 5 · Driver warning</span>
+<h3>Tool: Device Manager</h3>
+<div class="warn">Safety warning: before changing a driver, create a Restore Point and get the driver only from the device manufacturer's official website.</div>
+<ol>
+<li>With <b>Win + X</b> I open <b>Device Manager</b>.</li>
+<li>We find the device with the yellow warning triangle and double-click it to read the status message and error code.</li>
+<li>From the Driver tab, I click <b>Update driver</b>.</li>
+<li>If the problem started after an update, we try <b>Roll Back Driver</b>.</li>
+<li>If the problem continues, we <b>Uninstall device</b> and let Windows reinstall it with <b>Scan for hardware changes</b>, or we install the official driver manually.</li>
+</ol>
+</div>
+<div class="ticket">
+<span class="tag">Problem 6 · A program does not run</span>
+<h3>Tool: Task Manager and checking the error message</h3>
+<div class="warn">Safety warning: if fixing the problem requires changing the Registry, first export it and create a Restore Point. Install the program only from a trusted source.</div>
+<ol>
+<li>We note the program's exact error message and check in Task Manager (Ctrl + Shift + Esc) that the program's previous process is not stuck in the background (if it is, End task).</li>
+<li>I run the program with <b>Run as administrator</b>.</li>
+<li>In the program's Properties, we try the <b>Compatibility</b> tab (running in compatibility mode).</li>
+<li>I make sure the antivirus or SmartScreen has not blocked the program.</li>
+<li>If the problem continues, we uninstall the program and reinstall it from a clean copy.</li>
+</ol>
+</div>
+</section>
+<section class="report-block">
+<h2>06 / Final report for the manager</h2>
+<p><b>Subject:</b> report on reviewing and fixing the problems of the user's delivered system</p>
+<p><b>Summary:</b> the system was delivered with six simultaneous problems. The causes were identified and corrective actions were taken. The main problems were related to resource congestion, network settings and lack of system maintenance.</p>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:left">Problem</th><th style="padding:11px;text-align:left">Plain explanation</th><th style="padding:11px;text-align:left">Action taken</th><th style="padding:11px;text-align:left">Status</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">System slowness</td><td style="padding:11px;border-bottom:1px solid #263750">Several programs were using the computer's resources at the same time</td><td style="padding:11px;border-bottom:1px solid #263750">Closed extra programs and checked for malware</td><td style="padding:11px;border-bottom:1px solid #263750">Resolved</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Slow startup</td><td style="padding:11px;border-bottom:1px solid #263750">Many programs were starting automatically with Windows</td><td style="padding:11px;border-bottom:1px solid #263750">Disabled unnecessary Startup programs</td><td style="padding:11px;border-bottom:1px solid #263750">Resolved</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Websites not opening</td><td style="padding:11px;border-bottom:1px solid #263750">The system could not translate website names into addresses (a DNS problem)</td><td style="padding:11px;border-bottom:1px solid #263750">Cleared the DNS cache and set a valid DNS</td><td style="padding:11px;border-bottom:1px solid #263750">Resolved</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Drive C full</td><td style="padding:11px;border-bottom:1px solid #263750">Temporary and unnecessary files were taking up space</td><td style="padding:11px;border-bottom:1px solid #263750">Cleaned up with Disk Cleanup and removed unused programs</td><td style="padding:11px;border-bottom:1px solid #263750">Resolved</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Driver warning</td><td style="padding:11px;border-bottom:1px solid #263750">The software linking Windows to a component had a problem</td><td style="padding:11px;border-bottom:1px solid #263750">Updated or reinstalled the official driver</td><td style="padding:11px;border-bottom:1px solid #263750">Resolved</td></tr>
+<tr><td style="padding:11px">Program not running</td><td style="padding:11px">The program or its previous process had a problem</td><td style="padding:11px">Closed the hung process, ran as administrator and reinstalled if needed</td><td style="padding:11px">Resolved</td></tr>
+</tbody></table>
+<p><b>Future recommendations:</b></p>
+<ul>
+<li>Periodic disk cleanup (for example once a month) and monitoring of free space on drive C.</li>
+<li>Keep Startup programs limited and do not install unnecessary software.</li>
+<li>Keep Windows and drivers up to date from official sources.</li>
+<li>Make regular backups of important data.</li>
+<li>Give the user a short training on installing trusted programs and reporting problems quickly.</li>
+</ul>
+</section>
+<section class="report-block">
+<h2>07 / Summary and lessons learned</h2>
+<p>This project showed that troubleshooting in real work is a combination of choosing the right tool, analyzing the cause and carrying out the solution safely. In a few minutes you can find the source of slowness with Task Manager, separate a DNS problem from a connection problem with CMD, assess hardware status with Device Manager and free up space with Disk Cleanup.</p>
+<p>The most important thing I learned is that many problems are related, and following safety principles (a Restore Point, a Registry backup and the official driver source) is just as important as the solution itself. Writing a simple, clear report for a non-technical manager is also an inseparable part of an IT Support job.</p>
+</section>
+<button class="print-btn" onclick="window.print()">Print / Save this report as PDF</button>
+</div></main></body></html>

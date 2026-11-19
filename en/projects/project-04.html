@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission 04 | Virtual Machine Lab</title><link href="../../css/style.css" rel="stylesheet"/>
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.step-fig{max-width:920px;margin:10px 0 18px}.placeholder{min-height:130px;display:grid;place-items:center;text-align:center;border:1px dashed #526781;border-radius:8px;color:#8194ad;font-size:11px;padding:15px}
+.cmd{direction:ltr;unicode-bidi:embed;font-family:Consolas,"Courier New",monospace;color:#e5efff}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 18px}
+.flow span{background:#17263b;border:1px solid #344761;border-radius:20px;padding:6px 14px;font-size:11px;color:#e5efff}
+.flow i{color:#526781;font-style:normal;font-size:13px}
+.report-block ol.steps{list-style:none;padding:0;margin:14px 0;counter-reset:s}
+.steps>li{counter-increment:s;position:relative;padding:0 46px 16px 0;min-height:34px}
+.steps>li::before{content:counter(s);position:absolute;right:0;top:0;width:30px;height:30px;border-radius:50%;background:#1c3150;border:1px solid #4a6a9a;color:#91bdff;display:grid;place-items:center;font-size:12px;font-weight:bold}
+.steps>li::after{content:"";position:absolute;right:14px;top:34px;bottom:2px;width:2px;background:#2c3f5c}
+.steps>li:last-child::after{display:none}
+.steps>li:last-child{padding-bottom:4px}
+.steps .st{display:block;color:#e5efff;font-size:12.5px;line-height:1.9}
+.steps .ds{display:block;color:#b1bfd1;font-size:12px;line-height:1.9}
+.shot{display:inline-block;margin-right:6px;font-style:normal;font-size:10.5px;color:#91bdff;background:#1c3150;border-radius:12px;padding:0 9px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:6px}
+.mini{background:#101b2d;border:1px solid #263750;border-radius:10px;padding:12px 14px}
+.mini h3{font-size:12.5px;margin:0 0 6px}
+.warn ul{margin:6px 0 0;padding-right:20px}.warn li{color:#d9c18f}
+
+
+
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+</style><link href="../../css/en.css" rel="stylesheet"/></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← Back to dashboard</a><a class="lang-switch" href="../../projects/project-04.html" hreflang="fa" lang="fa">فارسی</a>
+<section class="detail-hero">
+<span class="eyebrow">MISSION 04 / 10 · FIELD REPORT</span>
+<h1>Building a Virtual Machine with a Linux Distribution</h1>
+<p>Virtualization — installing a Linux distribution inside VirtualBox without touching the main operating system</p>
+</section>
+<div class="meta-grid">
+<div class="meta">Status<b>Completed</b></div>
+<div class="meta">Tools<b>Oracle VirtualBox · Linux ISO file (Ubuntu)</b></div>
+<div class="meta">Date performed<b>2026-10-19</b></div>
+</div>
+<section class="report-block">
+<h2>01 / Mission goal</h2>
+<p>The goal of this project is to build a virtual machine (VM) and fully install a Linux distribution on it. A virtual machine behaves like a real computer but runs inside an application on the main operating system, so Linux can be explored and risky changes tested without any risk to Windows or the main data. In this project I become familiar with resource allocation (RAM and virtual disk), attaching an ISO file as a virtual DVD drive, the OS installation process and the Snapshot feature. This skill is a foundation for test environments, training and professional IT work.</p>
+</section>
+<section class="report-block">
+<h2>02 / Tools and environment</h2>
+<p><b>Oracle VirtualBox:</b> free virtualization software that creates and runs the virtual machine.</p>
+<p><b>Linux distribution ISO file:</b> the OS installation image, downloaded from the distribution's official site (Ubuntu; free and safe distributions such as Linux Mint are also good options).</p>
+<p><b>Host system:</b> Windows, with Virtualization enabled in the BIOS/UEFI.</p>
+<p><b>Virtual machine specifications:</b> RAM of <span class="cmd">4 GB</span> and a virtual disk of <span class="cmd">20 GB</span> (suggested project values; if yours differ, replace them with your actual values).</p>
+</section>
+<section class="report-block">
+<h2>03 / Steps and execution screenshots</h2>
+<ol class="steps">
+<li><b class="st">Download the virtualization software:</b><span class="ds">We download VirtualBox from the official Oracle website.</span>
+<figure class="evidence step-fig"><img alt="" src="../../assets/screenshots/project04-download-virtualbox.PNG"/><figcaption>Downloading VirtualBox from the official Oracle website</figcaption></figure></li>
+<li><b class="st">Download a trial ISO:</b><span class="ds">We download a lightweight Linux distribution (Ubuntu or Linux Mint) from its official website.</span>
+<figure class="evidence step-fig"><img alt="" src="../../assets/screenshots/project04-download-iso.PNG"/><figcaption>Downloading the Linux ISO file from the official website</figcaption></figure></li>
+<li><b class="st">Create a new VM:</b><span class="ds">In VirtualBox we click New, choose a name and specify the operating system type and version.</span>
+<figure class="evidence step-fig"><img alt="" src="../../assets/screenshots/project04-new-vm.PNG"/><figcaption>Creating a new VM: name, OS type and version</figcaption></figure></li>
+<li><b class="st">Allocate RAM:</b><span class="ds">We assign some of the system's RAM (for example 2 to 4 GB) to the VM, making sure it is not more than half of the host system's total RAM.</span>
+<figure class="evidence step-fig"><img alt="" src="../../assets/screenshots/project04-ram.PNG"/><figcaption>Allocating RAM to the virtual machine</figcaption></figure></li>
+<li><b class="st">Create a virtual disk:</b><span class="ds">We create a new virtual hard disk of a specific size (for example 20 GB).</span>
+<figure class="evidence step-fig"><img alt="" src="../../assets/screenshots/project04-virtual-disk.PNG"/><figcaption>Creating the virtual hard disk (Virtual Disk)</figcaption></figure></li>
+<li><b class="st">Attach the ISO file:</b><span class="ds">In the VM settings we open the Storage section and register the downloaded ISO file as the virtual DVD drive.</span>
+<figure class="evidence step-fig"><img alt="" src="../../assets/screenshots/project04-iso-storage.PNG"/><figcaption>Attaching the ISO file in the Storage section</figcaption></figure></li>
+<li><b class="st">Start the VM:</b><span class="ds">We click Start; like a real computer, the operating system installation process begins from the ISO.</span>
+<figure class="evidence step-fig"><img alt="" src="../../assets/screenshots/project04-start-vm.PNG"/><figcaption>Starting the VM and booting from the ISO</figcaption></figure></li>
+<li><b class="st">Install the operating system:</b><span class="ds">We follow the installation steps like a real installation until Linux is installed on the virtual disk.</span>
+<figure class="evidence step-fig"><img alt="" src="../../assets/screenshots/project04-installer.PNG"/><figcaption>Running the Linux installer inside the VM</figcaption></figure></li>
+<li><b class="st">Final challenge:</b><span class="ds">Inside the installed VM we create a text file, shut the VM down with Shut down, start it again and check that the file is still there.</span>
+<figure class="evidence step-fig"><img alt="" src="../../assets/screenshots/project04-test-file.PNG"/><figcaption>The text file created, shown after restarting the VM</figcaption></figure></li>
+<li><b class="st">Snapshot test:</b><span class="ds">Using the Snapshot feature we save the VM's current state so that we can return to that exact moment if needed.</span>
+<figure class="evidence step-fig"><img alt="" src="../../assets/screenshots/project04-snapshot.PNG"/><figcaption>Saving a Snapshot of the VM's state</figcaption></figure></li>
+</ol>
+</section>
+<section class="report-block">
+<h2>04 / Findings and technical analysis</h2>
+<p>The table below shows the virtual machine settings and the reason for choosing each one.</p>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:left">Item</th><th style="padding:11px;text-align:left">Value</th><th style="padding:11px;text-align:left">Reason / explanation</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Virtualization software</td><td class="cmd" style="padding:11px;border-bottom:1px solid #263750">Oracle VirtualBox</td><td style="padding:11px;border-bottom:1px solid #263750">Free and suitable for learning</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Guest operating system</td><td class="cmd" style="padding:11px;border-bottom:1px solid #263750">Ubuntu (Linux)</td><td style="padding:11px;border-bottom:1px solid #263750">A free and safe distribution, suitable for practice</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Dedicated RAM</td><td class="cmd" style="padding:11px;border-bottom:1px solid #263750">4 GB</td><td style="padding:11px;border-bottom:1px solid #263750">No more than half of total RAM, so the host system does not slow down</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Virtual disk</td><td class="cmd" style="padding:11px;border-bottom:1px solid #263750">20 GB</td><td style="padding:11px;border-bottom:1px solid #263750">Enough space for the operating system and a few applications</td></tr>
+<tr><td style="padding:11px">Installation source</td><td class="cmd" style="padding:11px">ISO → Virtual DVD</td><td style="padding:11px">The ISO file acts like a real installation disc</td></tr>
+</tbody></table>
+<ul>
+<li>A virtual machine is a complete computer with a virtual CPU, RAM, disk and optical drive that borrows its resources from the host system; for this reason, allocating too much RAM to the VM harms the performance of the main Windows system.</li>
+<li>The virtual hard disk is in practice a file on the host system's disk, but to Linux it looks like a real disk, and the installation is performed on it, not on the real disk.</li>
+<li>The text file remaining after Shut down and a fresh Start (the project's challenge) showed that data is stored on the virtual disk and is not lost when the VM is shut down.</li>
+<li>The Snapshot feature makes it possible to save the VM's current state and return to it, which makes it an excellent tool for testing risky changes.</li>
+</ul>
+</section>
+<section class="report-block">
+<h2>05 / Problems and solutions</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:left">Problem</th><th style="padding:11px;text-align:left">Solution</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">The VM does not start or is slow; Virtualization may be disabled in the BIOS/UEFI</td><td style="padding:11px;border-bottom:1px solid #263750">Enter the BIOS/UEFI settings and enable the Virtualization feature (the exact name of the option varies by motherboard)</td></tr>
+</tbody></table>
+</section>
+<section class="report-block">
+<h2>06 / Summary and lessons learned</h2>
+<p>In this project I learned that with VirtualBox a complete computer can be built in software and a new operating system installed without any risk to the main system. I became familiar with concepts such as RAM allocation, creating a virtual hard disk, registering an ISO file as a virtual DVD and the OS installation steps, and saw that enabling Virtualization in the BIOS/UEFI is a prerequisite for a virtual machine to run correctly. The test of creating a file and rebooting the VM also showed that the virtual hard disk keeps data just like a real disk.</p>
+<p>The virtual machine can be a foundation for future work; for example, practicing Linux terminal commands, testing software, or building separate environments for programming and artificial intelligence projects, and the Snapshot feature allows trial and error without worry.</p>
+</section>
+<button class="print-btn" onclick="window.print()">Print / Save this report as PDF</button>
+</div></main></body></html>

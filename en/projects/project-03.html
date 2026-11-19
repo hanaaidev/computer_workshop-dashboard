@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission 03 | Network Troubleshooting</title><link href="../../css/style.css" rel="stylesheet"/>
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.step-fig{max-width:620px;margin:10px 0 18px}
+
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+.status{color:#8de0ae;font-weight:bold}
+.note{background:#17263b;border-right:3px solid #e6a84b;border-radius:7px;padding:12px;margin:12px 0;color:#d2c5a9;font-size:11px;line-height:2}
+.table-wrap{overflow-x:auto;margin-top:12px}
+.report-table{width:100%;border-collapse:collapse;font-size:11px;min-width:600px}
+.report-table th{background:#1c304a;color:#91bdff;padding:12px;text-align:left}
+.report-table td{background:#142238;color:#b1bfd1;padding:11px;border-bottom:1px solid #293b54;line-height:2;text-align:left}
+.report-table tr:nth-child(even) td{background:#17263b}
+.command {
+    display: block;
+    direction: ltr;
+    text-align: left;
+    background: #1e1e1e;
+    color: #4ade80;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 15px;
+    padding: 10px 16px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border-right: 4px solid #2b4c9b;
+    overflow-x: auto;
+  }
+.command::before {
+    content: "C:\\> ";
+    color: #9ca3af;
+  }
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+</style>
+<link href="../../css/en.css" rel="stylesheet"/></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← Back to dashboard</a><a class="lang-switch" href="../../projects/project-03.html" hreflang="fa" lang="fa">فارسی</a>
+<section class="detail-hero"><span class="eyebrow">MISSION 03 / 10 · FIELD REPORT</span><h1>Troubleshooting an Internet Connection</h1><p>Network Troubleshooting — running Windows network troubleshooting steps and recording the result of each one.</p></section>
+<div class="meta-grid"><div class="meta">Status<b>Finished</b></div>
+<div class="meta">Date performed<b>2026-10-16</b></div>
+<div class="meta">Tools<b>CMD · ipconfig · ping · nslookup · tracert</b></div></div>
+<section class="report-block"><h2>01 / Mission goal</h2>
+<p>This project identifies the cause of a computer's lost internet connection using a step-by-step troubleshooting method. In the scenario, a user calls and reports that none of the websites open for them. The IT technician's job is to locate the likely source of the problem by running specific commands, without guessing.</p></section>
+<section class="report-block"><h2>02 / Tools and environment</h2>
+<p>
+<div class="row"><span class="label">Environment:</span> <span>Windows, Command Prompt (<code>cmd</code>)</span></div>
+<div class="row">
+<span class="label">Commands:</span>
+<div class="cmds">
+<code>ipconfig</code>
+<code>ping</code>
+<code>nslookup</code>
+<code>tracert</code>
+<code>ipconfig /flushdns</code>
+</div>
+</div>
+</p></section>
+<section class="report-block">
+<h2>03 / Execution steps</h2>
+<p>In this scenario, troubleshooting starts from the computer's own network status and gradually extends to checking the connection to the internet.</p>
+<div class="step-title">Step 1: Check the IP address</div>
+<p>First, run the ipconfig command in Command Prompt to display the network adapter information.</p>
+<div class="command">ipconfig</div>
+<p>If the IPv4 address starts with 169.254, the system probably could not obtain an IP address from DHCP. In this case, check the network cable, the Wi-Fi connection and the router.</p>
+<div class="step-title">Step 2: Check the Default Gateway</div>
+<p>In the output of the previous command, find the Default Gateway value. This address usually belongs to the router, or default gateway of the network, and is needed to test the computer's connection to the router.</p>
+<div class="command">ipconfig</div>
+<div class="step-title">Step 3: Loopback test</div>
+<p>Running the command below tests the system's internal TCP/IP communication. This test shows that the system can communicate with its own Loopback address.</p>
+<div class="command">ping 127.0.0.1</div>
+<p>A successful reply indicates that Loopback communication works correctly; however, on its own it does not prove the health of the physical network card or the internet connection.</p>
+<div class="step-title">Step 4: Ping the Gateway</div>
+<p>In this step, replace the word Gateway with the Gateway address obtained in step 2.</p>
+<div class="command">ping 192.168.1.1</div>
+<p>If no reply is received, the connection between the system and the router should be checked — the network cable, Wi-Fi or the state of the router itself.</p>
+<div class="step-title">Step 5: Check DNS</div>
+<p>To check whether the system can translate a domain name into an IP address, run the command below.</p>
+<div class="command">nslookup google.com</div>
+<p>If the IP address of the domain is returned, the domain-name-to-IP translation works. If an error occurs, the DNS service or settings need to be checked.</p>
+<div class="step-title">Step 6: Ping an internet domain</div>
+<p>In this step, we ping an internet domain to check whether a connection to the destination can be established.</p>
+<div class="command">ping google.com</div>
+<p>If the command succeeds but the website does not open in the browser, the problem may lie with the browser, the firewall settings or how the browser accesses the internet.</p>
+<div class="step-title">Step 7: Check the network path</div>
+<p>Finally, we use the tracert command to see the path packets take to the destination.</p>
+<div class="command">tracert google.com</div>
+<p>This command shows the path packets take through the various routers to the destination. By reviewing the output, you can tell at which part of the path no reply is received.</p>
+<div class="note">⚠️ Note: an asterisk (*) at a hop does not necessarily mean the path is down; the router may simply not respond to ICMP requests.</div>
+</section>
+<section class="report-block"><h2>04 / Execution screenshots</h2><p>This section contains real screenshots of the commands run in Command Prompt. Each image corresponds to one of the troubleshooting steps.</p>
+<div class="evidence-grid">
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project03-ipconfig.PNG"/><figcaption>ipconfig – showing the IPv4 address and adapter information</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project03-gateway.PNG"/><figcaption>Checking the Gateway</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project03-pnigLoopback.PNG"/><figcaption>Result of the Ping Loopback test</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project03-pnigGateway.PNG"/><figcaption>Result of Ping Gateway – checking the connection to the router</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project03-nslookup.PNG"/><figcaption>nslookup output</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project03-pnigGoogle.PNG"/><figcaption>Result of ping Google</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project03-tracert.PNG"/><figcaption>tracert output</figcaption></figure>
+</div>
+</section>
+<section class="report-block"><h2>05 / Findings and technical analysis</h2>
+<div class="table-wrap">
+<table class="report-table">
+<thead>
+<tr>
+<th>Step</th>
+<th>Sample result</th>
+<th>Technical analysis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ipconfig</td>
+<td>192.168.1.106</td>
+<td>A valid IP address was obtained, and it is not an APIPA address.</td>
+</tr>
+<tr>
+<td>Default Gateway</td>
+<td>192.168.1.1</td>
+<td>The router (default gateway) address was identified.</td>
+</tr>
+<tr>
+<td>ping 127.0.0.1</td>
+<td class="status">Success</td>
+<td>The system's internal Loopback communication works.</td>
+</tr>
+<tr>
+<td>ping Gateway</td>
+<td class="status">Success</td>
+<td>The system's connection to the router works.</td>
+</tr>
+<tr>
+<td>nslookup google.com</td>
+<td class="status">No IP returned</td>
+<td>The problem is with DNS, not with the internet itself</td>
+</tr>
+<tr>
+<td>ping google.com</td>
+<td class="status">Success</td>
+<td>Communication with the destination via Ping was established.</td>
+</tr>
+<tr>
+<td>tracert google.com</td>
+<td>18 hops to the destination</td>
+<td>A sample path to the destination is shown.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Based on the sample results, all tests succeeded and no sign of a connection outage was observed in the steps examined. Therefore, in this scenario the internet connection is working.</p>
+<p>If the expected reply is not received at one of the steps, that part should be examined as the likely area of the problem. Note, however, that some failures, such as no reply to Ping, may be caused by firewall restrictions or blocked ICMP.</p>
+</section>
+<section class="report-block"><h2>06 / Problems and solutions</h2>
+<div class="table-wrap">
+<table class="report-table">
+<thead>
+<tr>
+<th>Observed problem</th>
+<th>Likely cause</th>
+<th>Suggested solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP starting with 169.254</td>
+<td>No address received from DHCP</td>
+<td>Check the cable, Wi-Fi and router</td>
+</tr>
+<tr>
+<td>Ping to the Gateway gets no reply</td>
+<td>Connection problem between the system and the router</td>
+<td>Check the network cable, Wi-Fi and the router's state</td>
+</tr>
+<tr>
+<td>nslookup gets no reply</td>
+<td>Problem with the DNS service or settings</td>
+<td>Run ipconfig /flushdns to clear the DNS cache</td>
+</tr>
+<tr>
+<td>Ping succeeds but the site does not open</td>
+<td>Possible browser or firewall problem</td>
+<td>Check the browser and firewall settings</td>
+</tr>
+<tr>
+<td>No reply in tracert</td>
+<td>One of the routers may be limiting responses, or there is a path problem</td>
+<td>Check the next hops and, if a path problem is confirmed, report it to the ISP</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="note">⚠️ The following two items are not listed as main steps in the course handout and are included in this report as additional suggestions: <br/> 1. Changing DNS to an address such as 8.8.8.8 if needed. <br/> 2. Reporting a network path problem to the internet service provider (ISP).</div>
+<p>The ipconfig /flushdns command clears the system's DNS cache, removing old or invalid information stored in it. However, this command alone does not fix all DNS problems.</p>
+<div class="command">ipconfig /flushdns</div>
+</section>
+<section class="report-block"><h2>07 / Summary and lessons learned</h2>
+<p>In this project I learned the step-by-step method for troubleshooting an internet connection and how to use built-in Windows tools to identify the likely area of a problem.</p>
+<p>The most important lessons from this project:</p>
+<ul>
+<li>Network troubleshooting should start from the nearest point, the user's own system, and gradually move toward the router and the internet.</li>
+<li>The ipconfig command shows the IP address and Gateway information.</li>
+<li>The ping command is used to check connectivity to a specific destination.</li>
+<li>The nslookup command checks how domain-name-to-IP translation works.</li>
+<li>The tracert command shows the path packets take to the destination.</li>
+<li>The ipconfig /flushdns command clears the system's DNS cache.</li>
+</ul>
+<p>Finally, I realized that network troubleshooting should not rely on guesswork and random trial; each command gives the technician specific information and helps narrow down the problem area.</p>
+</section>
+<button class="print-btn" onclick="window.print()">Print / Save this report as PDF</button>
+</div></main></body></html>

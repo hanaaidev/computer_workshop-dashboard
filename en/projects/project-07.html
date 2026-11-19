@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission 07 | Storage Management</title><link href="../../css/style.css" rel="stylesheet"/>
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.shot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+</style><link href="../../css/en.css" rel="stylesheet"/></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← Back to dashboard</a><a class="lang-switch" href="../../projects/project-07.html" hreflang="fa" lang="fa">فارسی</a>
+<section class="detail-hero"><span class="eyebrow">MISSION 07 / 10 · FIELD REPORT</span><h1>Storage Management</h1><p>Storage Management — analyzing disk space with TreeSize and proposing ways to free up space.</p></section>
+<div class="meta-grid"><div class="meta">Status<b>Finished</b></div><div class="meta">Date performed<b>2026-11-03</b></div>
+<div class="meta">Tools<b>TreeSize · Disk Cleanup · Storage Settings</b></div></div>
+<section class="report-block"><h2>01 / Mission goal</h2>
+<p>The goal of this project is to examine how disk space is used with TreeSize, identify the largest folders and files, and find unnecessary data. The practical goal of the project is to free at least <b>5 GB</b> of space without harming the user's important files or system files. We also learn how to assess the importance and risk of each file before deleting it.</p>
+</section>
+<section class="report-block">
+<h2>02 / Tools and runtime environment</h2>
+<p><b>TreeSize (Free edition):</b> shows folder and file sizes as a tree, sorts by size, and shows the largest files and the distribution of file types.</p>
+<p><b>Disk Cleanup / Storage Settings:</b> built-in Windows tools for safely cleaning temporary files, the update cache and the Recycle Bin.</p>
+<p><b>Runtime environment:</b> Windows 10/11, with TreeSize run with Administrator access for a full scan of drive C: and the data drives.</p>
+</section>
+<section class="report-block">
+<h2>03 / Execution steps</h2>
+<ol>
+<li><b>Recording the initial state:</b> before anything else, we note the free and used space of drive C: in This PC or Storage Settings and take a screenshot so that a before/after comparison is possible.</li>
+<li><b>Installing and running TreeSize:</b> we install the program and run it with <b>Run as administrator</b> so that it can access all folders.</li>
+<li><b>Scanning the drive:</b> we select and scan drive C:. In the tree view, we sort the Size column so the largest folders are at the top.</li>
+<li><b>Deeper inspection:</b> we go into large folders such as <b>Users</b>, <b>Downloads</b>, <b>AppData\Local\Temp</b> and <b>Windows\SoftwareDistribution</b>, and use the Largest Files and File Types tabs to find large files and heavy types (such as ISO, ZIP, MP4).</li>
+<li><b>Risk categorization:</b> we place each item in one of three categories: <b>safe to delete</b> (temporary files, caches, Recycle Bin), <b>needs review</b> (downloaded files, videos) and <b>don't touch</b> (system files and installed programs).</li>
+<li><b>Cleanup:</b> we clear temporary files and caches with Disk Cleanup and Storage Settings, review and delete installers and unused files, and then empty the Recycle Bin. We remove unused programs from Apps &amp; Features.</li>
+<li><b>Rescan and comparison:</b> we run TreeSize again and compare the new free space with the initial state to confirm that the 5 GB goal was reached.</li>
+</ol>
+</section>
+<section class="report-block">
+<h2>04 / Findings and technical analysis</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:left">Source of used space</th><th style="padding:11px;text-align:left">Space freed</th><th style="padding:11px;text-align:left">Deletion risk level</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Temporary files (Temp)</td><td style="padding:11px;border-bottom:1px solid #263750">1.5 GB</td><td style="padding:11px;border-bottom:1px solid #263750">Low</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Windows Update cache</td><td style="padding:11px;border-bottom:1px solid #263750">1.9 GB</td><td style="padding:11px;border-bottom:1px solid #263750">Low (via Disk Cleanup)</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Old installers in Downloads</td><td style="padding:11px;border-bottom:1px solid #263750">1.7 GB</td><td style="padding:11px;border-bottom:1px solid #263750">Medium (needs review)</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Recycle Bin</td><td style="padding:11px;border-bottom:1px solid #263750">12.5 GB</td><td style="padding:11px;border-bottom:1px solid #263750">Low</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Browser cache</td><td style="padding:11px;border-bottom:1px solid #263750">2 GB</td><td style="padding:11px;border-bottom:1px solid #263750">Low</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Unused videos and ISOs</td><td style="padding:11px;border-bottom:1px solid #263750">0.9 GB</td><td style="padding:11px;border-bottom:1px solid #263750">Medium (needs review)</td></tr>
+<tr style="color:#e5efff"><td style="padding:11px"><b>Total</b></td><td style="padding:11px"><b>20.5 GB</b></td><td style="padding:11px">5 GB goal achieved</td></tr>
+</tbody></table>
+<ul>
+<li>The largest amount of unnecessary space usually accumulates in the Downloads and Temp folders and in caches, not in the programs' core files.</li>
+<li>TreeSize's tree view shows that a small number of folders occupy a large part of the space; therefore, examining a few large folders is more effective than randomly deleting small files.</li>
+<li>The File Types tab shows that ISO, ZIP and video files usually take the largest share of user files.</li>
+<li>The Windows Update cache is cleaned using the built-in Windows tool, not by manually deleting a system folder, to reduce the risk of damaging the system.</li>
+<li>Deleted files do not free up space until the Recycle Bin is emptied, so this step is essential for calculating the final space.</li>
+</ul>
+</section>
+<section class="report-block">
+<h2>05 / Problems and solutions</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:left">Problem</th><th style="padding:11px;text-align:left">Suggested solution</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Incomplete scan or Access Denied shown for some folders</td><td style="padding:11px;border-bottom:1px solid #263750">Run TreeSize with Administrator access</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Fear of deleting an important or system file</td><td style="padding:11px;border-bottom:1px solid #263750">Delete only items in the “safe” category, move them to the Recycle Bin first, and don't touch the Windows and Program Files folders</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Temp files in use that cannot be deleted</td><td style="padding:11px;border-bottom:1px solid #263750">Close programs, skip files in use or restart the system and repeat the cleanup</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Free space did not change after deletion</td><td style="padding:11px;border-bottom:1px solid #263750">Empty the Recycle Bin and rescan</td></tr>
+<tr><td style="padding:11px">Need for deleted large files in the future</td><td style="padding:11px">Move important large files to a flash drive, external drive or cloud storage instead of deleting them permanently</td></tr>
+</tbody></table>
+</section>
+<section class="report-block">
+<h2>06 / Visual documentation</h2>
+<div class="shot-grid">
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project7-treesize1.PNG"/><figcaption>Disk space status before cleanup</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project7-treesize2.PNG"/><figcaption>Result of scanning drive C: and the folder tree view in TreeSize</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project7-treesize3.PNG"/><figcaption>Identifying the largest files and heavy file types</figcaption></figure>
+<figure class="evidence"><img alt="" src="../../assets/screenshots/project7-treesize4.PNG"/><figcaption>Disk space status after cleanup and comparison with the initial state</figcaption></figure>
+</div>
+</section>
+<section class="report-block">
+<h2>07 / Summary and lessons learned</h2>
+<p>In this project I learned that to manage storage, you first need to “see” where the space is being used and only then decide what to delete. With its tree view and size-based sorting, TreeSize makes this fast and accurate and shows that a few large folders account for the biggest share.</p>
+<p>I also learned that deletion should be risk-based: temporary files and caches are safe, user files need review, and system files should not be deleted manually. Capturing the before and after state, keeping visual documentation and backing up important files are professional habits in IT support work that this project taught me.</p>
+</section>
+<button class="print-btn" onclick="window.print()">Print / Save this report as PDF</button>
+</div></main></body></html>
