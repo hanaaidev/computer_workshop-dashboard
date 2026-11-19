@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission 10 | IT Support Capstone</title><link rel="stylesheet" href="../css/style.css">
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.shot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.placeholder{min-height:130px;display:grid;place-items:center;text-align:center;border:1px dashed #526781;border-radius:8px;color:#8194ad;font-size:11px;padding:15px}
+.ticket{border:1px solid #2c3f5c;background:#14233a;border-radius:12px;padding:16px;margin:12px 0;break-inside:avoid}
+.ticket .tag{display:inline-block;font-size:10px;color:#91bdff;background:#1c3150;border-radius:20px;padding:2px 10px;margin-bottom:8px}
+.warn{border-right:3px solid #e8b04a;background:#1d2636;padding:8px 12px;margin:10px 0;border-radius:6px;font-size:12px;color:#d9c18f;line-height:2}
+.code-block{direction:ltr;text-align:left;background:#0b1422;border:1px solid #263750;border-radius:10px;padding:14px;margin:12px 0;overflow-x:auto;font-family:Consolas,"Courier New",monospace;font-size:11.5px;line-height:1.7;color:#c9d8ec;white-space:pre}
+.cmd{direction:ltr;unicode-bidi:embed;font-family:Consolas,"Courier New",monospace;color:#e5efff}
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.shot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 18px}
+.flow span{background:#17263b;border:1px solid #344761;border-radius:20px;padding:6px 14px;font-size:11px;color:#e5efff}
+.flow i{color:#526781;font-style:normal;font-size:13px}
+.report-block ol.steps{list-style:none;padding:0;margin:14px 0;counter-reset:s}
+.steps>li{counter-increment:s;position:relative;padding:0 46px 16px 0;min-height:34px}
+.steps>li::before{content:counter(s);position:absolute;right:0;top:0;width:30px;height:30px;border-radius:50%;background:#1c3150;border:1px solid #4a6a9a;color:#91bdff;display:grid;place-items:center;font-size:12px;font-weight:bold}
+.steps>li::after{content:"";position:absolute;right:14px;top:34px;bottom:2px;width:2px;background:#2c3f5c}
+.steps>li:last-child::after{display:none}
+.steps>li:last-child{padding-bottom:4px}
+.steps .st{display:block;color:#e5efff;font-size:12.5px;line-height:1.9}
+.steps .ds{display:block;color:#b1bfd1;font-size:12px;line-height:1.9}
+.shot{display:inline-block;margin-right:6px;font-style:normal;font-size:10.5px;color:#91bdff;background:#1c3150;border-radius:12px;padding:0 9px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:6px}
+.mini{background:#101b2d;border:1px solid #263750;border-radius:10px;padding:12px 14px}
+.mini h3{font-size:12.5px;margin:0 0 6px}
+.warn ul{margin:6px 0 0;padding-right:20px}.warn li{color:#d9c18f}
+
+.command {
+    display: block;
+    direction: ltr;
+    text-align: left;
+    background: #1e1e1e;
+    color: #4ade80;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 15px;
+    padding: 10px 16px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border-right: 4px solid #2b4c9b;
+    overflow-x: auto;
+  }
+.command::before {
+    content: "C:\\> ";
+    color: #9ca3af;
+  }
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+</style></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← بازگشت به داشبورد</a><a class="lang-switch" lang="en" hreflang="en" href="../en/projects/project-10.html">English</a>
+
+<section class="detail-hero">
+<span class="eyebrow">MISSION 10 / 10 · FINAL PROJECT</span>
+<h1>شبیه‌سازی یک روز کاری تکنسین IT</h1>
+<p>Final IT Support Project — عیب‌یابی شش مشکل همزمان یک سیستم تحویلی و تهیه گزارش نهایی برای مدیر</p>
+</section>
+
+<div class="meta-grid">
+<div class="meta">وضعیت<b>انجام شده</b></div>
+<div class="meta">ابزارها<b>Task Manager · CMD · Device Manager · Disk Cleanup</b></div>
+<div class="meta">تاریخ اجرا<b>1405/08/30</b></div>
+</div>
+
+<section class="report-block">
+<h2>01 / هدف مأموریت</h2>
+<p>این پروژه نهایی، مهارت‌های دوره را در یک سناریوی واحد و واقعی کنار هم می‌گذارد: در روز اول کار به‌عنوان تکنسین IT یک شرکت، سیستمی به من تحویل داده می‌شود که کاربر از آن شکایت دارد. هدف این است که برای هر مشکل، ابزار مناسب تشخیص انتخاب شود، علت محتمل بر پایه مفاهیم درس تحلیل شود، راه‌حل مرحله‌به‌مرحله و ایمن ارائه شود و در پایان یک گزارش روشن و قابل‌فهم برای مدیر غیرفنی نوشته شود.</p>
+</section>
+
+<section class="report-block">
+<h2>02 / سناریو و ابزارهای مورد استفاده</h2>
+<p><b>سناریو:</b> سیستمی تحویل داده شده که کاربر از آن شکایت دارد و همزمان شش مشکل دارد:</p>
+<ul>
+<li>سیستم به‌طور کلی کند است.</li>
+<li>تعداد زیادی برنامه در Startup اجرا می‌شود.</li>
+<li>DNS به‌درستی کار نمی‌کند و بعضی سایت‌ها باز نمی‌شوند.</li>
+<li>فضای درایو C تقریباً پر شده است.</li>
+<li>یک Driver مشکل دارد (علامت هشدار در Device Manager).</li>
+<li>یک برنامه خاص اصلاً اجرا نمی‌شود.</li>
+</ul>
+<p><b>ابزارهای به‌کار رفته:</b></p>
+<ul>
+<li><b>Task Manager:</b> بررسی مصرف منابع، فرایندهای در حال اجرا و تب Startup.</li>
+<li><b>Command Prompt (CMD):</b> دستورهای شبکه مانند ping، nslookup و ipconfig برای عیب‌یابی DNS.</li>
+<li><b>Device Manager:</b> بررسی وضعیت و به‌روزرسانی یا بازگردانی درایورها.</li>
+<li><b>Disk Cleanup:</b> آزادسازی فضای درایو C.</li>
+</ul>
+<p><b>محیط اجرا:</b> ویندوز ۱۰ یا ۱۱ با دسترسی Administrator در موارد لازم.</p>
+</section>
+
+<section class="report-block">
+<h2>03 / مراحل انجام کار</h2>
+<p>جریان کلی کار که برای هر یک از شش مشکل تکرار می‌شود:</p>
+<div class="flow"><span>۱ · تشخیص مشکل</span><i>←</i><span>۲ · انتخاب ابزار</span><i>←</i><span>۳ · یافتن علت</span><i>←</i><span>۴ · ارائه راه‌حل</span><i>←</i><span>۵ · گزارش نهایی</span></div>
+
+<ol>
+<li><b>تشخیص مشکل:</b> برای هر شکایت، مشخص می‌کنیم دقیقاً با چه ابزاری مشکل قابل تشخیص است.</li>
+<li><b>انتخاب ابزار مناسب:</b> از میان ابزارهای فصل‌های مربوطه (Task Manager، CMD و دستورهای شبکه، Device Manager، Disk Cleanup) ابزار درست را انتخاب می کنیم.</li>
+<li><b>پیدا کردن علت:</b> برای هر مشکل یک علت محتمل بر پایه مشاهدات و مفاهیم کارگاه می نویسیم.</li>
+<li><b>ارائه راه‌حل:</b> راه‌حل هر مشکل را مرحله‌به‌مرحله می‌نویسیم و قبل از مراحل حساس (Disk یا Registry) هشدار ایمنی را رعایت می‌کنیم.</li>
+<li><b>نوشتن گزارش:</b> یک گزارش نهایی شبیه گزارش واقعی یک تکنسین برای مدیر آماده می‌شود، شامل خلاصه مشکلات، اقدامات انجام‌شده و توصیه‌های آینده.</li>
+</ol>
+<div class="warn"><b>اصول ایمنی پیش از شروع:</b> قبل از تغییرات حساس یک Restore Point بسازید؛ قبل از هر تغییر در Registry از آن Export بگیرید؛ فایل‌های سیستمی و پوشه Windows را دستی پاک نکنید؛ درایورها را فقط از منبع رسمی سازنده تهیه کنید.</div>
+<div class="ticket">
+<span class="tag">مرحله ایمنی · ساخت Restore Point</span>
+<h3>ساخت نقطه بازیابی پیش از شروع عیب‌یابی</h3>
+<p>Restore Point تصویری از تنظیمات سیستم، درایورها و Registry در یک لحظه است. اگر تغییری (مثل نصب درایور یا ویرایش Registry) مشکل‌ساز شد، می‌توان سیستم را به همان نقطه برگرداند. فایل‌های شخصی کاربر با این کار پاک نمی‌شوند و بازگردانی نیز آن‌ها را برنمی‌گرداند؛ بنابراین این روش جایگزین Backup نیست.</p>
+<ol>
+<li>از منوی Start عبارت <b>Create a restore point</b> را جستجو و باز می‌کنیم (یا <span class="cmd">SystemPropertiesProtection</span> را در Win + R اجرا می‌کنیم). پنجره System Properties با تب <b>System Protection</b> باز می‌شود.</li>
+<li>در بخش Protection Settings، درایو <b>C:</b> را انتخاب می‌کنیم و وضعیت Protection را بررسی می‌کنیم.</li>
+<li>اگر Protection روی <b>Off</b> بود، روی <b>Configure</b> می‌زنیم، گزینه <b>Turn on system protection</b> را انتخاب می‌کنیم، حداکثر فضای مصرفی را روی مقدار کوچکی (مثلاً ۵ تا ۱۰ درصد) تنظیم می‌کنیم و <b>OK</b> می‌زنیم.</li>
+<li>روی دکمه <b>Create</b> کلیک می‌کنیم.</li>
+<li>یک نام توصیفی وارد می‌کنیم، مثلاً <span class="cmd">Before-IT-Troubleshooting</span> (تاریخ و ساعت به‌صورت خودکار اضافه می‌شود) و دوباره <b>Create</b> را می‌زنیم.</li>
+<li>چند لحظه صبر می‌کنیم تا پیام <b>The restore point was created successfully</b> نمایش داده شود و سپس <b>Close</b> می‌زنیم.</li>
+</ol>
+<p><b>روش بازگردانی (در صورت بروز مشکل):</b> در همان تب System Protection روی <b>System Restore</b> می‌زنیم، نقطه ساخته‌شده را انتخاب می‌کنیم و مراحل را تا <b>Finish</b> ادامه می‌دهیم؛ سیستم ری‌استارت می‌شود و به آن وضعیت برمی‌گردد. اجرای مستقیم این ابزار با دستور <span class="cmd">rstrui.exe</span> هم ممکن است.</p>
+<p><b>روش خط فرمان (اختیاری):</b> PowerShell را با Run as administrator باز می‌کنیم و اجرا می‌کنیم:</p>
+<div class="code-block">Checkpoint-Computer -Description "Before-IT-Troubleshooting" -RestorePointType MODIFY_SETTINGS</div>
+<p>ویندوز به‌طور پیش‌فرض اجازه نمی‌دهد در هر ۲۴ ساعت بیش از یک Restore Point خودکار از این طریق ساخته شود؛ اگر پیام خطا یا هشدار آمد، از روش گرافیکی بالا استفاده می‌کنیم.</p>
+</div>
+<div class="shot-grid">
+<figure class="evidence"><img src="../assets/screenshots/project10-restorpoint.PNG" alt=""><figcaption>باز کردن System Protection</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project10-restorpoint2.PNG" alt=""><figcaption>ایجاد فضای مصرفی(10-15%)</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project10-restorpoint4.PNG" alt=""><figcaption>نمایش پیام اتمام ساخت نقطه بازگشت</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project10-restorpoint3.PNG" alt=""><figcaption>ساخت نقطه بازگشت</figcaption></figure>
+
+</div>
+</section>
+
+<section class="report-block">
+<h2>04 / یافته‌ها و تحلیل فنی</h2>
+<p>جدول زیر برای هر مشکل، ابزار تشخیص و علت محتمل را خلاصه می‌کند.</p>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right">مشکل</th><th style="padding:11px;text-align:right">ابزار تشخیص</th><th style="padding:11px;text-align:right">علت محتمل</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">کندی کلی سیستم</td><td style="padding:11px;border-bottom:1px solid #263750">Task Manager (تب Processes و Performance)</td><td style="padding:11px;border-bottom:1px solid #263750">مصرف بالای CPU، RAM یا Disk توسط برنامه‌ها و فرایندهای پس‌زمینه</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">برنامه‌های زیاد در Startup</td><td style="padding:11px;border-bottom:1px solid #263750">Task Manager (تب Startup)</td><td style="padding:11px;border-bottom:1px solid #263750">برنامه‌هایی که هنگام نصب خود را به راه‌اندازی ویندوز اضافه کرده‌اند</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">DNS و باز نشدن سایت‌ها</td><td style="padding:11px;border-bottom:1px solid #263750">CMD (ping، nslookup، ipconfig)</td><td style="padding:11px;border-bottom:1px solid #263750">کش DNS خراب یا آدرس DNS نادرست</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">پر شدن درایو C</td><td style="padding:11px;border-bottom:1px solid #263750">Disk Cleanup · Storage settings</td><td style="padding:11px;border-bottom:1px solid #263750">فایل‌های موقت، باقیمانده به‌روزرسانی‌ها، سطل بازیافت و دانلودهای حجیم</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">هشدار Driver</td><td style="padding:11px;border-bottom:1px solid #263750">Device Manager</td><td style="padding:11px;border-bottom:1px solid #263750">درایور نصب‌نشده، ناسازگار یا آسیب‌دیده (مثلاً پس از یک به‌روزرسانی)</td></tr>
+<tr><td style="padding:11px">اجرا نشدن یک برنامه</td><td style="padding:11px">Task Manager · بررسی پیام خطا</td><td style="padding:11px">فرایند معلق در پس‌زمینه، نبود مجوز، ناسازگاری یا نصب آسیب‌دیده</td></tr>
+</tbody></table>
+<ul>
+<li>چند مشکل به هم مرتبطند: پر بودن درایو C و تعداد زیاد برنامه‌های Startup می‌توانند خودشان به کندی کلی منجر شوند؛ بنابراین ترتیب رفع مشکل اهمیت دارد.</li>
+<li>در عیب‌یابی DNS، آزمایش پینگ به یک آدرس IP (مثل 8.8.8.8) و پینگ به یک نام دامنه تفاوت را نشان می‌دهد: اگر IP جواب دهد ولی نام دامنه نه، مشکل از DNS است و نه از اتصال اینترنت.</li>
+<li>بخش اصلی تحلیل، تفکیک «علامت» از «علت» است؛ مثلاً کندی علامت است و برنامه‌های پرمصرف یا Startup علت.</li>
+</ul>
+</section>
+
+<section class="report-block">
+<h2>05 / مشکلات و راه‌حل‌ها</h2>
+
+<div class="ticket">
+<span class="tag">مشکل ۱ · کندی کلی سیستم</span>
+<h3>ابزار: Task Manager</h3>
+<ol>
+<li>کلیدهای <b>Ctrl + Shift + Esc</b> را فشار می‌دهیم.</li>
+<li>در تب <b>Processes</b> با کلیک روی ستون‌های CPU، Memory و Disk، فرایندها را بر اساس بیشترین مصرف مرتب می‌کنیم.</li>
+<li>در تب <b>Performance</b> نمودارها را بررسی می‌کنیم؛ مصرف نزدیک به ۱۰۰٪ و ادامه‌دار نشانه فشار روی آن منبع است.</li>
+<li>برنامه‌های غیرضروری و پرمصرف را با <b>End task</b> می‌بندیم (فرایندهای سیستمی بسته نمی شوند).</li>
+<li>در صورت مشکوک بودن فرایند، اسکن کامل Windows Security را اجرا می‌کنیم و سپس سیستم را ری‌استارت می‌کنیم.</li>
+</ol>
+<div class="shot-gridS">
+<figure class="evidence"><img src="../assets/screenshots/project10-taskmanger-slow.PNG" alt=""><figcaption>بررسی مصرف منابع و فرایندهای پرمصرف در Task Manager</figcaption></figure></div>
+</div>
+
+<div class="ticket">
+<span class="tag">مشکل ۲ · برنامه‌های زیاد در Startup</span>
+<h3>ابزار: Task Manager (تب Startup)</h3>
+<ol>
+<li>در Task Manager وارد تب <b>Startup</b> می‌شویم.</li>
+<li>برنامه‌هایی را که ستون Startup impact آن‌ها <b>High</b> است شناسایی می‌کنیم.</li>
+<li>برنامه‌های غیرضروری (مثل ابزارهای به‌روزرسانی، پیام‌رسان‌ها و لانچرها) را با <b>Disable</b> غیرفعال می‌کنیم.</li>
+<li>آنتی‌ویروس و برنامه‌های سیستمی را غیرفعال نمی‌کنیم. این تغییر قابل بازگشت است و با Enable می‌توان آن را برگرداند.</li>
+<li>سیستم را ری‌استارت می‌کنیم و سرعت بالا آمدن ویندوز را بررسی می‌کنیم.</li>
+</ol>
+<div class="evidence-grid">
+<figure class="evidence"><img src="../assets/screenshots/project10-startup.PNG" alt=""><figcaption>مدیریت برنامه‌های Startup و غیرفعال کردن موارد غیرضروری</figcaption></figure>
+</div>
+</div>
+
+<div class="ticket">
+<span class="tag">مشکل ۳ · DNS و باز نشدن سایت‌ها</span>
+<h3>ابزار: Command Prompt</h3>
+<ol>
+<li>CMD را اجرا می‌کنیم. ابتدا اتصال پایه را با پینگ به یک IP می‌سنجیم و سپس با پینگ به یک نام دامنه مقایسه می‌کنیم.</li>
+<div class="command">ping 8.8.8.8</div>
+<div class="command">ping google.com</div>
+<li>اگر پینگ IP موفق بود ولی نام دامنه شناخته نشد، مشکل از DNS است. با <span class="cmd">nslookup</span> بررسی می‌کنیم.</li>
+<div class="command">nslookup google.com</div>
+
+<li>کش DNS را پاک می‌کنیم و تنظیمات IP را بررسی می‌کنیم.</li>
+<div class="command">ipconfig/flushdns</div>
+<li>اگر مشکل ادامه داشت، آدرس سرور DNS را در تنظیمات آداپتور شبکه (Properties → IPv4) روی یک DNS معتبر مثل 8.8.8.8 یا 1.1.1.1 تنظیم می‌کنیم.</li>
+<div class="command">netsh interface ipv4 set dnsservers name="Wi-Fi" static 8.8.8.8 primary</div>
+
+<li>در پایان دوباره چند سایت را آزمایش می‌کنیم.</li>
+</ol>
+
+<div class="warn">اگر فقط برخی سایت‌های خاص باز نمی‌شوند و بقیه مشکلی ندارند، محدودیت از سوی سرویس‌دهنده یا خود سایت هم محتمل است و فقط تغییر DNS آن را رفع نمی‌کند.</div>
+</div>
+
+<div class="ticket">
+<span class="tag">مشکل ۴ · پر شدن درایو C</span>
+<h3>ابزار: Disk Cleanup</h3>
+<div class="warn">هشدار ایمنی: قبل از پاک کردن، فهرست مواردی را که انتخاب می‌شود بخوانید. سطل بازیافت را بدون بررسی خالی نکنید و فایل‌های پوشه Windows را دستی حذف نکنید.</div>
+<ol>
+<li>با <b>Win + R</b> دستور <span class="cmd">cleanmgr</span> را اجرا می‌کنیم و درایو C را انتخاب می‌کنیم.</li>
+<li>گزینه <b>Clean up system files</b> را می‌زنیم تا موارد بیشتر مانند فایل‌های به‌روزرسانی ویندوز هم دیده شوند.</li>
+<li>موارد امن مثل Temporary files، Temporary Internet Files، Thumbnails و Recycle Bin را تیک می‌زنیم.</li>
+<li>پس از تأیید، پاک‌سازی انجام می‌شود و فضای آزادشده را ثبت می‌کنیم.</li>
+<li>برای یافتن فایل‌های حجیم دیگر، از <b>Settings → System → Storage</b> استفاده می‌کنیم و برنامه‌های بلااستفاده را Uninstall می‌کنیم.</li>
+</ol>
+<div class="shot-grid">
+<figure class="evidence"><img src="../assets/screenshots/project10-diskcleanup.PNG" alt=""><figcaption>پاک‌سازی درایو C با Disk Cleanup</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project10-diskcleanup2.PNG" alt=""><figcaption>یافتن فایل‌های حجیم دیگر setting/system/storage</figcaption></figure>
+</div>
+</div>
+
+<div class="ticket">
+<span class="tag">مشکل ۵ · هشدار Driver</span>
+<h3>ابزار: Device Manager</h3>
+<div class="warn">هشدار ایمنی: پیش از تغییر درایور یک Restore Point بسازید و درایور را فقط از سایت رسمی سازنده دستگاه تهیه کنید.</div>
+<ol>
+<li>با <b>Win + X</b> گزینه <b>Device Manager</b> را باز می‌کنم.</li>
+<li>دستگاهی را که علامت مثلث زرد هشدار دارد پیدا می‌کنیم و روی آن دوبار کلیک می‌کنیم تا پیام وضعیت و کد خطا را بخوانیم.</li>
+<li>از تب Driver گزینه <b>Update driver</b> را می‌زنم.</li>
+<li>اگر مشکل پس از یک به‌روزرسانی شروع شده بود، گزینه <b>Roll Back Driver</b> را امتحان می‌کنیم.</li>
+<li>در صورت ادامه مشکل، دستگاه را <b>Uninstall device</b> می‌کنیم و با <b>Scan for hardware changes</b> اجازه می‌دهم ویندوز دوباره آن را نصب کند، یا درایور رسمی را دستی نصب می‌کنیم.</li>
+</ol>
+</div>
+
+<div class="ticket">
+<span class="tag">مشکل ۶ · اجرا نشدن یک برنامه</span>
+<h3>ابزار: Task Manager و بررسی پیام خطا</h3>
+<div class="warn">هشدار ایمنی: اگر برای رفع مشکل نیاز به تغییر Registry بود، ابتدا از آن Export بگیرید و Restore Point بسازید. برنامه را فقط از منبع معتبر نصب کنید.</div>
+<ol>
+<li>پیام خطای دقیق برنامه را یادداشت می‌کنیم و در Task Manager(Ctrl + Shift + Esc) بررسی می‌کنیم که فرایند قبلی همان برنامه در پس‌زمینه گیر نکرده باشد (در صورت وجود، End task).</li>
+<li>برنامه را با <b>Run as administrator</b> اجرا می‌کنم.</li>
+<li>در Properties برنامه، تب <b>Compatibility</b> را امتحان می‌کنیم (اجرا در حالت سازگاری).</li>
+<li>مطمئن می‌شوم آنتی‌ویروس یا SmartScreen برنامه را مسدود نکرده است.</li>
+<li>در صورت ادامه مشکل، برنامه را Uninstall و دوباره از نسخه سالم نصب می‌کنیم.</li>
+</ol>
+</div>
+</section>
+
+
+<section class="report-block">
+<h2>06 / گزارش نهایی برای مدیر</h2>
+<p><b>موضوع:</b> گزارش بررسی و رفع مشکلات سیستم تحویلی کاربر</p>
+<p><b>خلاصه:</b> سیستم با شش مشکل همزمان تحویل داده شد. علت‌ها شناسایی و اقدامات اصلاحی انجام شد. مشکلات اصلی به شلوغی منابع، تنظیمات شبکه و نگهداری نشدن سیستم مربوط بودند.</p>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right">مشکل</th><th style="padding:11px;text-align:right">توضیح ساده</th><th style="padding:11px;text-align:right">اقدام انجام‌شده</th><th style="padding:11px;text-align:right">وضعیت</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">کندی سیستم</td><td style="padding:11px;border-bottom:1px solid #263750">چند برنامه همزمان منابع کامپیوتر را مصرف می‌کردند</td><td style="padding:11px;border-bottom:1px solid #263750">بستن برنامه‌های اضافه و بررسی بدافزار</td><td style="padding:11px;border-bottom:1px solid #263750">حل شد</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">روشن شدن کند</td><td style="padding:11px;border-bottom:1px solid #263750">برنامه‌های زیادی خودکار با ویندوز شروع می‌شدند</td><td style="padding:11px;border-bottom:1px solid #263750">غیرفعال کردن برنامه‌های غیرضروری Startup</td><td style="padding:11px;border-bottom:1px solid #263750">حل شد</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">باز نشدن سایت‌ها</td><td style="padding:11px;border-bottom:1px solid #263750">سیستم نمی‌توانست نام سایت‌ها را به آدرس تبدیل کند (مشکل DNS)</td><td style="padding:11px;border-bottom:1px solid #263750">پاک کردن کش DNS و تنظیم DNS معتبر</td><td style="padding:11px;border-bottom:1px solid #263750">حل شد</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">پر بودن درایو C</td><td style="padding:11px;border-bottom:1px solid #263750">فایل‌های موقت و غیرضروری فضا را گرفته بودند</td><td style="padding:11px;border-bottom:1px solid #263750">پاک‌سازی با Disk Cleanup و حذف برنامه‌های بلااستفاده</td><td style="padding:11px;border-bottom:1px solid #263750">حل شد</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">هشدار درایور</td><td style="padding:11px;border-bottom:1px solid #263750">نرم‌افزار ارتباط ویندوز با یک قطعه مشکل داشت</td><td style="padding:11px;border-bottom:1px solid #263750">به‌روزرسانی یا نصب مجدد درایور رسمی</td><td style="padding:11px;border-bottom:1px solid #263750">حل شد</td></tr>
+<tr><td style="padding:11px">برنامه اجرا نمی‌شد</td><td style="padding:11px">برنامه یا فرایند قبلی آن دچار مشکل شده بود</td><td style="padding:11px">بستن فرایند معلق، اجرای مدیریتی و در صورت نیاز نصب مجدد</td><td style="padding:11px">حل شد</td></tr>
+</tbody></table>
+<p><b>توصیه‌های آینده:</b></p>
+<ul>
+<li>پاک‌سازی دوره‌ای دیسک (مثلاً ماهی یک بار) و نظارت بر فضای آزاد درایو C.</li>
+<li>محدود نگه‌داشتن برنامه‌های Startup و نصب نکردن نرم‌افزارهای غیرضروری.</li>
+<li>به‌روز نگه‌داشتن ویندوز و درایورها از منابع رسمی.</li>
+<li>تهیه نسخه پشتیبان منظم از داده‌های مهم.</li>
+<li>آموزش کوتاه به کاربر درباره نصب برنامه‌های مطمئن و گزارش سریع مشکلات.</li>
+</ul>
+</section>
+
+<section class="report-block">
+<h2>07 / جمع‌بندی و آموخته‌ها</h2>
+<p>این پروژه نشان داد که عیب‌یابی در کار واقعی، ترکیبی از انتخاب ابزار درست، تحلیل علت و اجرای ایمن راه‌حل است. در چند دقیقه می‌توان با Task Manager منبع کندی را یافت، با CMD مشکل DNS را از مشکل اتصال جدا کرد، با Device Manager وضعیت سخت‌افزار را سنجید و با Disk Cleanup فضا آزاد کرد.</p>
+<p>مهم‌ترین نکته‌ای که آموختم این است که بسیاری از مشکل‌ها به هم مرتبطند و رعایت اصول ایمنی (Restore Point، Backup از Registry و منبع رسمی درایور) به همان اندازه خود راه‌حل مهم است. همچنین نوشتن گزارش ساده و شفاف برای مدیر غیرفنی بخشی جدایی‌ناپذیر از کار یک IT Support است.</p>
+</section>
+
+<button class="print-btn" onclick="window.print()">چاپ / ذخیره این گزارش به PDF</button>
+</div></main></body></html>

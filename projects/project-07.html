@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission 07 | Storage Management</title><link rel="stylesheet" href="../css/style.css">
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.shot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+</style></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← بازگشت به داشبورد</a><a class="lang-switch" lang="en" hreflang="en" href="../en/projects/project-07.html">English</a>
+
+<section class="detail-hero"><span class="eyebrow">MISSION 07 / 10 · FIELD REPORT</span><h1>مدیریت فضای ذخیره‌سازی</h1><p>Storage Management — تحلیل فضای دیسک با TreeSize و پیشنهاد راهکارهای آزادسازی فضا.</p></section>
+<div class="meta-grid"><div class="meta">وضعیت<b>تمام شده</b>
+</div><div class="meta">تاریخ اجرا<b>1405/08/11</b></div>
+<div class="meta">ابزارها<b>TreeSize · Disk Cleanup · Storage Settings</b></div></div>
+
+<section class="report-block"><h2>01 / هدف مأموریت</h2>
+<p>هدف این پروژه، بررسی نحوه استفاده از فضای دیسک با ابزار TreeSize، شناسایی بزرگ‌ترین پوشه‌ها و فایل‌ها و پیدا کردن داده‌های غیرضروری است. هدف عملیاتی پروژه، آزادسازی حداقل <b>۵ گیگابایت</b> فضا بدون آسیب به فایل‌های مهم کاربر و فایل‌های سیستمی است. همچنین یاد می‌گیریم چگونه قبل از حذف، اهمیت و ریسک هر فایل را ارزیابی کنیم.</p>
+
+</section>
+
+<section class="report-block">
+<h2>02 / ابزارها و محیط اجرا</h2>
+<p><b>TreeSize (نسخه Free):</b> نمایش درختی اندازه پوشه‌ها و فایل‌ها، مرتب‌سازی بر اساس حجم، و نمایش بزرگ‌ترین فایل‌ها و توزیع انواع فایل.</p>
+<p><b>Disk Cleanup / Storage Settings:</b> ابزارهای داخلی ویندوز برای پاک‌سازی امن فایل‌های موقت، کش به‌روزرسانی و سطل بازیافت.</p>
+<p><b>محیط اجرا:</b> سیستم‌عامل Windows ۱۰/۱۱ ، اجرای TreeSize با دسترسی Administrator برای اسکن کامل درایو C: و درایوهای داده.</p>
+</section>
+
+<section class="report-block">
+<h2>03 / مراحل اجرا</h2>
+<ol>
+<li><b>ثبت وضعیت اولیه:</b> قبل از هر کاری، فضای آزاد و فضای مصرف‌شده درایو C: را در This PC یا Storage Settings یادداشت و از آن اسکرین‌شات می‌گیریم تا مقایسه قبل و بعد ممکن شود.</li>
+<li><b>نصب و اجرای TreeSize:</b> برنامه را نصب می‌کنیم و با گزینه <b>Run as administrator</b> اجرا می‌کنیم تا به همه پوشه‌ها دسترسی داشته باشد.</li>
+<li><b>اسکن درایو:</b> درایو C: را انتخاب و اسکن می‌کنیم. در نمای درختی، ستون Size را مرتب‌سازی می‌کنیم تا پرحجم‌ترین پوشه‌ها در بالا قرار بگیرند.</li>
+<li><b>بررسی عمیق‌تر:</b> وارد پوشه‌های پرحجم مانند <b>Users</b>، <b>Downloads</b>، <b>AppData\Local\Temp</b> و <b>Windows\SoftwareDistribution</b> می‌شویم و از تب‌های Largest Files و File Types برای یافتن فایل‌های بزرگ و انواع پرحجم (مثل ISO، ZIP، MP4) استفاده می‌کنیم.</li>
+<li><b>دسته‌بندی ریسک:</b> هر مورد را در یکی از سه دسته قرار می‌دهیم: <b>امن برای حذف</b> (فایل موقت، کش، سطل بازیافت)، <b>نیازمند بررسی</b> (فایل‌های دانلودشده، ویدیوها) و <b>دست نزنیم</b> (فایل‌های سیستمی و برنامه‌های نصب‌شده).</li>
+<li><b>پاک‌سازی:</b> فایل‌های موقت و کش را با Disk Cleanup و Storage Settings پاک می‌کنیم، نصب‌کننده‌ها و فایل‌های بی‌استفاده را بررسی و حذف می‌کنیم و سپس سطل بازیافت را خالی می‌کنیم. برنامه‌های بی‌استفاده را از Apps &amp; Features حذف می‌کنیم.</li>
+<li><b>اسکن مجدد و مقایسه:</b> TreeSize را دوباره اجرا می‌کنیم و فضای آزاد جدید را با وضعیت اولیه مقایسه می‌کنیم تا رسیدن به هدف ۵ گیگابایت تأیید شود.</li>
+</ol>
+</section>
+
+<section class="report-block">
+<h2>04 / یافته‌ها و تحلیل فنی</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right">منبع فضای اشغال‌شده</th><th style="padding:11px;text-align:right">حجم آزادشده</th><th style="padding:11px;text-align:right">سطح ریسک حذف</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">فایل‌های موقت (Temp)</td><td style="padding:11px;border-bottom:1px solid #263750">1.5 GB</td><td style="padding:11px;border-bottom:1px solid #263750">کم</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">کش به‌روزرسانی ویندوز</td><td style="padding:11px;border-bottom:1px solid #263750">1.9 GB</td><td style="padding:11px;border-bottom:1px solid #263750">کم (از طریق Disk Cleanup)</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">نصب‌کننده‌های قدیمی در Downloads</td><td style="padding:11px;border-bottom:1px solid #263750">1.7 GB</td><td style="padding:11px;border-bottom:1px solid #263750">متوسط (نیازمند بررسی)</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">سطل بازیافت</td><td style="padding:11px;border-bottom:1px solid #263750">12.5 GB</td><td style="padding:11px;border-bottom:1px solid #263750">کم</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">کش مرورگر</td><td style="padding:11px;border-bottom:1px solid #263750">2 GB</td><td style="padding:11px;border-bottom:1px solid #263750">کم</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">ویدیو و ISO بی‌استفاده</td><td style="padding:11px;border-bottom:1px solid #263750">0.9 GB</td><td style="padding:11px;border-bottom:1px solid #263750">متوسط (نیازمند بررسی)</td></tr>
+<tr style="color:#e5efff"><td style="padding:11px"><b>جمع کل</b></td><td style="padding:11px"><b>20.5 GB</b></td><td style="padding:11px">هدف ۵ گیگابایت محقق شد</td></tr>
+</tbody></table>
+<ul>
+<li>بیشترین حجم غیرضروری معمولاً در پوشه‌های Downloads، Temp و کش‌ها جمع می‌شود، نه در فایل‌های اصلی برنامه‌ها.</li>
+<li>نمای درختی TreeSize نشان می‌دهد که تعداد کمی از پوشه‌ها بخش بزرگی از فضا را اشغال می‌کنند؛ بنابراین بررسی چند پوشه پرحجم مؤثرتر از حذف تصادفی فایل‌های کوچک است.</li>
+<li>تب File Types نشان می‌دهد که فایل‌های ISO، ZIP و ویدیو معمولاً بیشترین سهم را در فایل‌های کاربر دارند.</li>
+<li>پاک‌سازی کش به‌روزرسانی ویندوز از طریق ابزار داخلی ویندوز انجام می‌شود، نه حذف دستی پوشه سیستمی، تا خطر آسیب به سیستم کم شود.</li>
+<li>فایل‌های حذف‌شده تا زمان خالی کردن سطل بازیافت فضا را آزاد نمی‌کنند، بنابراین این مرحله برای محاسبه فضای نهایی ضروری است.</li>
+</ul>
+</section>
+
+<section class="report-block">
+<h2>05 / مشکلات و راه‌حل‌ها</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right">مشکل</th><th style="padding:11px;text-align:right">راه‌حل پیشنهادی</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">اسکن ناقص یا نمایش Access Denied برای برخی پوشه‌ها</td><td style="padding:11px;border-bottom:1px solid #263750">اجرای TreeSize با دسترسی Administrator</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">ترس از حذف فایل مهم یا سیستمی</td><td style="padding:11px;border-bottom:1px solid #263750">حذف فقط موارد دسته «امن»، ابتدا انتقال به سطل بازیافت و دست نزدن به پوشه Windows و Program Files</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">فایل‌های Temp که در حال استفاده هستند و حذف نمی‌شوند</td><td style="padding:11px;border-bottom:1px solid #263750">بستن برنامه‌ها، رد کردن فایل‌های در حال استفاده یا ریستارت سیستم و تکرار پاک‌سازی</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">فضای آزاد پس از حذف تغییر نکرد</td><td style="padding:11px;border-bottom:1px solid #263750">خالی کردن سطل بازیافت و اسکن مجدد</td></tr>
+<tr><td style="padding:11px">نیاز به فایل‌های بزرگ حذف‌شده در آینده</td><td style="padding:11px">انتقال فایل‌های مهم و بزرگ به فلش، هارد اکسترنال یا فضای ابری به‌جای حذف قطعی</td></tr>
+</tbody></table>
+</section>
+
+<section class="report-block">
+<h2>06 / مستندات تصویری</h2>
+<div class="shot-grid">
+<figure class="evidence"><img src="../assets/screenshots/project7-treesize1.PNG" alt=""><figcaption>وضعیت فضای دیسک قبل از پاک‌سازی</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project7-treesize2.PNG" alt=""><figcaption>نتیجه اسکن درایو C: و نمای درختی پوشه‌ها در TreeSize</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project7-treesize3.PNG" alt=""><figcaption>شناسایی بزرگ‌ترین فایل‌ها و انواع فایل‌های پرحجم</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project7-treesize4.PNG" alt=""><figcaption>وضعیت فضای دیسک بعد از پاک‌سازی و مقایسه با حالت اولیه</figcaption></figure>
+</div>
+</section>
+
+<section class="report-block">
+<h2>07 / جمع‌بندی و آموخته‌ها</h2>
+<p>در این پروژه یاد گرفتم که برای مدیریت فضای ذخیره‌سازی، ابتدا باید «دید» که فضا کجا مصرف می‌شود و بعد تصمیم به حذف گرفت. TreeSize با نمایش درختی و مرتب‌سازی بر اساس حجم، این کار را سریع و دقیق می‌کند و نشان می‌دهد که چند پوشه پرحجم بیشترین سهم را دارند.</p>
+<p>همچنین آموختم که حذف باید بر اساس ریسک انجام شود: فایل‌های موقت و کش امن‌اند، فایل‌های کاربر نیازمند بررسی‌اند و فایل‌های سیستمی نباید دستی حذف شوند. گرفتن وضعیت قبل و بعد، ثبت مستندات تصویری و تهیه نسخه پشتیبان از فایل‌های مهم، از عادت‌های حرفه‌ای در کار پشتیبانی IT است که این پروژه به من آموخت.</p>
+</section>
+
+<button class="print-btn" onclick="window.print()">چاپ / ذخیره این گزارش به PDF</button>
+</div></main></body></html>

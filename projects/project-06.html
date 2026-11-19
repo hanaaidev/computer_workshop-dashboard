@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission 06 | Performance Analysis</title><link rel="stylesheet" href="../css/style.css">
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.shot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+.status{color:#8de0ae;font-weight:bold}
+.note{background:#17263b;border-right:3px solid #e6a84b;border-radius:7px;padding:12px;margin:12px 0;color:#d2c5a9;font-size:11px;line-height:2}
+.table-wrap{overflow-x:auto;margin-top:12px}
+.report-table{width:100%;border-collapse:collapse;font-size:11px;min-width:600px}
+.report-table th{background:#1c304a;color:#91bdff;padding:12px;text-align:right}
+.report-table td{background:#142238;color:#b1bfd1;padding:11px;border-bottom:1px solid #293b54;line-height:2;text-align:right}
+.report-table tr:nth-child(even) td{background:#17263b}
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+</style></head>
+
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← بازگشت به داشبورد</a><a class="lang-switch" lang="en" hreflang="en" href="../en/projects/project-06.html">English</a>
+<section class="detail-hero"><span class="eyebrow">MISSION 06 / 10 · FIELD REPORT</span><h1>تحلیل مصرف منابع سیستم</h1><p>Performance Analysis — ثبت و تحلیل مصرف CPU با Performance Monitor و ارائه نمودار.</p></section>
+<div class="meta-grid"><div class="meta">وضعیت<b>تمام شده</b></div>
+<div class="meta">تاریخ اجرا<b>1405/08/07</b></div>
+<div class="meta">ابزارها<b>Performance Monitor · Data Collector Set</b></div></div>
+
+<section class="report-block">
+<h2>01 / هدف مأموریت</h2>
+<p>هدف این پروژه، ثبت مصرف پردازنده (CPU) در بازه‌ی یک ساعت و تحلیل نمودار آن است. با این کار الگوی مصرف CPU، زمان و شدت اوج‌ها، سهم کد کاربر و کد کرنل در مصرف و وجود یا نبود گلوگاه پردازنده مشخص می‌شود. تفاوت این پروژه با بررسی لحظه‌ای در Task Manager این است که داده‌ها در یک فایل لاگ ذخیره می‌شوند و بعداً قابل مرور و تحلیل‌اند.</p>
+</section>
+
+<section class="report-block">
+<h2>02 / ابزارها و محیط اجرا</h2>
+<p><b>Performance Monitor (perfmon):</b> ابزار داخلی ویندوز برای نمایش نمودار شمارنده‌های عملکرد، هم به‌صورت زنده و هم از روی فایل لاگ.</p>
+<p><b>Data Collector Set:</b> قابلیت ثبت خودکار شمارنده‌ها در فایل لاگ (فرمت Binary با پسوند blg) با فاصله‌ی نمونه‌برداری و زمان پایان مشخص.</p>
+<p><b>شمارنده‌های ثبت‌شده:</b></p>
+<ul>
+<li><b>Processor → % Processor Time (_Total):</b> درصد کل مصرف پردازنده.</li>
+<li><b>Processor → % User Time (_Total):</b> سهم مصرف مربوط به برنامه‌های کاربر.</li>
+<li><b>Processor → % Privileged Time (_Total):</b> سهم مصرف مربوط به کرنل و درایورها.</li>
+<li><b>System → Processor Queue Length:</b> تعداد رشته‌های منتظر نوبت پردازنده؛ نشانه‌ی گلوگاه CPU.</li>
+</ul>
+<p><b>تنظیمات ثبت:</b> فاصله‌ی نمونه‌برداری ۵ ثانیه (حدود ۷۲۰ نمونه در یک ساعت) و مدت ثبت ۱ ساعت.</p>
+<p><b>مشخصات سیستم:</b> <span class="fill"> Intel(R) Core(TM) i7-6600U CPU - 8.00 GB (7.41 GB usable) - Windows 10 pro </span></p>
+</section>
+
+<section class="report-block">
+<h2>03 / مراحل اجرا</h2>
+<ol>
+<li><b>اجرای ابزار:</b> با فشردن <b>Win + R</b> و وارد کردن عبارت <b>perfmon</b>، Performance Monitor را باز می‌کنیم.</li>
+<li><b>آشنایی با نمای زنده:</b> در بخش <b>Monitoring Tools ← Performance Monitor</b> با کلید <b>Ctrl + N</b> شمارنده‌ی <b>Processor ← % Processor Time</b> را اضافه می‌کنیم تا نمودار زنده را ببینیم. این نمای زنده فقط چند دقیقه‌ی اخیر را نشان می‌دهد و ذخیره نمی‌کند.</li>
+<li><b>ساخت Data Collector Set:</b> در <b>Data Collector Sets ← User Defined</b> راست‌کلیک کرده و یک Data Collector Set جدید می‌سازیم (ساخت دستی، نوع Performance Counter).</li>
+<li><b>افزودن شمارنده‌ها:</b> چهار شمارنده‌ی بخش قبل را با گزینه‌ی Add اضافه می‌کنیم و <b>Sample interval</b> را روی <b>5</b> و واحد را روی <b>Seconds</b> می‌گذاریم.</li>
+<li><b>تعیین زمان پایان:</b> در Properties مجموعه، تب <b>Stop Condition</b>، گزینه‌ی <b>Overall duration</b> را روی <b>1 Hours</b> تنظیم می‌کنیم تا ثبت به‌صورت خودکار پس از یک ساعت متوقف شود.</li>
+<li><b>شروع ثبت:</b> مجموعه را با گزینه‌ی <b>Start</b> اجرا می‌کنیم و یک ساعت سیستم را به‌صورت عادی استفاده می‌کنیم (از حدود ساعت ۶:۰۰ تا ۷:۰۰ بعدازظهر).</li>
+<li><b>بررسی نتیجه:</b> پس از پایان ثبت، فایل لاگ را در Performance Monitor باز می‌کنیم، نمودار و مقادیر Average، Minimum و Maximum را بررسی می‌کنیم و تصویر می‌گیریم.</li>
+</ol>
+</section>
+
+<section class="report-block">
+<h2>04 / یافته‌ها و تحلیل فنی</h2>
+<p>مقادیر جدول زیر به‌صورت تقریبی از روی نمودار یک‌ساعته خوانده شده‌اند و برای اعداد دقیق باید Average، Minimum و Maximum هر شمارنده از Performance Monitor مشاهده شود.</p>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right">بازه‌ی زمانی</th><th style="padding:11px;text-align:right">% Processor Time (تقریبی)</th><th style="padding:11px;text-align:right">User / Privileged (تقریبی)</th><th style="padding:11px;text-align:right">وضعیت</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">۶:۰۰ تا حدود ۶:۱۵</td><td style="padding:11px;border-bottom:1px solid #263750">زیر ۱۰٪ با نوسان تا حدود ۲۰٪</td><td style="padding:11px;border-bottom:1px solid #263750">هر دو پایین</td><td style="padding:11px;border-bottom:1px solid #263750">مصرف پایین و ناپایدار</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">حدود ۶:۱۵ تا ۶:۵۳</td><td style="padding:11px;border-bottom:1px solid #263750">حدود ۱۰ تا ۱۳٪ با اوج‌های کوتاه تا حدود ۳۵ تا ۴۶٪</td><td style="padding:11px;border-bottom:1px solid #263750">حدود ۸ تا ۹٪ / حدود ۳ تا ۴٪</td><td style="padding:11px;border-bottom:1px solid #263750">سطح پایدار با اوج‌های دوره‌ای</td></tr>
+<tr><td style="padding:11px">حدود ۶:۵۳ تا ۷:۰۰</td><td style="padding:11px">حدود ۴۵ تا ۵۰٪</td><td style="padding:11px">حدود ۲۵ تا ۳۰٪ / حدود ۲۰ تا ۲۵٪</td><td style="padding:11px">جهش و ماندگاری روی سطح بالاتر</td></tr>
+</tbody></table>
+<p><b>آمار کل ثبت:</b> Average = <span class="fill">14.88٪</span> · Minimum = <span class="fill">0٪</span> · Maximum = <span class="fill">51٪</span> (برای % Processor Time)</p>
+<ul>
+<li>مجموع % User Time و % Privileged Time تقریباً برابر % Processor Time است (مثلاً حدود ۸ + ۴ ≈ ۱۲ در بازه‌ی دوم)، که با تعریف این شمارنده‌ها سازگار است.</li>
+<li>در بازه‌ی آخر، علاوه بر User Time، سهم Privileged Time هم به‌طور محسوسی بالا رفته و تقریباً نصف مصرف مربوط به کد کرنل و درایورهاست. این الگو معمولاً با فعالیت‌هایی مانند عملیات سنگین فایل و شبکه، اسکن آنتی‌ویروس یا آپدیت همراه است.</li>
+<li>علت جهش حدود ساعت ۶:۱۵ و ۶:۵۳: <span class="fill">مشخص نیست</span></li>
+<li>خط Processor Queue Length فقط در چند لحظه‌ی کوتاه بالا می‌رود و بیشتر زمان نزدیک صفر است. چون صف پایداری وجود ندارد، گلوگاه CPU مشاهده نشد. Scale این شمارنده روی نمودار ۱۰۰ است و ارتفاع خط با مقدار واقعی تفاوت دارد؛ Maximum واقعی: <span class="fill">1.000</span></li>
+<li>اوج‌های تیز بازه‌ی دوم با فاصله‌ی چند دقیقه تکرار می‌شوند و کوتاه‌اند، که با کارهای دوره‌ای پس‌زمینه سازگار است. منبع دقیق آن‌ها از روی این نمودار مشخص نمی‌شود و نیاز به بررسی در Task Manager یا Resource Monitor دارد.</li>
+</ul>
+</section>
+
+<section class="report-block">
+<h2>05 / مشکلات و راه‌حل‌ها</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right">مشکل</th><th style="padding:11px;text-align:right">راه‌حل</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">نمودار خالی بود و مقادیر Last/Average/Maximum به‌صورت خط‌تیره نمایش داده می‌شدند</td><td style="padding:11px;border-bottom:1px solid #263750">هیچ شمارنده‌ای اضافه نشده بود؛ با کلید Ctrl + N شمارنده‌ها اضافه شدند</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">اجرای Data Collector Set نموداری نشان نمی‌داد</td><td style="padding:11px;border-bottom:1px solid #263750">این ابزار فقط داده را در لاگ ذخیره می‌کند؛ نمودار پس از پایان ثبت از طریق Reports یا باز کردن فایل لاگ دیده می‌شود. شمارنده‌های مجموعه هم جدا از شمارنده‌های نمای زنده هستند</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">نمای زنده فقط حدود یک و نیم دقیقه را نشان می‌داد</td><td style="padding:11px;border-bottom:1px solid #263750">برای ثبت یک ساعته از Data Collector Set با Stop Condition استفاده شد</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">شمارنده‌ی % Processor Time دو بار اضافه شده بود (از Processor و از Processor Information) و خط‌ها روی هم می‌افتادند</td><td style="padding:11px;border-bottom:1px solid #263750">نسخه‌ی تکراری حذف شد و فقط شمارنده‌ی آبجکت Processor نگه داشته شد</td></tr>
+<tr><td style="padding:11px">مقدار Processor Queue Length با Scale دیگری رسم می‌شد و ارتفاع خط با مقدار واقعی فرق داشت</td><td style="padding:11px">با توجه به Scale شمارنده در تفسیر نمودار، و برای عدد دقیق از فیلدهای Average و Maximum استفاده شد</td></tr>
+</tbody></table>
+</section>
+
+<section class="report-block">
+<h2>06 / تصاویر مرحله به مرحله</h2>
+<div class="shot-grid">
+<figure class="evidence"><img src="../assets/screenshots/project06-DataCollectorSet3.PNG" alt=""><figcaption>افزودن شمارنده‌ها به Data Collector Set و تنظیم فاصله‌ی نمونه‌برداری روی ۵ ثانیه</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project06-add.PNG" alt=""><figcaption>شمارنده‌های اضافه‌شده‌ی آبجکت Processor با instance برابر _Total</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project6-stopcondition.PNG" alt=""><figcaption>تنظیم Stop Condition روی مدت ۱ ساعت برای توقف خودکار ثبت</figcaption></figure>
+<figure class="evidence wide"><img src="../assets/screenshots/project06-perfmon.PNG" alt=""><figcaption>نمودار مصرف CPU طی یک ساعت (۶:۰۰ تا ۷:۰۰) با شمارنده‌های Processor Time، User Time، Privileged Time و Processor Queue Length</figcaption></figure>
+</div>
+</section>
+
+<section class="report-block">
+<h2>07 / جمع‌بندی و آموخته‌ها</h2>
+<p>در این پروژه مصرف CPU به‌مدت یک ساعت با Data Collector Set ثبت و در Performance Monitor بررسی شد. مصرف در بخش بزرگی از زمان پایین یا متوسط بود، با اوج‌های کوتاه و یک جهش پایدار در دقایق پایانی که سهم کد کرنل در آن بالا رفت. صف پردازنده پایدار نبود و گلوگاه CPU دیده نشد.</p>
+<p>مهم‌ترین آموخته‌ها: تفاوت نمای زنده با ثبت بلندمدت، ساخت و زمان‌بندی Data Collector Set، انتخاب فاصله‌ی نمونه‌برداری مناسب، تفسیر شمارنده‌های User Time، Privileged Time و Processor Queue Length، و توجه به Scale شمارنده‌ها هنگام خواندن نمودار. این مهارت‌ها در عیب‌یابی سیستم‌های کند و گزارش‌دهی مستند کاربرد مستقیم دارد.</p>
+</section>
+
+
+<button class="print-btn" onclick="window.print()">چاپ / ذخیره این گزارش به PDF</button>
+</div></main></body></html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission 03 | Network Troubleshooting</title><link rel="stylesheet" href="../css/style.css">
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.step-fig{max-width:620px;margin:10px 0 18px}
+
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+.status{color:#8de0ae;font-weight:bold}
+.note{background:#17263b;border-right:3px solid #e6a84b;border-radius:7px;padding:12px;margin:12px 0;color:#d2c5a9;font-size:11px;line-height:2}
+.table-wrap{overflow-x:auto;margin-top:12px}
+.report-table{width:100%;border-collapse:collapse;font-size:11px;min-width:600px}
+.report-table th{background:#1c304a;color:#91bdff;padding:12px;text-align:right}
+.report-table td{background:#142238;color:#b1bfd1;padding:11px;border-bottom:1px solid #293b54;line-height:2;text-align:right}
+.report-table tr:nth-child(even) td{background:#17263b}
+.command {
+    display: block;
+    direction: ltr;
+    text-align: left;
+    background: #1e1e1e;
+    color: #4ade80;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 15px;
+    padding: 10px 16px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border-right: 4px solid #2b4c9b;
+    overflow-x: auto;
+  }
+.command::before {
+    content: "C:\\> ";
+    color: #9ca3af;
+  }
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+</style>
+</head>
+
+
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← بازگشت به داشبورد</a><a class="lang-switch" lang="en" hreflang="en" href="../en/projects/project-03.html">English</a>
+<section class="detail-hero"><span class="eyebrow">MISSION 03 / 10 · FIELD REPORT</span><h1>عیب‌یابی اتصال اینترنت</h1><p>Network Troubleshooting — اجرای مراحل عیب‌یابی شبکه در ویندوز و ثبت نتیجه هر مرحله.</p></section>
+<div class="meta-grid"><div class="meta">وضعیت<b>تمام شده</b></div>
+<div class="meta">تاریخ اجرا<b>1405/07/24</b></div>
+<div class="meta">ابزارها<b>CMD · ipconfig · ping · nslookup · tracert</b></div></div>
+<section class="report-block"><h2>01 / هدف مأموریت</h2>
+    <p>در این پروژه، شناسایی علت قطع شدن اتصال اینترنت یک کامپیوتر
+با استفاده از روش عیب‌یابی مرحله‌به‌مرحله است.
+در این سناریو، کاربری تماس گرفته و اعلام می‌کند که هیچ‌کدام
+از وب‌سایت‌ها برای او باز نمی‌شوند. وظیفه تکنسین IT این است
+که بدون حدس زدن و با اجرای دستورهای مشخص، محل احتمالی مشکل
+را شناسایی کند.</p></section>
+
+<section class="report-block"><h2>02 / ابزارها و محیط اجرا</h2>
+<p> 
+    <div class="row">
+    <span class="label">محیط:</span>
+    <span>ویندوز، Command Prompt (<code>cmd</code>)</span>
+  </div>
+
+  <div class="row">
+    <span class="label">دستورها:</span>
+    <div class="cmds">
+      <code>ipconfig</code>
+      <code>ping</code>
+      <code>nslookup</code>
+      <code>tracert</code>
+      <code>ipconfig /flushdns</code>
+    </div>
+  </div>
+
+</p></section>
+<section class="report-block">
+<h2>03 / مراحل انجام کار</h2>
+
+<p>
+در این سناریو، عیب‌یابی از بررسی وضعیت شبکه خود کامپیوتر
+شروع شده و به‌تدریج تا بررسی ارتباط با اینترنت ادامه پیدا می‌کند.
+</p>
+
+<div class="step-title">مرحله اول: بررسی آدرس IP</div>
+<p>
+ابتدا دستور ipconfig را در Command Prompt اجرا می‌کنیم
+تا اطلاعات مربوط به آداپتور شبکه نمایش داده شود.
+</p>
+<div class="command">ipconfig</div>
+<p>
+اگر آدرس IPv4 با عدد 169.254 شروع شود، سیستم احتمالاً
+نتوانسته از DHCP آدرس IP دریافت کند. در این حالت باید
+کابل شبکه، اتصال Wi-Fi و روتر بررسی شوند.
+</p>
+<div class="step-title">مرحله دوم: بررسی Default Gateway</div>
+<p>
+در خروجی دستور قبلی، مقدار Default Gateway را پیدا می‌کنیم.
+این آدرس معمولاً مربوط به روتر یا دروازه پیش‌فرض شبکه است
+و برای بررسی ارتباط کامپیوتر با روتر به آن نیاز داریم.
+</p>
+<div class="command">ipconfig</div>
+
+<div class="step-title">مرحله سوم: تست Loopback</div>
+<p>
+با اجرای دستور زیر، عملکرد ارتباط داخلی TCP/IP سیستم را
+بررسی می‌کنیم. این تست نشان می‌دهد که سیستم می‌تواند
+با آدرس Loopback خودش ارتباط برقرار کند.
+</p>
+<div class="command">ping 127.0.0.1</div>
+<p>
+دریافت پاسخ موفق نشان‌دهنده عملکرد صحیح ارتباط Loopback است؛
+اما به‌تنهایی سلامت کامل کارت شبکه فیزیکی یا اتصال اینترنت
+را ثابت نمی‌کند.
+</p>
+
+<div class="step-title">مرحله چهارم: Ping کردن Gateway</div>
+<p>
+در این مرحله آدرس Gateway به‌دست‌آمده از مرحله دوم را
+جایگزین عبارت Gateway می‌کنیم.
+</p>
+<div class="command">ping 192.168.1.1</div>
+<p>
+اگر پاسخی دریافت نشود، باید ارتباط بین سیستم و روتر
+از نظر کابل شبکه، Wi-Fi یا وضعیت خود روتر بررسی شود.
+</p>
+<div class="step-title">مرحله پنجم: بررسی DNS</div>
+<p>
+برای بررسی اینکه آیا سیستم می‌تواند نام دامنه را به
+آدرس IP تبدیل کند یا خیر، دستور زیر را اجرا می‌کنیم.
+</p>
+<div class="command">nslookup google.com</div>
+<p>
+اگر آدرس IP مربوط به دامنه برگردانده شود، فرایند
+تبدیل نام دامنه به IP انجام شده است. در صورت بروز خطا،
+سرویس یا تنظیمات DNS نیاز به بررسی دارند.
+</p>
+
+<div class="step-title">مرحله ششم: Ping کردن یک دامنه اینترنتی</div>
+<p>
+در این مرحله یک دامنه اینترنتی را Ping می‌کنیم
+تا امکان برقراری ارتباط با مقصد بررسی شود.
+</p>
+<div class="command">ping google.com</div>
+<p>
+اگر دستور موفق باشد اما وب‌سایت در مرورگر باز نشود،
+احتمال دارد مشکل از مرورگر، تنظیمات فایروال یا نحوه
+دسترسی مرورگر به اینترنت باشد.
+</p>
+<div class="step-title">مرحله هفتم: بررسی مسیر ارتباطی</div>
+<p>
+در آخر، برای مشاهده مسیر ارتباطی بسته‌ها تا مقصد
+از دستور tracert استفاده می‌کنیم.
+</p>
+<div class="command">tracert google.com</div>
+<p>
+این دستور مسیر عبور بسته‌ها از روترهای مختلف تا مقصد را
+نمایش می‌دهد. با بررسی خروجی می‌توان مشخص کرد که در کدام
+بخش از مسیر پاسخ دریافت نمی‌شود.
+</p>
+<div class="note">
+⚠️ توجه: نمایش ستاره (*) در یک Hop لزوماً به معنی قطعی مسیر
+نیست؛ ممکن است روتر به درخواست‌های ICMP پاسخ ندهد.
+</div>
+
+</section>
+<section class="report-block"><h2>04 / تصاویر اجرا</h2><p>
+در این بخش تصاویر واقعی اجرای دستورات در Command Prompt
+قرار می‌گیرند. هر تصویر مربوط به یکی از مراحل
+عیب‌یابی می باشد.
+</p>
+<div class="evidence-grid">
+<figure class="evidence"><img src="../assets/screenshots/project03-ipconfig.PNG" alt=""><figcaption>ipconfig-نمایش ادرس IPv4 واطلاعات اداپتور  </figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project03-gateway.PNG" alt=""><figcaption>بررسی Gateway</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project03-pnigLoopback.PNG" alt=""><figcaption>نتیجه Pnig Loopback</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project03-pnigGateway.PNG" alt=""><figcaption>نتیجه  Ping Gateway- بررسی ارتباط با روتر</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project03-nslookup.PNG" alt=""><figcaption>خروجی nslookup</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project03-pnigGoogle.PNG" alt=""><figcaption>نتیجه ping Google</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project03-tracert.PNG" alt=""><figcaption>خروجی tracert</figcaption></figure>
+</div>
+</section>
+
+<section class="report-block"><h2>05 / یافته‌ها و تحلیل فنی</h2>
+
+<div class="table-wrap">
+<table class="report-table">
+<thead>
+<tr>
+<th>مرحله</th>
+<th>نتیجه نمونه</th>
+<th>تحلیل فنی</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ipconfig</td>
+<td>192.168.1.106</td>
+<td>آدرس IP معتبر دریافت شده و آدرس از نوع APIPA نیست.</td>
+</tr>
+<tr>
+<td>Default Gateway</td>
+<td>192.168.1.1</td>
+<td>آدرس روتر یا دروازه پیش‌فرض شبکه مشخص شد.</td>
+</tr>
+<tr>
+<td>ping 127.0.0.1</td>
+<td class="status">موفق</td>
+<td>ارتباط داخلی Loopback سیستم برقرار است.</td>
+</tr>
+<tr>
+<td>ping Gateway</td>
+<td class="status">موفق</td>
+<td>ارتباط سیستم با روتر برقرار است.</td>
+</tr>
+<tr>
+<td>nslookup google.com</td>
+<td class="status">IP برگشت داده نشد</td>
+<td>مشکل از DNS است نه خود اینترنت</td>
+</tr>
+<tr>
+<td>ping google.com</td>
+<td class="status">موفق</td>
+<td>ارتباط با مقصد از طریق Ping برقرار شده است.</td>
+</tr>
+<tr>
+<td>tracert google.com</td>
+<td>18 Hop تا مقصد</td>
+<td>مسیر نمونه تا مقصد نمایش داده شده است.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>
+با توجه به نتایج نمونه، تمام تست‌ها موفق بوده‌اند و نشانه‌ای
+از قطعی ارتباط در مراحل بررسی‌شده مشاهده نمی‌شود.
+بنابراین در این سناریو اتصال اینترنت برقرار است.
+</p>
+
+<p>
+اگر در یکی از مراحل پاسخ مورد انتظار دریافت نشود،
+باید همان بخش به‌عنوان محدوده احتمالی مشکل بررسی شود.
+البته برخی خطاها، مانند عدم پاسخ به Ping، ممکن است
+ناشی از محدودیت‌های فایروال یا مسدود بودن ICMP باشند.
+</p>
+</section>
+<section class="report-block"><h2>06 / مشکلات و راه‌حل‌ها</h2>
+<div class="table-wrap">
+<table class="report-table">
+<thead>
+<tr>
+<th>مشکل مشاهده‌شده</th>
+<th>علت احتمالی</th>
+<th>راه‌حل پیشنهادی</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP شروع‌شده با 169.254</td>
+<td>عدم دریافت آدرس از DHCP</td>
+<td>بررسی کابل، Wi-Fi و روتر</td>
+</tr>
+<tr>
+<td>Ping به Gateway بی‌پاسخ</td>
+<td>مشکل ارتباط بین سیستم و روتر</td>
+<td>بررسی کابل شبکه، Wi-Fi و وضعیت روتر</td>
+</tr>
+<tr>
+<td>nslookup بدون پاسخ</td>
+<td>مشکل سرویس یا تنظیمات DNS</td>
+<td>اجرای ipconfig /flushdns برای پاک کردن کش DNS</td>
+</tr>
+<tr>
+<td>Ping موفق ولی سایت باز نمی‌شود</td>
+<td>احتمال مشکل مرورگر یا فایروال</td>
+<td>بررسی مرورگر و تنظیمات فایروال</td>
+</tr>
+<tr>
+<td>عدم دریافت پاسخ در tracert</td>
+<td>احتمال محدودیت پاسخ‌دهی یکی از روترها یا مشکل مسیر</td>
+<td>بررسی Hopهای بعدی و در صورت تأیید مشکل مسیر، گزارش به ISP</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="note">
+⚠️ دو مورد زیر در متن جزوه به‌عنوان مراحل اصلی ذکر نشده‌اند
+و به‌عنوان پیشنهاد تکمیلی در این گزارش آمده‌اند:
+<br>
+۱. تغییر DNS به آدرسی مانند 8.8.8.8 در صورت نیاز.
+<br>
+۲. گزارش مشکل مسیر ارتباطی به شرکت ارائه‌دهنده اینترنت (ISP).
+</div>
+
+<p>
+دستور ipconfig /flushdns با پاک کردن کش DNS سیستم،
+امکان حذف اطلاعات قدیمی یا نامعتبر ذخیره‌شده در این کش را
+فراهم می‌کند. البته این دستور به‌تنهایی تمام مشکلات DNS
+را برطرف نمی‌کند.
+</p>
+<div class="command">ipconfig /flushdns</div>
+</section>
+
+<section class="report-block"><h2>07 / جمع‌بندی و آموخته‌ها</h2>
+<p>
+در این پروژه با روش مرحله‌به‌مرحله عیب‌یابی اتصال اینترنت
+آشنا شدم و یاد گرفتم چگونه با استفاده از ابزارهای داخلی
+ویندوز، محدوده احتمالی مشکل را شناسایی کنم.
+</p>
+
+<p>مهم‌ترین آموخته‌های این پروژه:</p>
+
+<ul>
+<li>
+عیب‌یابی شبکه باید از نزدیک‌ترین بخش، یعنی سیستم خود کاربر،
+شروع شده و به‌تدریج به سمت روتر و اینترنت ادامه پیدا کند.
+</li>
+<li>
+دستور ipconfig اطلاعات مربوط به آدرس IP و Gateway را نمایش می‌دهد.
+</li>
+<li>
+دستور ping برای بررسی برقراری ارتباط با یک مقصد مشخص استفاده می‌شود.
+</li>
+<li>
+دستور nslookup عملکرد تبدیل نام دامنه به IP را بررسی می‌کند.
+</li>
+<li>
+دستور tracert مسیر عبور بسته‌ها تا مقصد را نمایش می‌دهد.
+</li>
+<li>
+دستور ipconfig /flushdns کش DNS سیستم را پاک می‌کند.
+</li>
+</ul>
+
+<p>
+در نهایت متوجه شدم که برای عیب‌یابی شبکه نباید صرفاً
+به حدس و آزمایش تصادفی متکی بود؛ بلکه هر دستور اطلاعات
+مشخصی در اختیار تکنسین قرار می‌دهد و به محدود کردن
+محدوده مشکل کمک می‌کند.
+</p>
+
+</section>
+<button class="print-btn" onclick="window.print()">چاپ / ذخیره این گزارش به PDF</button>
+</div></main></body></html>

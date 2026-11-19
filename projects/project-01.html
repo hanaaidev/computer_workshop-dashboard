@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission 01 | System Information</title><link rel="stylesheet" href="../css/style.css">
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.report-block ol{padding-right:22px}.evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.placeholder{min-height:130px;display:grid;place-items:center;text-align:center;border:1px dashed #526781;border-radius:8px;color:#8194ad;font-size:11px;padding:15px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+@media(max-width:650px){.meta-grid,.evidence-grid{grid-template-columns:1fr}}@media print{.back-link,.print-btn{display:none}.detail-hero,.report-block{break-inside:avoid}}
+</style></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← بازگشت به داشبورد</a><a class="lang-switch" lang="en" hreflang="en" href="../en/projects/project-01.html">English</a>
+<section class="detail-hero"><span class="eyebrow">MISSION 01 / 10 · FIELD REPORT</span><h1>گزارش مشخصات کامل کامپیوتر</h1><p>System Information — بررسی مشخصات سخت‌افزاری و نرم‌افزاری با ابزارهای داخلی ویندوز</p></section>
+<div class="meta-grid"><div class="meta">وضعیت<b>تکمیل شده</b></div><div class="meta">ابزارها<b>dxdiag · systeminfo · msinfo32</b></div><div class="meta">تاریخ اجرا<b>1405/07/10</b></div></div>
+<section class="report-block"><h2>01 / هدف مأموریت</h2><p>هدف این پروژه، شناسایی و ثبت مشخصات اصلی سخت‌افزاری و نرم‌افزاری کامپیوتر با استفاده از سه ابزار داخلی ویندوز است.</p></section>
+<section class="report-block"><h2>02 / ابزار اول: DXDIAG</h2><p>این ابزار اطلاعات پردازنده، حافظه، نمایشگر، کارت گرافیک، صدا و نسخه DirectX را نمایش می‌دهد.</p><ol><li><b>Win + R</b> را بزن، عبارت <b>dxdiag</b> را وارد کن و Enter بزن.</li><li>در تب <b>System</b> مشخصات کلی و در تب <b>Display</b> اطلاعات کارت گرافیک را بررسی کن.</li><li>در صورت نیاز تب‌های <b>Sound</b> و <b>Input</b> را هم بررسی کن.</li><li>برای ذخیره گزارش، روی <b>Save All Information</b> کلیک کن.</li></ol>
+    
+<div class="evidence-grid"><figure class="evidence"><img
+    src="../assets/screenshots/project01-dxdiag-system.PNG"
+    alt="DXDIAG System"
+/><figcaption>تصویر ۱ ـ اطلاعات کلی سیستم در DXDIAG</figcaption></figure><figure class="evidence"><img
+    src="../assets/screenshots/project01-dxdiag-display.PNG"
+    alt="DXDIAG display"
+/><figcaption>تصویر ۲ ـ مشخصات نمایشگر و کارت گرافیک</figcaption></figure>
+</div>
+
+</section>
+<section class="report-block"><h2>03 / ابزار دوم: SYSTEMINFO</h2><p>این دستور اطلاعاتی مانند نسخه ویندوز، مدل سیستم، پردازنده، BIOS، RAM و کارت‌های شبکه را به‌صورت متنی نمایش می‌دهد.</p><ol><li>با <b>Win + R</b> پنجره Run را باز کن، <b>cmd</b> را بنویس و Enter بزن.</li><li>دستور <b>systeminfo</b> را اجرا کن و منتظر نمایش اطلاعات بمان.</li><li>برای ذخیره خروجی در درایو C، دستور زیر را اجرا کن:</li></ol><pre dir="ltr"><code>systeminfo &gt; C:\systeminfo.txt</code></pre><figure class="evidence"><img
+    src="../assets/screenshots/project01-systeminfo.PNG"
+    alt="DXDIAG System"
+/><figcaption>تصویر ۳ ـ خروجی دستور SYSTEMINFO</figcaption></figure></section>
+<section class="report-block"><h2>04 / ابزار سوم: MSINFO32</h2><p>این ابزار مشخصات سیستم را به‌صورت گرافیکی و دسته‌بندی‌شده نمایش می‌دهد.</p><ol><li><b>Win + R</b> را بزن، عبارت <b>msinfo32</b> را وارد کن و Enter بزن.</li><li>در بخش <b>System Summary</b> اطلاعات کلی مانند ویندوز، پردازنده، BIOS و RAM را ببین.</li><li>در صورت نیاز بخش‌های <b>Hardware Resources</b>، <b>Components</b> و <b>Software Environment</b> را بررسی کن.</li><li>برای ذخیره گزارش، از منوی <b>File</b> گزینه <b>Export</b> را انتخاب کن.</li></ol><figure class="evidence"><img
+    src="../assets/screenshots/project01-msinfo.PNG"
+    alt="DXDIAG System"
+/><figcaption>تصویر ۴ ـ پنجره System Information</figcaption></figure></section>
+<section class="report-block"><h2>05 / جمع‌بندی و یافته‌ها</h2><ul><li>پردازنده (CPU):  Intel(R) Core(TM) i7-6600U CPU</li><li>حافظه RAM: 8192MB </li><li>کارت گرافیک (GPU): Intel(R) HD Graphics 520</li><li>نسخه سیستم‌عامل: Windows 10 Pro 64-bit </li></ul></section>
+<button class="print-btn" onclick="window.print()">چاپ / ذخیره این گزارش به PDF</button>
+</div></main></body></html>

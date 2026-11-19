@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission 09 | Batch Automation</title><link rel="stylesheet" href="../css/style.css">
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.code-block{direction:ltr;text-align:left;background:#0b1422;border:1px solid #263750;border-radius:10px;padding:14px;margin:12px 0;overflow-x:auto;font-family:Consolas,"Courier New",monospace;font-size:11.5px;line-height:1.7;color:#c9d8ec;white-space:pre}
+.cmd{direction:ltr;unicode-bidi:embed;font-family:Consolas,"Courier New",monospace;color:#e5efff}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.shot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+</style></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← بازگشت به داشبورد</a><a class="lang-switch" lang="en" hreflang="en" href="../en/projects/project-09.html">English</a>
+
+<section class="detail-hero"><span class="eyebrow">MISSION 09 / 10 · FIELD REPORT</span><h1>ساخت اسکریپت Batch ساده</h1><p>Batch Automation — ساخت فایل bat برای اجرای خودکار چند دستور CMD و نمایش اطلاعات سیستم.
+</p></section>
+
+
+<div class="meta-grid"><div class="meta">وضعیت<b>انجام شده</b></div>
+<div class="meta">تاریخ اجرا<b>1405/08/27</b></div><div class="meta">ابزارها<b>Notepad · Command Prompt (CMD) · فایل .bat</b></div></div>
+
+
+<section class="report-block"><h2>01 / هدف مأموریت</h2>
+<p>هدف این پروژه، ساخت یک فایل دسته‌ای (Batch File با پسوند <span class="cmd">.bat</span>) است که با یک بار اجرا، مجموعه‌ای از دستورات CMD را به‌صورت خودکار پشت سر هم اجرا کند و اطلاعات مهم سیستم را نمایش دهد. این اطلاعات شامل نام کامپیوتر و کاربر، نسخه سیستم‌عامل، پردازنده و حافظه RAM، وضعیت درایوهای دیسک، تنظیمات شبکه و پرمصرف‌ترین فرایندها است. خروجی همچنین در یک فایل متنی ذخیره می‌شود تا بتوان از آن به‌عنوان گزارش استفاده کرد. این اسکریپت جایگزین اجرای دستی و جداگانه‌ی هر دستور می‌شود و در کارهای پشتیبانی IT صرفه‌جویی زمانی ایجاد می‌کند.</p>
+</section>
+
+
+<section class="report-block">
+<h2>02 / ابزارها و محیط اجرا</h2>
+<p><b>Notepad:</b> ویرایشگر متن برای نوشتن کد اسکریپت و ذخیره آن با پسوند <span class="cmd">.bat</span> (با گزینه Save as type = All files).</p>
+<p><b>Command Prompt (CMD):</b> مفسر دستورات ویندوز که فایل .bat را اجرا می‌کند.</p>
+<p><b>محیط اجرا:</b> ویندوز ۱۰ یا ۱۱. دستورهای استفاده‌شده شامل <span class="cmd">hostname</span>، <span class="cmd">whoami</span>، <span class="cmd">ver</span>، <span class="cmd">systeminfo</span>، <span class="cmd">ipconfig</span>، <span class="cmd">ping</span>، <span class="cmd">findstr</span> و برای اطلاعات دیسک و فرایندها یک فراخوانی کوتاه PowerShell هستند.</p>
+</section>
+
+
+<section class="report-block">
+<h2>03 / مراحل انجام کار</h2>
+<ol>
+<li><b>ایجاد فایل:</b> Notepad را باز می‌کنیم و فایل را با نام <span class="cmd">system_info.bat</span> ذخیره می‌کنیم. در پنجره Save، گزینه Save as type را روی All files می‌گذاریم تا پسوند .txt اضافه نشود.</li>
+<li><b>تنظیمات ابتدایی:</b> با <span class="cmd">@echo off</span> نمایش خود دستورات را خاموش می‌کنیم، با <span class="cmd">chcp 65001</span> کدپیج UTF-8 را فعال می‌کنیم و با <span class="cmd">title</span> و <span class="cmd">color</span> ظاهر پنجره را تنظیم می‌کنیم.</li>
+<li><b>تعریف مسیر خروجی:</b> متغیر <span class="cmd">OUT</span> را با نام کامپیوتر می‌سازیم تا گزارش در همان پوشه‌ی اسکریپت ذخیره شود.</li>
+<li><b>نوشتن بخش‌های گزارش:</b> در برچسب <span class="cmd">:collect</span> دستورات را بخش‌به‌بخش می‌نویسیم: کاربر و کامپیوتر، سیستم‌عامل، پردازنده و حافظه، دیسک‌ها، شبکه و پرمصرف‌ترین فرایندها. از <span class="cmd">findstr</span> برای فیلتر کردن خروجی طولانی <span class="cmd">systeminfo</span> استفاده می‌کنیم.</li>
+<li><b>ذخیره و نمایش خروجی:</b> خروجی برچسب با علامت <span class="cmd">&gt;</span> در فایل txt ذخیره می‌شود و سپس با <span class="cmd">type</span> روی صفحه نمایش داده می‌شود. در پایان <span class="cmd">pause</span> پنجره را باز نگه می‌دارد.</li>
+<li><b>اجرا و آزمایش:</b> روی فایل دابل‌کلیک می‌کنیم (یا آن را در CMD اجرا می‌کنیم)، خروجی را بررسی می‌کنیم و فایل گزارش ایجادشده را باز می‌کنیم.</li>
+</ol>
+<h2 style="margin-top:18px">کد کامل اسکریپت</h2>
+<div class="code-block">@echo off
+chcp 65001 &gt;nul
+title System Information Report
+color 0A
+setlocal EnableExtensions
+
+set "OUT=%~dp0system_report_%COMPUTERNAME%.txt"
+
+echo Collecting system information, please wait...
+echo.
+
+call :collect &gt; "%OUT%" 2&gt;&amp;1
+type "%OUT%"
+
+echo.
+echo Report saved to: %OUT%
+echo.
+pause
+endlocal
+exit /b
+
+:collect
+echo ==================================================
+echo          SYSTEM INFORMATION REPORT
+echo ==================================================
+echo Date : %date%
+echo Time : %time%
+echo.
+
+echo [1] COMPUTER AND USER
+echo Computer name : %COMPUTERNAME%
+echo Current user  : %USERNAME%
+whoami
+echo.
+
+echo [2] OPERATING SYSTEM
+ver
+systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type" /C:"System Boot Time"
+echo.
+
+echo [3] PROCESSOR AND MEMORY
+echo CPU           : %PROCESSOR_IDENTIFIER%
+echo Logical cores : %NUMBER_OF_PROCESSORS%
+systeminfo | findstr /C:"Total Physical Memory" /C:"Available Physical Memory"
+echo.
+
+echo [4] DISK DRIVES
+powershell -NoProfile -Command "Get-CimInstance Win32_LogicalDisk -Filter 'DriveType=3' | Select-Object DeviceID,@{n='Size_GB';e={[math]::Round($_.Size/1GB,1)}},@{n='Free_GB';e={[math]::Round($_.FreeSpace/1GB,1)}} | Format-Table -AutoSize"
+echo.
+
+echo [5] NETWORK
+ipconfig | findstr /C:"IPv4" /C:"Subnet Mask" /C:"Default Gateway"
+ping -n 2 8.8.8.8 | findstr /C:"Average" /C:"Lost"
+echo.
+
+echo [6] TOP 5 PROCESSES BY MEMORY
+powershell -NoProfile -Command "Get-Process | Sort-Object WS -Descending | Select-Object -First 5 Name,@{n='RAM_MB';e={[math]::Round($_.WS/1MB)}} | Format-Table -AutoSize"
+echo.
+
+echo ================== END OF REPORT ==================
+goto :eof</div>
+<p>فایل کامل <span class="cmd">system_info.bat</span> نیز همراه این پروژه در مخزن GitHub قرار گرفته است.</p>
+</section>
+
+<section class="report-block">
+<h2>04 / یافته‌ها و تحلیل فنی</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right">بخش گزارش</th><th style="padding:11px;text-align:right">دستور اصلی</th><th style="padding:11px;text-align:right">اطلاعات نمایش‌داده‌شده</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">کاربر و کامپیوتر</td><td style="padding:11px;border-bottom:1px solid #263750" class="cmd">hostname · whoami</td><td style="padding:11px;border-bottom:1px solid #263750">نام دستگاه و حساب کاربری فعال</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">سیستم‌عامل</td><td style="padding:11px;border-bottom:1px solid #263750" class="cmd">ver · systeminfo</td><td style="padding:11px;border-bottom:1px solid #263750">نام و نسخه ویندوز، نوع سیستم، زمان آخرین بوت</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">پردازنده و RAM</td><td style="padding:11px;border-bottom:1px solid #263750" class="cmd">%PROCESSOR_IDENTIFIER% · systeminfo</td><td style="padding:11px;border-bottom:1px solid #263750">مدل CPU، تعداد هسته‌های منطقی، RAM کل و آزاد</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">دیسک‌ها</td><td style="padding:11px;border-bottom:1px solid #263750" class="cmd">Get-CimInstance Win32_LogicalDisk</td><td style="padding:11px;border-bottom:1px solid #263750">ظرفیت کل و فضای آزاد هر درایو</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">شبکه</td><td style="padding:11px;border-bottom:1px solid #263750" class="cmd">ipconfig · ping</td><td style="padding:11px;border-bottom:1px solid #263750">آدرس IPv4، Subnet Mask، Gateway و وضعیت اتصال</td></tr>
+<tr><td style="padding:11px">فرایندها</td><td style="padding:11px" class="cmd">Get-Process</td><td style="padding:11px">پنج فرایند با بیشترین مصرف RAM</td></tr>
+</tbody></table>
+<ul>
+<li>ریدایرکت خروجی با <span class="cmd">&gt;</span> باعث می‌شود نتیجه هم روی صفحه نمایش داده شود و هم به‌صورت یک فایل متنی قابل بایگانی و ارسال باشد.</li>
+<li>استفاده از <span class="cmd">findstr</span> خروجی طولانی <span class="cmd">systeminfo</span> را به چند خط مفید تبدیل می‌کند و گزارش خواناتر می‌شود.</li>
+<li>ابزار <span class="cmd">wmic</span> در نسخه‌های جدید ویندوز ۱۱ حذف شده یا در حال حذف است؛ به همین دلیل برای دیسک و فرایندها از PowerShell استفاده شد تا اسکریپت روی نسخه‌های جدید هم کار کند.</li>
+<li>اجرای دستور <span class="cmd">systeminfo</span> چند ثانیه طول می‌کشد؛ پیام «Collecting...» در ابتدای اسکریپت این تأخیر را برای کاربر توضیح می‌دهد.</li>
+<li>برای دسترسی به برخی اطلاعات ممکن است اجرای فایل با Run as administrator لازم باشد، اما بخش‌های این گزارش با دسترسی عادی هم کار می‌کنند.</li>
+</ul>
+</section>
+
+
+<section class="report-block">
+<h2>05 / مشکلات و راه‌حل‌ها</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right">مشکل</th><th style="padding:11px;text-align:right">راه‌حل</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">ذخیره فایل با نام system_info.bat.txt</td><td style="padding:11px;border-bottom:1px solid #263750">انتخاب All files در Save as type و فعال کردن نمایش پسوند فایل‌ها در File Explorer</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">بسته شدن سریع پنجره CMD بعد از اجرا</td><td style="padding:11px;border-bottom:1px solid #263750">افزودن دستور <span class="cmd">pause</span> در انتهای اسکریپت</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">خطای «wmic is not recognized» در ویندوز ۱۱</td><td style="padding:11px;border-bottom:1px solid #263750">جایگزین کردن wmic با دستورهای PowerShell (Get-CimInstance)</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">خروجی systeminfo بسیار طولانی بود</td><td style="padding:11px;border-bottom:1px solid #263750">فیلتر کردن با <span class="cmd">findstr</span> و نمایش فقط خطوط لازم</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">در ویندوز فارسی‌شده یا با زبان متفاوت، فیلتر systeminfo خروجی نمی‌دهد</td><td style="padding:11px;border-bottom:1px solid #263750">فیلترها به متن انگلیسی خروجی وابسته‌اند؛ روی ویندوز با زبان انگلیسی اجرا شود یا عبارت‌های findstr با زبان سیستم هماهنگ شوند</td></tr>
+<tr><td style="padding:11px">نمایش نادرست کاراکترها</td><td style="padding:11px">استفاده از <span class="cmd">chcp 65001</span> و نگه‌داشتن متن‌های اسکریپت به انگلیسی</td></tr>
+</tbody></table>
+</section>
+
+
+<section class="report-block">
+<h2>06 / مستندات تصویری</h2>
+<div class="shot-grid">
+<figure class="evidence"><img src="../assets/screenshots/project09-notepad-code.PNG" alt=""><figcaption>نوشتن کد اسکریپت در Notepad</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project09-save-bat.PNG" alt=""><figcaption>ذخیره فایل با پسوند .bat و گزینه All files</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project09-cmd-output.PNG" alt=""><figcaption>اجرای اسکریپت و نمایش اطلاعات سیستم در CMD</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project09-report-file.PNG" alt=""><figcaption>فایل گزارش متنی ساخته‌شده توسط اسکریپت</figcaption></figure>
+</div>
+</section>
+
+<section class="report-block">
+<h2>07 / جمع‌بندی و آموخته‌ها</h2>
+<p>در این پروژه یاد گرفتم که با یک فایل ساده‌ی Batch می‌توان چندین دستور CMD را خودکار اجرا کرد و کارهای تکراری عیب‌یابی را به یک کلیک تبدیل کرد. با مفاهیمی مانند متغیرها، برچسب‌ها و <span class="cmd">call</span>، ریدایرکت خروجی، فیلتر با <span class="cmd">findstr</span> و ترکیب CMD با PowerShell آشنا شدم و دیدم که هنگام نوشتن اسکریپت باید سازگاری با نسخه‌های مختلف ویندوز را هم در نظر گرفت.</p>
+<p>این اسکریپت می‌تواند پایه‌ای برای ابزارهای پشتیبانی IT باشد؛ برای مثال می‌توان بعدها بخش‌هایی مثل بررسی فضای دیسک، پاک‌سازی فایل‌های موقت یا گرفتن گزارش دوره‌ای با Task Scheduler را به آن اضافه کرد.</p>
+</section>
+
+<button class="print-btn" onclick="window.print()">چاپ / ذخیره این گزارش به PDF</button>
+</div></main></body></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission 02 | System Troubleshooting</title><link rel="stylesheet" href="../css/style.css">
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.report-block ol,.report-block ul{padding-right:22px}.evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.placeholder{min-height:130px;display:grid;place-items:center;text-align:center;border:1px dashed #526781;border-radius:8px;color:#8194ad;font-size:11px;padding:15px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+@media(max-width:650px){.meta-grid,.evidence-grid{grid-template-columns:1fr}}@media print{.back-link,.print-btn{display:none}.detail-hero,.report-block{break-inside:avoid}}
+</style></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← بازگشت به داشبورد</a><a class="lang-switch" lang="en" hreflang="en" href="../en/projects/project-02.html">English</a>
+
+<section class="detail-hero">
+<span class="eyebrow">MISSION 02 / 10 · FIELD REPORT</span>
+<h1>بررسی و عیب‌یابی یک سیستم کند</h1>
+<p>System Performance Analysis — شناسایی عوامل کاهش سرعت سیستم با استفاده از Task Manager و Resource Monitor</p>
+</section>
+
+<div class="meta-grid">
+<div class="meta">وضعیت<b>انجام شده</b></div>
+<div class="meta">ابزارها<b>Task Manager · Resource Monitor</b></div>
+<div class="meta">تاریخ اجرا<b>1405/07/17</b></div>
+</div>
+
+<section class="report-block">
+<h2>01 / هدف مأموریت</h2>
+<p>هدف این پروژه، شناسایی علت کندی عملکرد یک سیستم کامپیوتری و پیدا کردن برنامه یا فرایندی است که بیشترین فشار را به منابع سیستم وارد می‌کند. در این بررسی، میزان استفاده از پردازنده (CPU)، حافظه اصلی (RAM)، دیسک (Disk) و شبکه (Network) ارزیابی می‌شود تا منبع یا منابع اصلی کندی مشخص شوند.</p>
+</section>
+
+<section class="report-block">
+<h2>02 / ابزارهای مورد استفاده</h2>
+<p><b>Task Manager:</b> نمایش کلی میزان مصرف منابع سیستم و مدیریت برنامه‌ها و فرایندهای در حال اجرا.</p>
+<p><b>Resource Monitor:</b> نمایش جزئیات دقیق‌تر مصرف CPU، Memory، Disk و Network به تفکیک هر فرایند.</p>
+</section>
+
+<section class="report-block">
+<h2>03 / مراحل اجرا</h2>
+<ol>
+<li><b>بررسی اولیه با Task Manager:</b> کلیدهای <b>Ctrl + Shift + Esc</b> را فشار می‌دهیم. در تب <b>Processes</b> ستون‌های CPU، Memory، Disk و Network را بررسی می‌کنیم و با انتخاب عنوان هر ستون، فرایندها را بر اساس بیشترین مصرف مرتب می‌کنیم.</li>
+<li><b>شناسایی منبع مشکل‌ساز:</b> در تب <b>Performance</b> نمودار هر منبع را مشاهده می‌کنیم. مصرف نزدیک به ۱۰۰ درصد، به‌خصوص اگر ادامه‌دار باشد، می‌تواند نشانه فشار زیاد روی آن منبع باشد.</li>
+<li><b>بررسی برنامه‌های راه‌اندازی:</b> در تب <b>Startup</b> برنامه‌هایی را که هنگام شروع ویندوز اجرا می‌شوند بررسی می‌کنیم و موارد دارای اثرگذاری بالا (High impact) را شناسایی می‌کنیم.</li>
+<li><b>تحلیل دقیق با Resource Monitor:</b> با فشردن <b>Win + R</b> و وارد کردن عبارت <b>resmon</b> ابزار را اجرا می‌کنیم. سپس تب‌های CPU، Memory، Disk و Network را برای شناسایی فرایندهای پرمصرف بررسی می‌کنیم.</li>
+<li><b>رفع مشکل:</b> پس از شناسایی عامل کندی، برنامه‌ها یا فرایندهای غیرضروری را می‌بندیم، برنامه‌های غیرضروری Startup را غیرفعال می‌کنیم و در صورت نیاز اسکن ویروس، آزادسازی فضای دیسک یا افزایش RAM را در نظر می‌گیریم.</li>
+</ol>
+</section>
+
+<section class="report-block">
+<h2>04 / یافته‌ها و تحلیل فنی</h2>
+<p>مقادیر جدول زیر نمونه هستند. هنگام اجرای واقعی پروژه باید اعداد مشاهده‌شده در Task Manager و Resource Monitor جایگزین شوند.</p>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right">منبع</th><th style="padding:11px;text-align:right">مقدار مشاهده‌شده (نمونه)</th><th style="padding:11px;text-align:right">وضعیت</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">CPU</td><td style="padding:11px;border-bottom:1px solid #263750">80%</td><td style="padding:11px;border-bottom:1px solid #263750">بحرانی</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">RAM</td><td style="padding:11px;border-bottom:1px solid #263750">63%</td><td style="padding:11px;border-bottom:1px solid #263750">بالا</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Disk</td><td style="padding:11px;border-bottom:1px solid #263750">10%</td><td style="padding:11px;border-bottom:1px solid #263750">عادی</td></tr>
+<tr><td style="padding:11px">Network</td><td style="padding:11px">5%</td><td style="padding:11px">عادی</td></tr>
+</tbody></table>
+<ul>
+<li>مصرف بالای CPU می‌تواند ناشی از اجرای هم‌زمان چند برنامه سنگین و فرایندهای پس‌زمینه باشد.</li>
+<li>وجود چند برنامه با اثرگذاری بالا (High impact) در تب Startup می‌تواند زمان راه‌اندازی ویندوز را افزایش دهد.</li>
+<li>فعالیت زیاد دیسک و طولانی شدن صف دیسک (Disk Queue) در Resource Monitor می‌تواند نشانه فشار روی حافظه ذخیره‌سازی باشد.</li>
+<li>در صورت پر شدن RAM، سیستم ممکن است از Page File روی دیسک استفاده کند؛ این وضعیت، به‌ویژه در سیستم‌هایی با حافظه ذخیره‌سازی کند، می‌تواند عملکرد را کاهش دهد.</li>
+</ul>
+</section>
+
+<section class="report-block">
+<h2>05 / مشکلات و راه‌حل‌ها</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right">مشکل</th><th style="padding:11px;text-align:right">راه‌حل پیشنهادی</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">برنامه‌های پرمصرف در حال اجرا</td><td style="padding:11px;border-bottom:1px solid #263750">بستن برنامه یا فرایند غیرضروری با گزینه End Task</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">برنامه‌های زیاد در Startup</td><td style="padding:11px;border-bottom:1px solid #263750">غیرفعال کردن برنامه‌های غیرضروری در بخش Startup</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">مصرف بالای RAM</td><td style="padding:11px;border-bottom:1px solid #263750">بستن برنامه‌های اضافه و در صورت نیاز افزایش RAM</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">فشار روی دیسک</td><td style="padding:11px;border-bottom:1px solid #263750">آزادسازی فضا، پاک‌سازی فایل‌های موقت و در صورت امکان استفاده از SSD</td></tr>
+<tr><td style="padding:11px">احتمال وجود بدافزار</td><td style="padding:11px">اجرای اسکن کامل با آنتی‌ویروس</td></tr>
+</tbody></table>
+</section>
+
+<section class="report-block">
+<h2>06 / مستندات تصویری</h2>
+<div class="evidence-grid">
+<figure class="evidence"><img src="../assets/screenshots/project02-taskmanager-processes.PNG" alt=""><figcaption>بررسی میزان مصرف منابع توسط فرایندهای در حال اجرا</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project02-taskmanager-performance.PNG" alt=""><figcaption>بررسی نمودار عملکرد منابع سیستم</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project02-taskmanager-startup.PNG" alt=""><figcaption>بررسی برنامه‌های اجراشونده هنگام راه‌اندازی ویندوز</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project02-resourcemonitor.PNG" alt=""><figcaption>تحلیل جزئی‌تر مصرف CPU، Memory، Disk و Network</figcaption></figure>
+</div>
+</section>
+
+<section class="report-block">
+<h2>07 / جمع‌بندی و یافته‌ها</h2>
+<p>کندی سیستم معمولاً می‌تواند نتیجه ترکیبی از چند عامل باشد؛ از جمله اجرای برنامه‌های پرمصرف، شلوغ بودن فهرست برنامه‌های Startup، استفاده زیاد از حافظه RAM و فشار روی دیسک. با بررسی مرحله‌به‌مرحله در Task Manager و Resource Monitor می‌توان منبع اصلی مشکل را شناسایی کرد.</p>
+<p>پس از بستن برنامه‌های غیرضروری و غیرفعال کردن موارد غیرضروری Startup، انتظار می‌رود مصرف منابع کاهش یابد و سرعت و پاسخ‌دهی سیستم بهبود پیدا کند.</p>
+</section>
+
+<button class="print-btn" onclick="window.print()">چاپ / ذخیره این گزارش به PDF</button>
+</div></main></body></html>

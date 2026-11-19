@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission 08 | Security Assessment</title><link rel="stylesheet" href="../css/style.css">
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.placeholder{min-height:130px;display:grid;place-items:center;text-align:center;border:1px dashed #526781;border-radius:8px;color:#8194ad;font-size:11px;padding:15px}
+.code-block{direction:ltr;text-align:left;background:#0b1422;border:1px solid #263750;border-radius:10px;padding:14px;margin:12px 0;overflow-x:auto;font-family:Consolas,"Courier New",monospace;font-size:11.5px;line-height:1.7;color:#c9d8ec;white-space:pre}
+.cmd{direction:ltr;unicode-bidi:embed;font-family:Consolas,"Courier New",monospace;color:#e5efff}
+.chk{color:#6fe0a0;font-weight:bold}
+.shot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+</style></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← بازگشت به داشبورد</a><a class="lang-switch" lang="en" hreflang="en" href="../en/projects/project-08.html">English</a>
+
+<section class="detail-hero">
+<span class="eyebrow">MISSION 08 / 10 · FIELD REPORT</span>
+<h1>بررسی امنیت سیستم و تهیه چک‌لیست امنیتی</h1>
+<p>System Security Check — ارزیابی وضعیت Firewall، Windows Security و به‌روز بودن ویندوز و تدوین چک‌لیست امنیتی</p>
+</section>
+
+<div class="meta-grid">
+<div class="meta">وضعیت<b>انجام شده</b></div>
+<div class="meta">ابزارها<b>Windows Security · Windows Defender Firewall · Windows Update</b></div>
+<div class="meta">تاریخ اجرا<b>1405/08/22</b></div>
+</div>
+
+<section class="report-block">
+<h2>01 / هدف مأموریت</h2>
+<p>هدف این پروژه، ارزیابی وضعیت امنیتی پایه یک سیستم ویندوزی و تهیه یک چک‌لیست امنیتی قابل استفاده است. در این بررسی سه محور اصلی کنترل می‌شود: فعال بودن و تنظیمات دیوار آتش (Firewall)، وضعیت محافظت‌های Windows Security شامل آنتی‌ویروس و بروزرسانی تعاریف تهدید، و به‌روز بودن خود ویندوز. نتیجه این بررسی نشان می‌دهد سیستم در برابر تهدیدهای رایج تا چه حد محافظت شده و چه اقدام‌های اصلاحی لازم است.</p>
+</section>
+
+<section class="report-block">
+<h2>02 / ابزارها و محیط اجرا</h2>
+<p><b>Windows Security:</b> مرکز امنیتی ویندوز برای مشاهده وضعیت آنتی‌ویروس (Microsoft Defender)، فایروال، کنترل برنامه و مرورگر و امنیت دستگاه.</p>
+<p><b>Windows Defender Firewall:</b> مدیریت قوانین ورودی و خروجی شبکه برای پروفایل‌های Domain، Private و Public.</p>
+<p><b>Windows Update:</b> بخش تنظیمات برای بررسی و نصب به‌روزرسانی‌های ویندوز و مشاهده تاریخچه آن‌ها.</p>
+<p><b>ابزارهای کمکی:</b> دستور <span class="cmd">winver</span> برای نمایش نسخه ویندوز و CMD / PowerShell برای تأیید وضعیت از طریق خط فرمان.</p>
+<p><b>محیط اجرا:</b> ویندوز ۱۰ یا ۱۱ با دسترسی کاربر عادی؛ برای برخی دستورهای خط فرمان اجرای ابزار با Run as administrator ممکن است لازم باشد.</p>
+</section>
+
+<section class="report-block">
+<h2>03 / مراحل انجام کار</h2>
+<ol>
+<li><b>باز کردن Windows Security:</b> از منوی Start عبارت <b>Windows Security</b> را جستجو و باز می‌کنیم. صفحه اصلی وضعیت کلی بخش‌ها را با آیکن سبز (سالم) یا زرد/قرمز (نیازمند اقدام) نشان می‌دهد.</li>
+<li><b>بررسی Virus &amp; threat protection:</b> وارد این بخش می‌شویم و فعال بودن <b>Real-time protection</b>، زمان آخرین اسکن و نسخه تعاریف تهدید (Security intelligence) را بررسی می‌کنیم. با گزینه <b>Check for updates</b> تعاریف را به‌روز می‌کنیم و در صورت نیاز <b>Quick scan</b> اجرا می‌کنیم.</li>
+<li><b>بررسی Firewall &amp; network protection:</b> وضعیت سه پروفایل Domain، Private و Public را بررسی می‌کنیم و مطمئن می‌شویم هر سه روشن (On) هستند. برای جزئیات بیشتر، <span class="cmd">wf.msc</span> را اجرا می‌کنیم تا قوانین Inbound و Outbound دیده شود.</li>
+<li><b>بررسی سایر بخش‌ها:</b> وضعیت <b>App &amp; browser control</b> (SmartScreen)، <b>Device security</b> (مانند Secure Boot و TPM در صورت پشتیبانی) و <b>Account protection</b> را مشاهده و یادداشت می‌کنیم.</li>
+<li><b>بررسی Windows Update:</b> مسیر <b>Settings → Windows Update</b> را باز می‌کنیم، گزینه <b>Check for updates</b> را می‌زنیم و سپس در <b>Update history</b> آخرین به‌روزرسانی‌های نصب‌شده را مرور می‌کنیم.</li>
+<li><b>ثبت نسخه ویندوز:</b> با <b>Win + R</b> و اجرای <span class="cmd">winver</span> نسخه و شماره Build ویندوز را ثبت می‌کنیم.</li>
+<li><b>تأیید با خط فرمان (اختیاری):</b> وضعیت فایروال و آنتی‌ویروس را با دستورهای زیر دوباره بررسی می‌کنیم.</li>
+</ol>
+<div class="code-block">:: Firewall status for all profiles
+netsh advfirewall show allprofiles state
+
+:: Microsoft Defender status (PowerShell)
+Get-MpComputerStatus | Select-Object AntivirusEnabled,RealTimeProtectionEnabled,AntivirusSignatureLastUpdated
+
+:: Installed updates (latest first)
+Get-HotFix | Sort-Object InstalledOn -Descending | Select-Object -First 5</div>
+<ol start="8">
+<li><b>تدوین چک‌لیست:</b> نتیجه هر مورد را در چک‌لیست بخش بعد ثبت می‌کنیم و برای موارد ناموفق اقدام اصلاحی می‌نویسیم.</li>
+</ol>
+</section>
+
+<section class="report-block">
+<h2>04 / یافته‌ها و تحلیل فنی</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right">مورد بررسی</th><th style="padding:11px;text-align:right">محل بررسی</th><th style="padding:11px;text-align:right">وضعیت مشاهده‌شده</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Real-time protection</td><td style="padding:11px;border-bottom:1px solid #263750">Virus &amp; threat protection</td><td style="padding:11px;border-bottom:1px solid #263750">فعال</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">تعاریف تهدید (Security intelligence)</td><td style="padding:11px;border-bottom:1px solid #263750">Protection updates</td><td style="padding:11px;border-bottom:1px solid #263750">به‌روز</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Firewall پروفایل Domain / Private / Public</td><td style="padding:11px;border-bottom:1px solid #263750">Firewall &amp; network protection</td><td style="padding:11px;border-bottom:1px solid #263750">هر سه روشن</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">SmartScreen</td><td style="padding:11px;border-bottom:1px solid #263750">App &amp; browser control</td><td style="padding:11px;border-bottom:1px solid #263750">فعال</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">Windows Update</td><td style="padding:11px;border-bottom:1px solid #263750">Settings → Windows Update</td><td style="padding:11px;border-bottom:1px solid #263750">به‌روز (You're up to date)</td></tr>
+<tr><td style="padding:11px">نسخه و Build ویندوز</td><td style="padding:11px"><span class="cmd">winver</span></td><td style="padding:11px">Windows 10</td></tr>
+</tbody></table>
+<ul>
+<li>فعال بودن Real-time protection مهم‌ترین لایه دفاعی در برابر بدافزار است، اما فقط وقتی مؤثر است که تعاریف تهدید به‌روز باشد.</li>
+<li>فایروال باید روی هر سه پروفایل روشن باشد؛ خاموش بودن پروفایل Public در شبکه‌های عمومی (کافه، فرودگاه) خطر بیشتری ایجاد می‌کند.</li>
+<li>به‌روزرسانی‌های ویندوز علاوه بر قابلیت‌های جدید، آسیب‌پذیری‌های امنیتی شناخته‌شده را برطرف می‌کنند؛ تأخیر طولانی در نصب آن‌ها سطح حمله را بالا می‌برد.</li>
+<li>اگر آنتی‌ویروس شخص ثالث نصب باشد، ویندوز ممکن است Microsoft Defender را غیرفعال نشان دهد؛ در این حالت باید وضعیت همان آنتی‌ویروس بررسی شود.</li>
+<li>Windows Security فقط وضعیت پایه را نشان می‌دهد و جایگزین رفتارهای امنیتی کاربر (رمز قوی، احتیاط در دانلود و ایمیل) نیست.</li>
+</ul>
+
+<h2 style="margin-top:18px">چک‌لیست امنیتی</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right;width:60px">انجام</th><th style="padding:11px;text-align:right">مورد چک‌لیست</th><th style="padding:11px;text-align:right">اقدام در صورت ناموفق بودن</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750" class="chk">☑</td><td style="padding:11px;border-bottom:1px solid #263750">Real-time protection روشن است</td><td style="padding:11px;border-bottom:1px solid #263750">فعال‌سازی از Virus &amp; threat protection settings</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750" class="chk">☑</td><td style="padding:11px;border-bottom:1px solid #263750">تعاریف تهدید به‌روز است</td><td style="padding:11px;border-bottom:1px solid #263750">زدن Check for updates در Protection updates</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750" class="chk">☑</td><td style="padding:11px;border-bottom:1px solid #263750">اسکن اخیر انجام شده است</td><td style="padding:11px;border-bottom:1px solid #263750">اجرای Quick scan و در صورت لزوم Full scan</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750" class="chk">☑</td><td style="padding:11px;border-bottom:1px solid #263750">Firewall روی Domain / Private / Public روشن است</td><td style="padding:11px;border-bottom:1px solid #263750">روشن کردن پروفایل خاموش در Firewall &amp; network protection</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750" class="chk">☑</td><td style="padding:11px;border-bottom:1px solid #263750">SmartScreen فعال است</td><td style="padding:11px;border-bottom:1px solid #263750">فعال‌سازی در App &amp; browser control</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750" class="chk">☑</td><td style="padding:11px;border-bottom:1px solid #263750">ویندوز به‌روز است و به‌روزرسانی معلق ندارد</td><td style="padding:11px;border-bottom:1px solid #263750">نصب به‌روزرسانی‌ها و ری‌استارت سیستم</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750" class="chk">☑</td><td style="padding:11px;border-bottom:1px solid #263750">نسخه ویندوز هنوز پشتیبانی می‌شود</td><td style="padding:11px;border-bottom:1px solid #263750">ارتقا به نسخه پشتیبانی‌شده</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750" class="chk">☑</td><td style="padding:11px;border-bottom:1px solid #263750">حساب کاربری رمز قوی یا PIN / Windows Hello دارد</td><td style="padding:11px;border-bottom:1px solid #263750">تنظیم رمز یا PIN در Settings → Accounts → Sign-in options</td></tr>
+<tr><td style="padding:11px">☑</td><td style="padding:11px">از داده‌های مهم نسخه پشتیبان وجود دارد</td><td style="padding:11px">استفاده از File History یا کپی دستی روی حافظه خارجی</td></tr>
+</tbody></table>
+</section>
+
+<section class="report-block">
+<h2>05 / مستندات تصویری</h2>
+<div class="evidence-grid">
+<figure class="evidence"><img src="../assets/screenshots/project08-windows-security.PNG" alt=""><figcaption>صفحه اصلی Windows Security و وضعیت کلی بخش‌های حفاظتی</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project08-virus-protection.PNG" alt=""><figcaption>وضعیت Virus &amp; threat protection و به‌روز بودن تعاریف تهدید</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project08-firewall.PNG" alt=""><figcaption>وضعیت فایروال در پروفایل‌های Domain، Private و Public</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project08-widows-update.PNG" alt=""><figcaption>وضعیت Windows Update و تاریخچه به‌روزرسانی‌ها</figcaption></figure>
+</div>
+</section>
+
+<section class="report-block">
+<h2>06 / جمع‌بندی و آموخته‌ها</h2>
+<p>در این پروژه یاد گرفتیم که امنیت پایه ویندوز بر سه ستون استوار است: آنتی‌ویروس فعال با تعاریف به‌روز، فایروال روشن روی همه پروفایل‌ها و نصب منظم به‌روزرسانی‌های ویندوز. Windows Security یک نمای یکجا از این موارد می‌دهد و با چند کلیک می‌توان وضعیت سیستم را سنجید و مشکلات را برطرف کرد.</p>
+<p>همچنین دیدیم که یک چک‌لیست مکتوب کار بررسی امنیتی را تکرارپذیر می‌کند؛ می‌توان آن را به‌صورت دوره‌ای (مثلاً ماهانه) یا هنگام تحویل یک سیستم به کاربر اجرا کرد. این مهارت در نقش پشتیبان IT برای ارزیابی سریع سیستم‌ها کاربرد مستقیم دارد.</p>
+</section>
+
+<button class="print-btn" onclick="window.print()">چاپ / ذخیره این گزارش به PDF</button>
+</div></main></body></html>

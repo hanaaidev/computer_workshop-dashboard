@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission 04 | Virtual Machine Lab</title><link rel="stylesheet" href="../css/style.css">
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+.step-fig{max-width:920px;margin:10px 0 18px}.placeholder{min-height:130px;display:grid;place-items:center;text-align:center;border:1px dashed #526781;border-radius:8px;color:#8194ad;font-size:11px;padding:15px}
+.cmd{direction:ltr;unicode-bidi:embed;font-family:Consolas,"Courier New",monospace;color:#e5efff}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 18px}
+.flow span{background:#17263b;border:1px solid #344761;border-radius:20px;padding:6px 14px;font-size:11px;color:#e5efff}
+.flow i{color:#526781;font-style:normal;font-size:13px}
+.report-block ol.steps{list-style:none;padding:0;margin:14px 0;counter-reset:s}
+.steps>li{counter-increment:s;position:relative;padding:0 46px 16px 0;min-height:34px}
+.steps>li::before{content:counter(s);position:absolute;right:0;top:0;width:30px;height:30px;border-radius:50%;background:#1c3150;border:1px solid #4a6a9a;color:#91bdff;display:grid;place-items:center;font-size:12px;font-weight:bold}
+.steps>li::after{content:"";position:absolute;right:14px;top:34px;bottom:2px;width:2px;background:#2c3f5c}
+.steps>li:last-child::after{display:none}
+.steps>li:last-child{padding-bottom:4px}
+.steps .st{display:block;color:#e5efff;font-size:12.5px;line-height:1.9}
+.steps .ds{display:block;color:#b1bfd1;font-size:12px;line-height:1.9}
+.shot{display:inline-block;margin-right:6px;font-style:normal;font-size:10.5px;color:#91bdff;background:#1c3150;border-radius:12px;padding:0 9px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:6px}
+.mini{background:#101b2d;border:1px solid #263750;border-radius:10px;padding:12px 14px}
+.mini h3{font-size:12.5px;margin:0 0 6px}
+.warn ul{margin:6px 0 0;padding-right:20px}.warn li{color:#d9c18f}
+
+
+
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+</style></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← بازگشت به داشبورد</a><a class="lang-switch" lang="en" hreflang="en" href="../en/projects/project-04.html">English</a>
+
+<section class="detail-hero">
+<span class="eyebrow">MISSION 04 / 10 · FIELD REPORT</span>
+<h1>ساخت Virtual Machine با توزیع لینوکس</h1>
+<p>مجازی‌سازی — نصب یک توزیع لینوکس داخل VirtualBox بدون دست‌زدن به سیستم‌عامل اصلی</p>
+</section>
+
+<div class="meta-grid">
+<div class="meta">وضعیت<b>انجام شده</b></div>
+<div class="meta">ابزارها<b>Oracle VirtualBox · فایل ISO لینوکس (Ubuntu)</b></div>
+<div class="meta">تاریخ اجرا<b>1405/07/27</b></div>
+</div>
+
+<section class="report-block">
+<h2>01 / هدف مأموریت</h2>
+<p>هدف این پروژه، ساخت یک ماشین مجازی (Virtual Machine) و نصب کامل یک توزیع لینوکس روی آن است. ماشین مجازی مانند یک کامپیوتر واقعی عمل می‌کند، اما داخل یک برنامه روی سیستم‌عامل اصلی اجرا می‌شود؛ بنابراین می‌توان بدون ریسک برای ویندوز یا اطلاعات اصلی، لینوکس را تجربه کرد و تغییرات خطرناک را آزمایش نمود. در این پروژه با مفاهیم تخصیص منابع (RAM و هارد مجازی)، اتصال فایل ISO به‌عنوان درایو DVD مجازی، فرآیند نصب سیستم‌عامل و قابلیت Snapshot آشنا می‌شوم. این مهارت پایه‌ای برای محیط‌های تست، آموزش و کار حرفه‌ای IT است.</p>
+</section>
+
+<section class="report-block">
+<h2>02 / ابزارها و محیط اجرا</h2>
+<p><b>Oracle VirtualBox:</b> نرم‌افزار رایگان مجازی‌سازی که ماشین مجازی را می‌سازد و اجرا می‌کند.</p>
+<p><b>فایل ISO توزیع لینوکس:</b> تصویر نصب سیستم‌عامل که از سایت رسمی توزیع دانلود شد (Ubuntu؛ توزیع‌های رایگان و امن مانند Linux Mint هم گزینه‌ی مناسب‌اند).</p>
+<p><b>سیستم میزبان (Host):</b> ویندوز، با قابلیت Virtualization فعال در BIOS/UEFI.</p>
+<p><b>مشخصات ماشین مجازی:</b> RAM برابر <span class="cmd">4 GB</span> و هارد مجازی <span class="cmd">20 GB</span> (مقادیر پیشنهادی پروژه؛ در صورت تفاوت، مقادیر واقعی خودتان را جایگزین کنید).</p>
+</section>
+
+<section class="report-block">
+<h2>03 / مراحل انجام کار و تصاویر اجرا</h2>
+<ol class="steps">
+<li><b class="st">دانلود نرم‌افزار مجازی‌سازی:</b><span class="ds">VirtualBox را از سایت رسمی Oracle دانلود می کنیم</span>
+<figure class="evidence step-fig"><img src="../assets/screenshots/project04-download-virtualbox.PNG" alt=""><figcaption>دانلود VirtualBox از سایت رسمی Oracle</figcaption></figure></li>
+
+<li><b class="st">دانلود ISO آزمایشی:</b><span class="ds"> یک توزیع سبک لینوکس (Ubuntu یا Linux Mint) را از سایت رسمی آن دانلود می‌کنیم.</span>
+<figure class="evidence step-fig"><img src="../assets/screenshots/project04-download-iso.PNG" alt=""><figcaption>دانلود فایل ISO لینوکس از سایت رسمی</figcaption></figure></li>
+
+<li><b class="st">ساخت VM جدید:</b><span class="ds">در VirtualBox روی New کلیک می کنیم، یک نام انتخاب می کنیم  و نوع نسخه‌ی سیستم‌عامل را مشخص می کنیم</span>
+<figure class="evidence step-fig"><img src="../assets/screenshots/project04-new-vm.PNG" alt=""><figcaption>ساخت VM جدید: نام، نوع و نسخه‌ی سیستم‌عامل</figcaption></figure></li>
+
+<li><b class="st">تخصیص RAM:</b><span class="ds">مقداری از RAM سیستم (مثلاً ۲ تا ۴ گیگابایت) به VM اختصاص می‌دهیم، به‌طوری که بیشتر از نیمی از کل RAM سیستم اصلی نباشد.</span>
+<figure class="evidence step-fig"><img src="../assets/screenshots/project04-ram.PNG" alt=""><figcaption>تخصیص RAM به ماشین مجازی</figcaption></figure></li>
+
+<li><b class="st">ساخت Virtual Disk:</b><span class="ds"> یک هارد مجازی جدید با حجم مشخص (مثلاً ۲۰ گیگابایت) می‌سازیم.</span>
+<figure class="evidence step-fig"><img src="../assets/screenshots/project04-virtual-disk.PNG" alt=""><figcaption>ساخت هارد مجازی (Virtual Disk)</figcaption></figure></li>
+
+<li><b class="st">اتصال فایل ISO:</b><span class="ds">در تنظیمات VM بخش Storage را باز می کنیم و فایل ISO دانلود شده را به عنوان درایوDVD مجازی معرفی کنیم</span>
+<figure class="evidence step-fig"><img src="../assets/screenshots/project04-iso-storage.PNG" alt=""><figcaption>اتصال فایل ISO در بخش Storage</figcaption></figure></li>
+
+<li><b class="st">روشن کردن VM:</b><span class="ds">کلیک می‌کنیم؛ مانند یک کامپیوتر واقعی، فرآیند نصب سیستم‌عامل از روی ISO آغاز می‌شود.</span>
+<figure class="evidence step-fig"><img src="../assets/screenshots/project04-start-vm.PNG" alt=""><figcaption>روشن کردن VM و شروع بوت از روی ISO</figcaption></figure></li>
+
+<li><b class="st">نصب سیستم‌عامل:</b><span class="ds"> مراحل نصب را مانند یک نصب واقعی دنبال می‌کنیم تا لینوکس روی هارد مجازی نصب شود.</span>
+<figure class="evidence step-fig"><img src="../assets/screenshots/project04-installer.PNG" alt=""><figcaption>اجرای نصب‌کننده‌ی لینوکس داخل VM</figcaption></figure></li>
+
+<li><b class="st">چالش پایانی:</b><span class="ds">داخل VM نصب‌شده یک فایل متنی می‌سازیم، VM را با Shut down خاموش می‌کنیم، دوباره Start می‌زنیم و بررسی می‌کنیم که فایل باقی مانده است.</span>
+<figure class="evidence step-fig"><img src="../assets/screenshots/project04-test-file.PNG" alt=""><figcaption>فایل متنی ساخته‌شده پس از Start مجدد VM</figcaption></figure></li>
+
+
+<li><b class="st">آزمایش Snapshot:</b><span class="ds">با قابلیت Snapshot وضعیت فعلی VM را ذخیره می‌کنیم تا در صورت نیاز بتوان به همان لحظه برگشت.</span>
+<figure class="evidence step-fig"><img src="../assets/screenshots/project04-snapshot.PNG" alt=""><figcaption>ذخیره‌ی Snapshot از وضعیت VM</figcaption></figure></li>
+
+</ol>
+</section>
+
+
+<section class="report-block">
+<h2>04 / یافته‌ها و تحلیل فنی</h2>
+<p>جدول زیر تنظیمات ماشین مجازی و دلیل انتخاب هر کدام را نشان می‌دهد.</p>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right">مورد</th><th style="padding:11px;text-align:right">مقدار</th><th style="padding:11px;text-align:right">دلیل/توضیح</th></tr></thead>
+
+
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">نرم‌افزار مجازی‌سازی</td><td style="padding:11px;border-bottom:1px solid #263750" class="cmd">Oracle VirtualBox</td><td style="padding:11px;border-bottom:1px solid #263750">رایگان و مناسب آموزش</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">سیستم‌عامل مهمان</td><td style="padding:11px;border-bottom:1px solid #263750" class="cmd">Ubuntu (Linux)</td><td style="padding:11px;border-bottom:1px solid #263750">توزیع رایگان و امن، مناسب تمرین</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">RAM اختصاصی</td><td style="padding:11px;border-bottom:1px solid #263750" class="cmd">4 GB</td><td style="padding:11px;border-bottom:1px solid #263750">نه بیشتر از نیمی از RAM کل تا سیستم اصلی کند نشود</td></tr>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">هارد مجازی</td><td style="padding:11px;border-bottom:1px solid #263750" class="cmd">20 GB</td><td style="padding:11px;border-bottom:1px solid #263750">فضای کافی برای سیستم‌عامل و چند برنامه</td></tr>
+<tr><td style="padding:11px">منبع نصب</td><td style="padding:11px" class="cmd">ISO → Virtual DVD</td><td style="padding:11px">فایل ISO مانند دیسک نصب واقعی عمل می‌کند</td></tr>
+</tbody></table>
+<ul>
+<li>ماشین مجازی یک کامپیوتر کامل با CPU، RAM، دیسک و درایو نوری مجازی است که منابعش را از سیستم میزبان قرض می‌گیرد؛ به همین دلیل تخصیص بیش‌ازحد RAM به VM روی کارایی ویندوز اصلی اثر منفی می‌گذارد.</li>
+<li>هارد مجازی در عمل یک فایل روی دیسک سیستم اصلی است، اما از دید لینوکس مانند یک دیسک واقعی دیده می‌شود و عملیات نصب روی آن انجام می‌شود، نه روی دیسک واقعی.</li>
+<li>باقی‌ماندن فایل متنی پس از Shut down و Start مجدد (چالش پروژه) نشان داد که داده‌ها روی هارد مجازی ذخیره می‌شوند و با خاموش‌شدن VM از بین نمی‌روند.</li>
+<li>قابلیت Snapshot امکان ذخیره‌ی وضعیت فعلی VM و بازگشت به آن را فراهم می‌کند؛ بنابراین برای آزمایش تغییرات پرخطر ابزار بسیار مناسبی است.</li>
+</ul>
+</section>
+
+<section class="report-block">
+<h2>05 / مشکلات و راه‌حل‌ها</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1;margin:12px 0">
+<thead><tr style="color:#e5efff;background:#17263b"><th style="padding:11px;text-align:right">مشکل</th><th style="padding:11px;text-align:right">راه‌حل</th></tr></thead>
+<tbody>
+<tr><td style="padding:11px;border-bottom:1px solid #263750">اجرا نشدن VM یا کند بودن آن؛ احتمال غیرفعال بودن Virtualization در BIOS/UEFI</td><td style="padding:11px;border-bottom:1px solid #263750">ورود به تنظیمات BIOS/UEFI و فعال‌کردن قابلیت Virtualization (نام دقیق گزینه بسته به مادربرد متفاوت است)</td></tr>
+</tbody></table>
+</section>
+
+<section class="report-block">
+<h2>06 / جمع‌بندی و آموخته‌ها</h2>
+<p>در این پروژه یاد گرفتم که با VirtualBox می‌توان یک کامپیوتر کامل را به‌صورت نرم‌افزاری ساخت و یک سیستم‌عامل جدید را بدون هیچ ریسکی برای سیستم اصلی نصب کرد. با مفاهیمی مانند تخصیص RAM، ساخت هارد مجازی، معرفی فایل ISO به‌عنوان DVD مجازی و مراحل نصب سیستم‌عامل آشنا شدم و دیدم که فعال بودن Virtualization در BIOS/UEFI پیش‌نیاز اجرای درست ماشین مجازی است. آزمایش ساخت فایل و راه‌اندازی مجدد VM نیز نشان داد که هارد مجازی مانند یک دیسک واقعی داده‌ها را نگه می‌دارد.</p>
+<p>ماشین مجازی می‌تواند پایه‌ای برای کارهای بعدی باشد؛ برای مثال تمرین دستورات ترمینال لینوکس، آزمایش نرم‌افزارها، یا ساخت محیط‌های جداگانه برای پروژه‌های برنامه‌نویسی و هوش مصنوعی، و قابلیت Snapshot امکان آزمون و خطا را بدون نگرانی فراهم می‌کند.</p>
+</section>
+
+
+
+<button class="print-btn" onclick="window.print()">چاپ / ذخیره این گزارش به PDF</button>
+</div></main></body></html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission 05 | Portable IT Toolkit</title><link rel="stylesheet" href="../css/style.css">
+<style>
+.detail-wrap{max-width:1050px;margin:0 auto}.back-link{color:#82b7ff;font-size:12px;display:inline-block;margin-bottom:22px}
+.detail-hero{padding:28px;border:1px solid #2a3c57;border-radius:18px;background:linear-gradient(120deg,#172945,#111d30);margin-bottom:18px}
+.detail-hero h1{font-size:26px;margin:8px 0}.detail-hero p{color:#a6b6cc;font-size:13px;margin:0}
+.report-block{border:1px solid #263750;background:#111c2e;border-radius:14px;padding:20px;margin:14px 0;break-inside:avoid}
+.report-block h2{font-size:16px;margin:0 0 10px;color:#91bdff}.report-block p,.report-block li{font-size:12px;color:#b1bfd1;line-height:2}
+.placeholder{border:1px dashed #526781;border-radius:10px;padding:22px;text-align:center;color:#8194ad;font-size:11px;background:#0d1726}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta{padding:12px;background:#17263b;border-radius:9px;color:#9fb1c8;font-size:11px}.meta b{display:block;color:#e5efff;margin-top:5px}
+@media(max-width:650px){.meta-grid{grid-template-columns:1fr}}
+.table-wrap{overflow-x:auto;margin:10px 0}
+.report-table{width:100%;border-collapse:collapse;font-size:12px;color:#b1bfd1}
+.report-table th{background:#17263b;color:#e5efff;font-weight:600;text-align:right;padding:9px 10px;border:1px solid #263750;white-space:nowrap}
+.report-table td{padding:9px 10px;border:1px solid #263750;line-height:1.9;vertical-align:top}
+.report-table td b{color:#e5efff}
+.report-table td.empty{color:#6c7f98;text-align:center}
+.note{font-size:11px;color:#8194ad;border-right:3px solid #526781;padding:4px 10px;margin:10px 0;line-height:1.9}
+.shot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.evidence{margin:0;padding:12px;background:#17263b;border:1px solid #344761;border-radius:10px}
+.evidence img{width:100%;height:auto;display:block;border-radius:7px}.evidence figcaption{color:#a6b6cc;font-size:11px;margin-top:9px;text-align:center}
+code{direction:ltr;unicode-bidi:embed;background:#0d1726;padding:1px 6px;border-radius:5px;color:#9cc4ff;font-size:11px}
+</style></head>
+<body><main class="main-content" style="margin:0"><div class="detail-wrap">
+<a class="back-link" href="../index.html">← بازگشت به داشبورد</a><a class="lang-switch" lang="en" hreflang="en" href="../en/projects/project-05.html">English</a>
+
+
+<section class="detail-hero"><span class="eyebrow">MISSION 05 / 10 · FIELD REPORT</span><h1>ساخت جعبه‌ابزار نرم‌افزاری</h1><p>Portable IT Toolkit — معرفی و آماده‌سازی حداقل پنج ابزار قابل‌حمل برای کارهای IT.</p></section>
+
+
+<div class="meta-grid"><div class="meta">وضعیت<b>انجام شده</b></div>
+<div class="meta">تاریخ اجرا<b>1405/07/30</b></div>
+<div class="meta">ابزارها<b>Everything · TreeSize · Notepad++  · 7-Zip · VLC</b></div></div>
+
+<section class="report-block"><h2>01 / هدف مأموریت</h2>
+<p>هدف این پروژه ساخت یک جعبه‌ابزار قابل‌حمل روی فلش مموری است که ابزارهای پرکاربرد پشتیبانی IT را بدون نیاز به نصب و بدون ایجاد تغییر در سیستم میزبان اجرا کند. این ابزارها در جست‌وجوی فایل، بررسی فضای دیسک، ویرایش متن و تصویر، فشرده‌سازی، ضبط صفحه و پخش رسانه کاربرد دارند.</p>
+<p>مسئلهٔ بررسی‌شده این است که چگونه می‌توان یک مجموعه ابزار کامل را روی یک فلش داشت و روی سیستم‌های مختلف، به‌سرعت و با حداقل رد پا اجرا کرد. خروجی مورد انتظار یک فلش منظم با 5 ابزار آمادهٔ اجرا، همراه با مستندات و تست روی سیستم دوم است.</p>
+</section>
+
+<section class="report-block"><h2>02 / ابزارها و محیط اجرا</h2>
+<div class="table-wrap"><table class="report-table">
+<thead><tr><th>ابزار</th><th>کاربرد</th><th>دسته</th></tr></thead>
+<tbody>
+<tr><td><b>Everything</b></td><td>جست‌وجوی آنی فایل‌ها و پوشه‌ها روی دیسک‌های NTFS</td><td>مدیریت فایل</td></tr>
+<tr><td><b>TreeSize</b></td><td>نمایش حجم پوشه‌ها و یافتن فایل‌ها و پوشه‌های پرحجم</td><td>تحلیل فضای دیسک</td></tr>
+<tr><td><b>Notepad++</b></td><td>ویرایشگر متن و کد با پشتیبانی از زبان‌های مختلف</td><td>ویرایش متن</td></tr>
+<tr><td><b>7-Zip</b></td><td>فشرده‌سازی و استخراج فرمت‌های مختلف آرشیو</td><td>ابزار فایل</td></tr>
+<tr><td><b>VLC</b></td><td>پخش‌کنندهٔ چندفرمتی صوت و تصویر</td><td>چندرسانه‌ای</td></tr>
+</tbody></table></div>
+<p><b>محیط اجرا:</b> مدل و ظرفیت فلش: <span>16GB-v813</span> <span ></span> · فایل‌سیستم: <span></span> · سیستم‌عامل آزمایشی: <span>Windows 10</span> </p>
+<p class="note">نکتهٔ فایل‌سیستم: FAT32 فایل بزرگ‌تر از ۴ گیگابایت را نمی‌پذیرد. برای ضبط‌های OBS و فلش‌های بزرگ، exFAT یا NTFS مناسب‌تر است.</p>
+</section>
+
+<section class="report-block"><h2>03 / مراحل انجام کار</h2>
+<ol>
+<li>فرمت فلش با فایل‌سیستم مناسب و نام‌گذاری، مثلاً <code>ToolKit</code>.</li>
+<li>ساخت ساختار پوشه‌ها، یک پوشه جداگانه برای هر ابزار.</li>
+<li>دانلود نسخهٔ پرتابل یا ZIP هر نرم‌افزار از سایت رسمی سازنده.</li>
+<li>استخراج هر ابزار در پوشهٔ مخصوص خودش.</li>
+<li>فعال‌سازی حالت پرتابل در برنامه‌هایی که نیاز دارند. برای مثال در OBS با ساخت فایل خالی <code>portable_mode.txt</code> کنار فایل اجرایی، تنظیمات روی خود فلش ذخیره می‌شود.</li>
+<li>(اختیاری) ساخت یک لانچر ساده با فایل batch که برنامه‌ها را با مسیر نسبی باز کند.</li>
+<li>تست اجرا روی سیستم دیگر و بررسی اینکه تنظیمات روی فلش باقی می‌ماند.</li>
+</ol></section>
+
+<section
+class="report-block"><h2>04 / شواهد و تصاویر اجرا</h2>
+<div class="shot-grid">
+<figure class="evidence"><img src="../assets/screenshots/project05-treesize.PNG" alt=""><figcaption>TreeSize درحال اجرا از فلش- فضای اشغال‌شده و ازاد فلش</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project05-everything.PNG" alt=""><figcaption>سرچ پیشرفته و انی با Everything</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project05-NotePad++.PNG" alt=""><figcaption>ویرایش و نمایش کد با Notepad++ روی فلش</figcaption></figure>
+<figure class="evidence"><img src="../assets/screenshots/project05-7zip.PNG" alt=""><figcaption>7-Zip درحال اجرا از روی فلش</figcaption></figure>
+</div>
+</section>
+
+
+<section class="report-block"><h2>05 / یافته‌ها و تحلیل فنی</h2>
+<div class="table-wrap"><table class="report-table">
+<thead><tr><th>ابزار</th><th>حجم روی فلش</th><th>نیاز به Admin</th><th>ماندگاری تنظیمات روی فلش</th></tr></thead>
+<tbody>
+<tr><td><b>Everything</b></td><td> 3MB </td><td>برای ایندکس NTFS یا باید سرویس Everything نصب باشد یا برنامه با Admin اجرا شود</td><td>نسخهٔ ZIP تنظیمات را محلی نگه می‌دارد</td></tr>
+<tr><td><b>TreeSize</b></td><td>300MB</td><td>بدون Admin اجرا می‌شود؛ برای محاسبهٔ حجم همهٔ پوشه‌ها باید با Admin اجرا شود</td><td>نسخه zip تنظیمات محلی را نگه می دارد</td></tr>
+<tr><td><b>Notepad++</b></td><td>40MB</td><td>نیازی به دسترسی ادمین ندارد</td><td>محلی،در پوشه برنامه</td></tr>
+<tr><td><b>7-Zip</b></td><td>3.5MB</td><td>نیازی به دسترسی ادمین ندارد</td><td>محلی، در پوشه برنامه</td></tr>
+<tr><td><b>VLC</b></td><td>380MB</td><td>نیازی به دسترسی ادمین ندارد</td><td>با ساخت زیرپوشهٔ portable کنار برنامه</td></tr>
+</tbody></table></div>
+<p><b>نکات تحلیلی:</b></p>
+<ul>
+<li><b>سرعت اجرا</b> به نوع USB و سرعت خواندن و نوشتن فلش وابسته است. برنامه‌های سنگین‌تر مثل OBS و Paint.NET از فلش کندتر بالا می‌آیند.</li>
+<li><b>دسترسی Administrator:</b> ابزارهایی مانند Everything و TreeSize برای اسکن کامل دیسک دسترسی بالاتر می‌خواهند و بدون آن نتیجه ممکن است ناقص یا کندتر باشد.</li>
+<li><b>رد پا روی سیستم میزبان:</b> برنامه‌های پرتابل واقعی تنظیمات را کنار خودشان نگه می‌دارند، ولی بعضی ممکن است فایل موقت یا ورودی Recent در سیستم میزبان بگذارند.</li>
+<li><b>وابستگی‌ها:</b> بعضی برنامه‌ها به runtime هایی مثل Visual C++ یا .NET روی سیستم میزبان نیاز دارند و این با «بدون نصب» بودن کامل در تضاد است.</li>
+<li><b>مصرف فضا:</b> OBS و VLC بخش عمدهٔ حجم را می‌گیرند. حجم کل جعبه‌ابزار را با ظرفیت فلش مقایسه کن.</li>
+</ul></section>
+<section class="report-block"><h2>06 / مشکلات و راه‌حل‌ها</h2>
+<div class="table-wrap"><table class="report-table">
+<thead><tr><th>مشکل</th><th>راه‌حل</th></tr></thead>
+<tbody>
+<tr><td>هشدار SmartScreen یا آنتی‌ویروس برای فایل‌های دانلودی</td><td>دانلود فقط از سایت رسمی و بررسی امضای دیجیتال فایل</td></tr>
+<tr><td>تغییر حرف درایو در سیستم‌های مختلف</td><td>استفاده از مسیر نسبی در لانچر به‌جای مسیر ثابت</td></tr>
+<tr><td>ذخیره نشدن تنظیمات OBS روی فلش</td><td>فعال‌سازی حالت پرتابل قبل از اولین اجرا</td></tr>
+<tr><td>کندی اجرا از فلش</td><td>استفاده از USB 3.x یا کپی موقت روی SSD</td></tr>
+<tr><td>ناقص بودن نتایج Everything و TreeSize</td><td>اجرا با Run as Administrator</td></tr>
+<tr><td>قطع ناگهانی فلش هنگام ضبط</td><td>ضبط روی دیسک سیستم، انتقال بعدی به فلش و خروج امن (Eject)</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="report-block"><h2>07 / جمع‌بندی و آموخته‌ها</h2>
+<ul>
+<li>مفهوم نرم‌افزار پرتابل و تفاوتش با نرم‌افزار نصب‌شده، یعنی نگه‌داری تنظیمات کنار برنامه و نه در رجیستری سیستم.</li>
+<li>اهمیت مسیرهای نسبی و ساختار منظم پوشه‌ها.</li>
+<li>تأثیر فایل‌سیستم و سرعت USB بر تجربهٔ کاربر.</li>
+<li>ملاحظات امنیتی: دانلود از منبع معتبر، اسکن فلش و احتیاط هنگام اتصال به سیستم‌های ناشناس.</li>
+<li>اهمیت تست در محیط واقعی، چون کار کردن روی یک سیستم تضمین کار کردن روی سیستم دیگر نیست.</li>
+</ul>
+</section>
+<button class="print-btn" onclick="window.print()">چاپ / ذخیره این گزارش به PDF</button>
+</div></main></body></html>
