@@ -1,7 +1,7 @@
-# IT Operations Journal — Computer Workshop Portfolio
-# ژورنال عملیات IT — پورتفولیوی کارگاه کامپیوتر
+# IT Support & System Adminstration — Computer Workshop Portfolio
+# تکنسین IT - پورتفیلوی کارگاه کامپیوتر
 
-🌐 **Live site / نسخه آنلاین:** `https://YOUR-USERNAME.github.io/YOUR-REPO/`
+🌐 **Live site / نسخه آنلاین:** `https://hanaaidev.github.io/computer-workshop-dashboard/`
 · [فارسی](index.html) · [English](en/index.html)
 
 ---
